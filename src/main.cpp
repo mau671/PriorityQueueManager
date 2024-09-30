@@ -3,7 +3,7 @@
 
 void showQueueStatusMenu() {
 	std::cout << "Estado de las colas.\n";
-	// Implementar lógica aquí
+	
 }
 
 // Función para mostrar el submenú de tiquetes
