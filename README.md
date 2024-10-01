@@ -13,5 +13,5 @@ Integrantes:
 - Mauricio González Prendas (carné 2024143009)
 - Mylu
 - Josué
-- 
+
 [![Presentacion](https://www.commoncraft.com/sites/default/files/media/Google%20Slides.png)]([https://classroom.github.com/a/8CSgsZVt](https://docs.google.com/presentation/d/1x3NYHb97RlHZmXwpiqScOGtEKyBftnQI7fV0pM5J_UA/edit?usp=sharing))
