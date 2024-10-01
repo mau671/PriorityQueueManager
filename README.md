@@ -2,9 +2,9 @@ Instituto Tecnológico de Costa Rica
 Campus Tecnológico Local San José
 Escuela de Ingeniería en Computación  
 
-Curso: IC2001 Estructuras de Datos 
+Curso: IC2001 Estructuras de Datos
 Profesor: Mauricio Aviles Cisneros
-II Semestre, 2024  
+II Semestre, 2024
 
 # Proyecto 0
 ## Sistema de administración de colas 
