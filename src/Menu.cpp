@@ -1,4 +1,4 @@
-#include "Menu.h"
+ï»¿#include "Menu.h"
 #include "utils.h"
 #include <iostream>
 #include <limits>
@@ -18,10 +18,10 @@ void Menu::display() {
     clearConsole(); // Limpiar la consola
     cout << title << "\n";
     for (int i = 0; i < options.getSize(); i++) {
-        options.goToPos(i); // Mover el cursor a la posición actual
-        cout << i + 1 << ". " << options.getElement() << "\n"; // Mostrar opción
+        options.goToPos(i); // Mover el cursor a la posiciÃ³n actual
+        cout << i + 1 << ". " << options.getElement() << "\n"; // Mostrar opciÃ³n
     }
-    cout << "Seleccione una opción: ";
+    cout << "Seleccione una opciÃ³n: ";
 }
 
 int Menu::getSelection() {
@@ -33,11 +33,11 @@ int Menu::getSelection() {
 
         std::stringstream ss(input);
         if (ss >> selection && selection >= 1 && selection <= options.getSize()) {
-            break; // Opción válida, salir del bucle
+            break; // OpciÃ³n vÃ¡lida, salir del bucle
         }
 
-        cout << "Selección no válida. Intente nuevamente: "; // Mensaje de error
+        cout << "SelecciÃ³n no vÃ¡lida. Intente nuevamente: "; // Mensaje de error
     }
 
-    return selection; // Retornar la selección válida
+    return selection; // Retornar la selecciÃ³n vÃ¡lida
 }

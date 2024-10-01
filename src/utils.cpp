@@ -7,3 +7,4 @@ void clearConsole() {
     system("clear");
 #endif
 }
+
