@@ -14,4 +14,4 @@ Integrantes:
 - Mylu
 - Josué
 
-[![Presentacion](https://www.commoncraft.com/sites/default/files/media/Google%20Slides.png)]([https://classroom.github.com/a/8CSgsZVt](https://docs.google.com/presentation/d/1x3NYHb97RlHZmXwpiqScOGtEKyBftnQI7fV0pM5J_UA/edit?usp=sharing))
+[![Presentacion](https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Google_Slides_2020_Logo.svg/640px-Google_Slides_2020_Logo.svg.png)]([https://classroom.github.com/a/8CSgsZVt](https://docs.google.com/presentation/d/1x3NYHb97RlHZmXwpiqScOGtEKyBftnQI7fV0pM5J_UA/edit?usp=sharing))
