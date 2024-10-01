@@ -14,7 +14,5 @@ Integrantes:
 - Mylu
 - Josué
 
-<a href="https://docs.google.com/presentation/d/1x3NYHb97RlHZmXwpiqScOGtEKyBftnQI7fV0pM5J_UA/edit?usp=sharing">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Google_Slides_2020_Logo.svg/640px-Google_Slides_2020_Logo.svg.png" alt="Google Slides" width="200"/>
-</a>
+[Presentación](https://docs.google.com/presentation/d/1x3NYHb97RlHZmXwpiqScOGtEKyBftnQI7fV0pM5J_UA/edit?usp=sharing)
 
