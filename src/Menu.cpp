@@ -1,8 +1,19 @@
-﻿#include "Menu.h"
-#include "utils.h"
+﻿/*
+ * Archivo: Menu.cpp
+ * Descripción: Este archivo contiene la implementación de la clase Menu,
+ *              que permite gestionar menús interactivos en consola.
+ *              Las funcionalidades incluyen agregar opciones al menú,
+ *              mostrar el menú en pantalla, y capturar la selección del usuario.
+ *              La clase utiliza estructuras de datos para almacenar y acceder a las opciones.
+ *
+ * Autor(es): Mauricio Gonzalez
+ */
+
 #include <iostream>
 #include <limits>
 #include <sstream>
+#include "Menu.h"
+#include "utils.h"
 
 using std::cout;
 using std::cin;

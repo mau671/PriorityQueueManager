@@ -1,3 +1,12 @@
+/*
+ * Archivo: ArrayList.h
+ * Descripción: Implementación de una lista dinámica genérica basada en arreglos. Incluye métodos para
+ *              insertar, agregar, eliminar, y gestionar elementos, así como funciones para expandir
+ *              dinámicamente el tamaño del arreglo cuando es necesario.
+ *
+ * Autor(es): Profesor Mauricio Aviles Cisneros
+ */
+
 #pragma once
 
 #define DEFAULT_MAX 1024

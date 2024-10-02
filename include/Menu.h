@@ -1,7 +1,16 @@
+/*
+ * Archivo: Menu.h
+ * Descripción: Declaración de la clase Menu, que proporciona una interfaz para manejar
+ *              menús interactivos en consola. Incluye métodos para agregar opciones,
+ *              mostrar el menú y obtener la selección del usuario.
+ *
+ * Autor(es): Mauricio Gonzalez
+ */
+
 #pragma once
 
-#include "ArrayList.h"
 #include <iostream>
+#include "ArrayList.h"
 
 class Menu {
 private:

@@ -1,3 +1,12 @@
+/*
+ * Archivo: List.h
+ * Descripción: Definición de una clase abstracta genérica para listas. Incluye las firmas de métodos
+ *              esenciales para manipulación de listas, como insertar, agregar, eliminar, y gestionar
+ *              elementos, además de metodos adicionales como búsqueda y verificación de contenido.
+ *
+ * Autor(es): Profesor Mauricio Aviles Cisneros
+ */
+
 #pragma once
 
 template <typename E>

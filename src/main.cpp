@@ -1,4 +1,15 @@
-﻿#include <iostream>
+﻿/*
+ * Archivo: main.cpp
+ * Descripción: Este archivo contiene la implementación del menú principal y varios submenús
+ *              de un sistema interactivo en consola. Los menús incluyen opciones para consultar
+ *              el estado de colas, gestionar tiquetes, atender clientes, realizar tareas administrativas,
+ *              y consultar estadísticas del sistema. Cada submenú permite navegar por opciones
+ *              específicas según la funcionalidad seleccionada.
+ *
+ * Autor(es): Mauricio Gonzalez
+ */
+
+#include <iostream>
 #include "Menu.h"
 
 void showQueueStatusMenu() {

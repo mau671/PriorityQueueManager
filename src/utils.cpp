@@ -1,3 +1,10 @@
+/*
+ * Archivo: utils.cpp
+ * Descripción: Este archivo contiene funciones utilitarias generales para el sistema.
+ *
+ * Autor(es): Mauricio Gonzalez
+ */
+
 #include <cstdlib>
 
 void clearConsole() {
@@ -7,4 +14,3 @@ void clearConsole() {
     system("clear");
 #endif
 }
-
