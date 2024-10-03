@@ -143,7 +143,6 @@
     <ClInclude Include="include\utils.h" />
     <ClInclude Include="include\List.h" />
     <ClInclude Include="include\Menu.h" />
-    <ClInclude Include="include\UserType.h" />
     <ClInclude Include="include\UserTypeManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
