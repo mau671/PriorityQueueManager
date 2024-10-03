@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Objetos base">
+      <UniqueIdentifier>{be633800-ecea-40f0-9aa8-3be42bf6f629}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -29,34 +32,46 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Menu.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="include\List.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="include\ArrayList.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="include\utils.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
     <ClInclude Include="include\HeapPriorityQueue.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
     <ClInclude Include="include\KVPair.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
-    <ClInclude Include="include\PriorityQueue.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="include\List.h">
+      <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
     <ClInclude Include="include\MinHeap.h">
+      <Filter>Archivos de encabezado\Objetos base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OrderedArrayList.h">
+      <Filter>Archivos de encabezado\Objetos base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PriorityQueue.h">
+      <Filter>Archivos de encabezado\Objetos base</Filter>
+    </ClInclude>
+    <ClInclude Include="Area.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Ventanilla.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="include\UserTypeManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\OrderedArrayList.h">
+    <ClInclude Include="Servicio.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Tiquete.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Menu.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
