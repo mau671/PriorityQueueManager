@@ -134,7 +134,7 @@
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Area.h" />
+    <ClInclude Include="include\Area.h" />
     <ClInclude Include="include\ArrayList.h" />
     <ClInclude Include="include\HeapPriorityQueue.h" />
     <ClInclude Include="include\KVPair.h" />
@@ -145,9 +145,9 @@
     <ClInclude Include="include\List.h" />
     <ClInclude Include="include\Menu.h" />
     <ClInclude Include="include\UserTypeManager.h" />
-    <ClInclude Include="Servicio.h" />
-    <ClInclude Include="Tiquete.h" />
-    <ClInclude Include="Ventanilla.h" />
+    <ClInclude Include="include\Servicio.h" />
+    <ClInclude Include="include\Tiquete.h" />
+    <ClInclude Include="include\Ventanilla.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -34,7 +34,7 @@ void addUserType(List<KVPair<int, string>>* userTypes, const string& description
     cin.get();
 }
 
-// Función para mostrar todos los tipos de usuario y eliminar el de menor prioridad
+// Función para mostrar todos los tipos de usuario y eliminar el seleccionado
 void displayAndRemoveUserType(List<KVPair<int, string>>* userTypes) {
     if (userTypes->getSize() == 0) {
         cout << "No hay tipos de usuario para eliminar." << endl;
