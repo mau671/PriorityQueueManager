@@ -11,15 +11,23 @@
 
 #include <iostream>
 #include "Menu.h"
+#include "UserTypeManager.h"
+#include "KVPair.h"
+#include "OrderedArrayList.h"
+#include "utils.h"
+
+void inicializateData(List<KVPair<int, string>>*& userTypes) {
+    // Lista para almacenar tipos de usuario como pares clave-valor en memoria dinámica
+    userTypes = new OrderedArrayList<KVPair<int, string>>();
+}
 
 void showQueueStatusMenu() {
-	std::cout << "Estado de las colas.\n";
-	
+	std::cout << "== Estado de las colas ==\n";
 }
 
 // Función para mostrar el submenú de tiquetes
 void showTiquetesMenu() {
-    Menu ticketMenu("Menú de Tiquetes");
+    Menu ticketMenu("== Menú de Tiquetes ==");
     ticketMenu.addOption("Seleccionar tipo de cliente y servicio");
     ticketMenu.addOption("Regresar");
 
@@ -42,21 +50,21 @@ void showAtenderMenu() {
 	// Implementar lógica aquí
 }
 
-void showAdminMenu() {
-    Menu adminMenu("Menú de Administración");
-    adminMenu.addOption("Tipos de usario");
+void showAdminMenu(List<KVPair<int, string>>* userTypes) {
+    Menu adminMenu("== Menú de Administración ==");
+    adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
     adminMenu.addOption("Servicios disponibles");
     adminMenu.addOption("Limpiar colas y estadísticas");
     adminMenu.addOption("Regresar");
-	
+
     while (true) {
         adminMenu.display();
         int choice = adminMenu.getSelection();
         switch (choice) {
         case 1:
             std::cout << "Tipos de usuario seleccionada.\n";
-            // Implementar lógica aquí
+            showUserTypeMenu(userTypes); // Pasar la lista de tipos de usuario
             break;
         case 2:
             std::cout << "Áreas seleccionada.\n";
@@ -83,12 +91,18 @@ void showSystemStatsMenu() {
 
 int main() {
     setlocale(LC_ALL, "spanish");
-    Menu mainMenu("Menú Principal");
+
+    // Inicializar la lista de tipos de usuario
+    List<KVPair<int, string>>* userTypes;
+    inicializateData(userTypes);
+
+    Menu mainMenu("== Menú Principal ==");
     mainMenu.addOption("Estado de las colas");
     mainMenu.addOption("Tiquetes");
     mainMenu.addOption("Atender");
     mainMenu.addOption("Administración");
     mainMenu.addOption("Estadísticas del sistema");
+    mainMenu.addOption("Debug");
     mainMenu.addOption("Salir");
 
     while (true) {
@@ -109,14 +123,20 @@ int main() {
             break;
         case 4:
             std::cout << "Administración seleccionada.\n";
-            showAdminMenu();
+            showAdminMenu(userTypes);  // Pasar la lista de tipos de usuario
             break;
         case 5:
             std::cout << "Estadísticas del sistema seleccionada.\n";
             showSystemStatsMenu();
             break;
         case 6:
+            // Hacer print de cada lista inicializada
+            userTypes->print();
+            pause();
+            break;
+        case 7:
             std::cout << "Saliendo del programa...\n";
+            delete userTypes;  // Limpiar la memoria al salir
             return 0;
         }
     }

@@ -10,5 +10,8 @@
 #define UTILS_H
 
 void clearConsole();
+bool readConfirmation(const std::string& message);
+void pause();
+int readInt(const std::string& message);
 
 #endif

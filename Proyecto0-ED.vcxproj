@@ -130,13 +130,21 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\UserTypeManager.cpp" />
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ArrayList.h" />
+    <ClInclude Include="include\HeapPriorityQueue.h" />
+    <ClInclude Include="include\KVPair.h" />
+    <ClInclude Include="include\MinHeap.h" />
+    <ClInclude Include="include\OrderedArrayList.h" />
+    <ClInclude Include="include\PriorityQueue.h" />
     <ClInclude Include="include\utils.h" />
     <ClInclude Include="include\List.h" />
     <ClInclude Include="include\Menu.h" />
+    <ClInclude Include="include\UserType.h" />
+    <ClInclude Include="include\UserTypeManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

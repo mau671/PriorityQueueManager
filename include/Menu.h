@@ -12,14 +12,16 @@
 #include <iostream>
 #include "ArrayList.h"
 
+using std::string;
+
 class Menu {
 private:
-    ArrayList<std::string> options;
+    ArrayList<string> options;
     std::string title;
 
 public:
-    Menu(const std::string& title);
-    void addOption(const std::string& option);
+    Menu(const string& title);
+    void addOption(const string& option);
     void display();
     int getSelection();
 };
