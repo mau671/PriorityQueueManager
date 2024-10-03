@@ -17,7 +17,7 @@ using std::string;
 using std::runtime_error;
 
 class Ventanilla {
-protected:
+private:
 	bool ocupada;
 	Area area;
 	Tiquete tiquete; //tiquete que esta atendiendo actualmente

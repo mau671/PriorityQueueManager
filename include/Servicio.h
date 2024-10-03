@@ -15,7 +15,7 @@
 using std::string;
 
 class Servicio {
-protected:
+private:
 	string descripcion;
 	int prioridad;
 	Area area;

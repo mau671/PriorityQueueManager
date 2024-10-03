@@ -20,7 +20,7 @@
 using std::string;
 
 class Tiquete{
-protected:
+private:
 	string codigo;
 	string hora;
 	int prioridad;
