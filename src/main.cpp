@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include "Menu.h"
-#include "UserTypeManager.h"
+#include "GestorTipoUsuario.h"
 #include "TipoUsuario.h"
 #include "OrderedArrayList.h"
 #include "utils.h"
