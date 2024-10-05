@@ -17,7 +17,6 @@
 
 // Gestores
 #include "Gestores/GestorTipoUsuario.h"
-#include "Gestores/GestorArea.h"
 
 // Modelos
 #include "Modelos/TipoUsuario.h"
@@ -80,7 +79,6 @@ void showAdminMenu(List<TipoUsuario*>* userTypes) {
             break;
         case 2:
             std::cout << "Áreas seleccionada.\n";
-            showAreaMenu();
             // Implementar lógica aquí
             break;
         case 3:
