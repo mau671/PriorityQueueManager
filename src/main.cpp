@@ -10,11 +10,11 @@
  */
 
 #include <iostream>
-#include "Menu.h"
-#include "GestorTipoUsuario.h"
-#include "TipoUsuario.h"
+#include "UI/Menu.h"
+#include "Gestores/GestorTipoUsuario.h"
+#include "Modelos/TipoUsuario.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
-#include "utils.h"
+#include "Utilidades/utils.h"
 
  // Inicializa la lista de tipos de usuario como una lista de punteros
 void inicializateData(List<TipoUsuario*>*& userTypes) {

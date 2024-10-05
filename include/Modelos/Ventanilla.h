@@ -10,8 +10,8 @@
 
 #include <iostream>
 #include <stdexcept>
-#include "Area.h"
-#include "Tiquete.h"
+#include "Modelos/Area.h"
+#include "Modelos/Tiquete.h"
 
 using std::string;
 using std::runtime_error;

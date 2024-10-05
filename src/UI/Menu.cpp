@@ -12,8 +12,8 @@
 #include <iostream>
 #include <limits>
 #include <sstream>
-#include "Menu.h"
-#include "utils.h"
+#include "UI/Menu.h"
+#include "Utilidades/utils.h"
 
 using std::cout;
 using std::cin;

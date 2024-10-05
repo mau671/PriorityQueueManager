@@ -21,13 +21,13 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\Menu.cpp">
+    <ClCompile Include="src\UI\Menu.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils.cpp">
+    <ClCompile Include="src\Utilidades\utils.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\GestorTipoUsuario.cpp">
+    <ClCompile Include="src\Gestores\GestorTipoUsuario.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,28 +53,28 @@
     <ClInclude Include="include\Estructuras\Abstractas\PriorityQueue.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
-    <ClInclude Include="include\GestorTipoUsuario.h">
+    <ClInclude Include="include\Gestores\GestorTipoUsuario.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\Menu.h">
+    <ClInclude Include="include\UI\Menu.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\utils.h">
+    <ClInclude Include="include\Utilidades\utils.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\Area.h">
+    <ClInclude Include="include\Modelos\Area.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\Servicio.h">
+    <ClInclude Include="include\Modelos\Servicio.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\Tiquete.h">
+    <ClInclude Include="include\Modelos\Tiquete.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\Ventanilla.h">
+    <ClInclude Include="include\Modelos\Ventanilla.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\TipoUsuario.h">
+    <ClInclude Include="include\Modelos\TipoUsuario.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

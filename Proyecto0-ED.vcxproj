@@ -129,26 +129,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Menu.cpp" />
-    <ClCompile Include="src\GestorTipoUsuario.cpp" />
-    <ClCompile Include="src\utils.cpp" />
+    <ClCompile Include="src\UI\Menu.cpp" />
+    <ClCompile Include="src\Gestores\GestorTipoUsuario.cpp" />
+    <ClCompile Include="src\Utilidades\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Area.h" />
+    <ClInclude Include="include\Modelos\Area.h" />
     <ClInclude Include="include\Estructuras\Concretas\ArrayList.h" />
     <ClInclude Include="include\Estructuras\Concretas\HeapPriorityQueue.h" />
     <ClInclude Include="include\Estructuras\Concretas\KVPair.h" />
     <ClInclude Include="include\Estructuras\Concretas\MinHeap.h" />
     <ClInclude Include="include\Estructuras\Concretas\OrderedArrayList.h" />
     <ClInclude Include="include\Estructuras\Abstractas\PriorityQueue.h" />
-    <ClInclude Include="include\utils.h" />
+    <ClInclude Include="include\Utilidades\utils.h" />
     <ClInclude Include="include\Estructuras\Abstractas\List.h" />
-    <ClInclude Include="include\Menu.h" />
-    <ClInclude Include="include\GestorTipoUsuario.h" />
-    <ClInclude Include="include\Servicio.h" />
-    <ClInclude Include="include\Tiquete.h" />
-    <ClInclude Include="include\Ventanilla.h" />
-    <ClInclude Include="include\TipoUsuario.h" />
+    <ClInclude Include="include\UI\Menu.h" />
+    <ClInclude Include="include\Gestores\GestorTipoUsuario.h" />
+    <ClInclude Include="include\Modelos\Servicio.h" />
+    <ClInclude Include="include\Modelos\Tiquete.h" />
+    <ClInclude Include="include\Modelos\Ventanilla.h" />
+    <ClInclude Include="include\Modelos\TipoUsuario.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

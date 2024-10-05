@@ -12,10 +12,10 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
-#include "Menu.h"
+#include "UI/Menu.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
-#include "TipoUsuario.h"
-#include "utils.h"
+#include "Modelos/TipoUsuario.h"
+#include "Utilidades/utils.h"
 
 using std::cout;
 using std::endl;

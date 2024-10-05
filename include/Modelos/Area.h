@@ -13,8 +13,8 @@
 #include "Estructuras/Abstractas/List.h"
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
-#include "Tiquete.h"
-#include "Ventanilla.h"
+#include "Modelos/Tiquete.h"
+#include "ModelosVentanilla.h"
 
 using std::string;
 

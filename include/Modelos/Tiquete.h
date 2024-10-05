@@ -13,8 +13,8 @@
 #include "Estructuras/Abstractas/List.h"
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
-#include "Area.h"
-#include "Servicio.h"
+#include "Modelos/Area.h"
+#include "Modelos/Servicio.h"
 
 using std::string;
 

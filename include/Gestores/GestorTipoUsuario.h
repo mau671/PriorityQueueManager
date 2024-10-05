@@ -12,7 +12,7 @@
 
 #include <string>
 #include "Estructuras/Concretas/OrderedArrayList.h"
-#include "TipoUsuario.h"
+#include "Modelos/TipoUsuario.h"
 
 using std::string;
 
