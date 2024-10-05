@@ -14,11 +14,12 @@
 #include "ArrayList.h"
 #include "OrderedArrayList.h"
 #include "Tiquete.h"
+#include "Ventanilla.h"
 
 using std::string;
 
 class Area {
-protected:
+private:
 	string codigo; //letra de inicio para el nombre de las ventanillas
 	string descripcion;
 	OrderedArrayList<Tiquete>* tiquetes = nullptr;
