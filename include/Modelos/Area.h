@@ -14,7 +14,7 @@
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
 #include "Modelos/Tiquete.h"
-#include "ModelosVentanilla.h"
+#include "Modelos/Ventanilla.h"
 
 using std::string;
 
