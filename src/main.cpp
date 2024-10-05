@@ -12,13 +12,13 @@
 #include <iostream>
 #include "Menu.h"
 #include "UserTypeManager.h"
-#include "KVPair.h"
+#include "TipoUsuario.h"
 #include "OrderedArrayList.h"
 #include "utils.h"
 
-void inicializateData(List<KVPair<int, string>>*& userTypes) {
-    // Lista para almacenar tipos de usuario como pares clave-valor en memoria dinámica
-    userTypes = new OrderedArrayList<KVPair<int, string>>();
+ // Inicializa la lista de tipos de usuario como una lista de punteros
+void inicializateData(List<TipoUsuario*>*& userTypes) {
+    userTypes = new OrderedArrayList<TipoUsuario*>();
 }
 
 void showQueueStatusMenu() {
@@ -50,7 +50,7 @@ void showAtenderMenu() {
 	// Implementar lógica aquí
 }
 
-void showAdminMenu(List<KVPair<int, string>>* userTypes) {
+void showAdminMenu(List<TipoUsuario*>* userTypes) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
@@ -93,7 +93,7 @@ int main() {
     setlocale(LC_ALL, "spanish");
 
     // Inicializar la lista de tipos de usuario
-    List<KVPair<int, string>>* userTypes;
+    List<TipoUsuario*>* userTypes;
     inicializateData(userTypes);
 
     Menu mainMenu("== Menú Principal ==");
@@ -130,13 +130,21 @@ int main() {
             showSystemStatsMenu();
             break;
         case 6:
-            // Hacer print de cada lista inicializada
-            userTypes->print();
+            // Hacer print de cada tipo de usuario en la lista
+            for (int i = 0; i < userTypes->getSize(); i++) {
+                userTypes->goToPos(i);
+                std::cout << *(userTypes->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
+            }
             pause();
             break;
         case 7:
             std::cout << "Saliendo del programa...\n";
-            delete userTypes;  // Limpiar la memoria al salir
+            // Liberar la memoria de todos los punteros en la lista
+            for (int i = 0; i < userTypes->getSize(); i++) {
+                userTypes->goToPos(i);
+                delete userTypes->getElement(); // Eliminar el objeto apuntado
+            }
+            delete userTypes;  // Limpiar la lista al salir
             return 0;
         }
     }

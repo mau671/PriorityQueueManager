@@ -1,5 +1,5 @@
 /*
- * Archivo: UserTypeManager.cpp
+ * Archivo: GestorTipoUsuario.cpp
  * Descripción: Este archivo contiene la implementación de funciones para gestionar
  *              los tipos de usuario en el sistema. Las funcionalidades incluyen agregar
  *              nuevos tipos de usuario, eliminar tipos de menor prioridad, y mostrar un menú
@@ -14,7 +14,7 @@
 #include <stdexcept>
 #include "Menu.h"
 #include "OrderedArrayList.h"
-#include "KVPair.h"
+#include "TipoUsuario.h"
 #include "utils.h"
 
 using std::cout;
@@ -23,19 +23,20 @@ using std::cin;
 using std::string;
 
 // Función para agregar un nuevo tipo de usuario
-void addUserType(List<KVPair<int, string>>* userTypes, const string& description, int priority) {
+void addUserType(List<TipoUsuario*>* userTypes, const string& description, int priority) {
     if (priority < 1) {
         cout << "Prioridad inválida. Debe ser un número positivo.\n";
         return;
     }
-    userTypes->insert(KVPair<int, string>(priority, description));
+    userTypes->insert(new TipoUsuario(description, priority));
     cout << "Tipo de usuario '" << description << "' con prioridad " << priority << " agregado exitosamente.\n";
     cout << "Presione Enter para continuar...";
     cin.get();
 }
 
+
 // Función para mostrar todos los tipos de usuario y eliminar el seleccionado
-void displayAndRemoveUserType(List<KVPair<int, string>>* userTypes) {
+void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
     if (userTypes->getSize() == 0) {
         cout << "No hay tipos de usuario para eliminar." << endl;
         pause();
@@ -45,7 +46,7 @@ void displayAndRemoveUserType(List<KVPair<int, string>>* userTypes) {
     Menu menu("== Eliminar tipo de usuario ==");
     for (int i = 0; i < userTypes->getSize(); i++) {
         userTypes->goToPos(i);
-        menu.addOption(userTypes->getElement().value); // Agregar la descripción del tipo de usuario
+        menu.addOption(userTypes->getElement()->getDescripcion()); // Agregar la descripción del tipo de usuario
     }
     menu.addOption("Cancelar");
 
@@ -60,13 +61,15 @@ void displayAndRemoveUserType(List<KVPair<int, string>>* userTypes) {
         }
 
         userTypes->goToPos(selection - 1);
+        delete userTypes->getElement(); // Liberar la memoria del objeto eliminado
         cout << "Tipo de usuario eliminado.\n";
         userTypes->remove();
     } while (selection < 1 || selection > userTypes->getSize() + 1);
 }
 
+
 // Función para mostrar el menú de tipos de usuario
-void showUserTypeMenu(List<KVPair<int, string>>* userTypes) {
+void showUserTypeMenu(List<TipoUsuario*>* userTypes) {
     Menu menu("== Menú de tipos de usuario ==");
     menu.addOption("Agregar");
     menu.addOption("Eliminar");
@@ -98,3 +101,4 @@ void showUserTypeMenu(List<KVPair<int, string>>* userTypes) {
         }
     } while (option != 3);
 }
+
