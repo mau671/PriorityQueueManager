@@ -11,7 +11,7 @@
 #define GESTORTIPOUSUARIO_H
 
 #include <string>
-#include "OrderedArrayList.h"
+#include "Estructuras/Concretas/OrderedArrayList.h"
 #include "TipoUsuario.h"
 
 using std::string;

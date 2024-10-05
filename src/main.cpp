@@ -13,7 +13,7 @@
 #include "Menu.h"
 #include "GestorTipoUsuario.h"
 #include "TipoUsuario.h"
-#include "OrderedArrayList.h"
+#include "Estructuras/Concretas/OrderedArrayList.h"
 #include "utils.h"
 
  // Inicializa la lista de tipos de usuario como una lista de punteros

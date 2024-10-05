@@ -10,9 +10,9 @@
 
 #include <iostream>
 #include <stdexcept>
-#include "List.h"
-#include "ArrayList.h"
-#include "OrderedArrayList.h"
+#include "Estructuras/Abstractas/List.h"
+#include "Estructuras/Concretas/ArrayList.h"
+#include "Estructuras/Concretas/OrderedArrayList.h"
 #include "Tiquete.h"
 #include "Ventanilla.h"
 

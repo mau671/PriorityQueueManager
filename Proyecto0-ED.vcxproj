@@ -135,14 +135,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Area.h" />
-    <ClInclude Include="include\ArrayList.h" />
-    <ClInclude Include="include\HeapPriorityQueue.h" />
-    <ClInclude Include="include\KVPair.h" />
-    <ClInclude Include="include\MinHeap.h" />
-    <ClInclude Include="include\OrderedArrayList.h" />
-    <ClInclude Include="include\PriorityQueue.h" />
+    <ClInclude Include="include\Estructuras\Concretas\ArrayList.h" />
+    <ClInclude Include="include\Estructuras\Concretas\HeapPriorityQueue.h" />
+    <ClInclude Include="include\Estructuras\Concretas\KVPair.h" />
+    <ClInclude Include="include\Estructuras\Concretas\MinHeap.h" />
+    <ClInclude Include="include\Estructuras\Concretas\OrderedArrayList.h" />
+    <ClInclude Include="include\Estructuras\Abstractas\PriorityQueue.h" />
     <ClInclude Include="include\utils.h" />
-    <ClInclude Include="include\List.h" />
+    <ClInclude Include="include\Estructuras\Abstractas\List.h" />
     <ClInclude Include="include\Menu.h" />
     <ClInclude Include="include\GestorTipoUsuario.h" />
     <ClInclude Include="include\Servicio.h" />

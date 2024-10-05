@@ -1,8 +1,8 @@
 #pragma once
 #include <stdexcept>
-#include "PriorityQueue.h"
-#include "MinHeap.h"
-#include "KVPair.h"
+#include "Estructuras/Abstractas/PriorityQueue.h"
+#include "Estructuras/Concretas/MinHeap.h"
+#include "Estructuras/Concretas/KVPair.h"
 
 
 template <typename E>

@@ -32,25 +32,25 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\ArrayList.h">
+    <ClInclude Include="include\Estructuras\Concretas\ArrayList.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
-    <ClInclude Include="include\HeapPriorityQueue.h">
+    <ClInclude Include="include\Estructuras\Concretas\HeapPriorityQueue.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
-    <ClInclude Include="include\KVPair.h">
+    <ClInclude Include="include\Estructuras\Concretas\KVPair.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
-    <ClInclude Include="include\List.h">
+    <ClInclude Include="include\Estructuras\Abstractas\List.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
-    <ClInclude Include="include\MinHeap.h">
+    <ClInclude Include="include\Estructuras\Concretas\MinHeap.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
-    <ClInclude Include="include\OrderedArrayList.h">
+    <ClInclude Include="include\Estructuras\Concretas\OrderedArrayList.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
-    <ClInclude Include="include\PriorityQueue.h">
+    <ClInclude Include="include\Estructuras\Abstractas\PriorityQueue.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
     <ClInclude Include="include\GestorTipoUsuario.h">

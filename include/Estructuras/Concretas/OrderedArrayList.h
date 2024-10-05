@@ -10,7 +10,7 @@
  */
 
 #pragma once
-#include "ArrayList.h"
+#include "Estructuras/Concretas/ArrayList.h"
 
 template <typename E>
 class OrderedArrayList : public List<E> {
