@@ -1,5 +1,5 @@
 /*
- * Archivo: Ventanilla.h
+ * Archivo: Servicio.h
  * Descripción:
  *
  * Autor(es): Lun Valverde

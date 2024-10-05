@@ -128,12 +128,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Gestores\GestorArea.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\UI\Menu.cpp" />
     <ClCompile Include="src\Gestores\GestorTipoUsuario.cpp" />
     <ClCompile Include="src\Utilidades\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Gestores\GestorArea.h" />
     <ClInclude Include="include\Modelos\Area.h" />
     <ClInclude Include="include\Estructuras\Concretas\ArrayList.h" />
     <ClInclude Include="include\Estructuras\Concretas\HeapPriorityQueue.h" />

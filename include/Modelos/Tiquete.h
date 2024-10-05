@@ -1,5 +1,5 @@
 /*
- * Archivo: Area.h
+ * Archivo: Tiquete.h
  * Descripción:
  *
  * Autor(es): Lun Valverde

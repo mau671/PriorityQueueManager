@@ -9,11 +9,23 @@
  * Autor(es): Mauricio Gonzalez
  */
 
+// Bibliotecas estándar
 #include <iostream>
+
+// UI
 #include "UI/Menu.h"
+
+// Gestores
 #include "Gestores/GestorTipoUsuario.h"
+#include "Gestores/GestorArea.h"
+
+// Modelos
 #include "Modelos/TipoUsuario.h"
+
+// Estructuras de datos
 #include "Estructuras/Concretas/OrderedArrayList.h"
+
+// Utilidades
 #include "Utilidades/utils.h"
 
  // Inicializa la lista de tipos de usuario como una lista de punteros
@@ -68,6 +80,7 @@ void showAdminMenu(List<TipoUsuario*>* userTypes) {
             break;
         case 2:
             std::cout << "Áreas seleccionada.\n";
+            showAreaMenu();
             // Implementar lógica aquí
             break;
         case 3:
