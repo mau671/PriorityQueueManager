@@ -1,6 +1,6 @@
 /*
  * Archivo: Area.h
- * Descripción: 
+ * Descripción: Clase que representa las areas donde se atienden los servicios.
  *
  * Autor(es): Lun Valverde c:
  */

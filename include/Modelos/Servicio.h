@@ -1,6 +1,6 @@
 /*
  * Archivo: Servicio.h
- * Descripción:
+ * Descripción: Clase que representa los servicios que se pueden realizar.
  *
  * Autor(es): Lun Valverde
  */
