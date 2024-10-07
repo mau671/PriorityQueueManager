@@ -20,7 +20,7 @@ class Ventanilla {
 private:
 	bool ocupada;
 	string descripcion;
-	Tiquete tiquete; //tiquete que esta atendiendo actualmente
+	Tiquete* tiquete; //tiquete que esta atendiendo actualmente
 
 public:
 	Ventanilla(string descripcion) {
@@ -28,10 +28,6 @@ public:
 	}
 
 	~Ventanilla() {
-	}
-
-	void setEstado(bool estado) {
-		ocupada = estado;
 	}
 
 	void setDescripcion(string descripcion) {
@@ -46,11 +42,15 @@ public:
 		return ocupada;
 	}
 
-	void setTiquete(Tiquete tiquete) {
+	void setTiquete(Tiquete* tiquete) {
+		if (this->tiquete != nullptr) {
+			delete this->tiquete;
+		}
 		this->tiquete = tiquete;
+		ocupada = true;
 	}
 
-	Tiquete getTiquete() {
+	Tiquete* getTiquete() {
 		if (ocupada = true) {
 			return tiquete;
 		}
