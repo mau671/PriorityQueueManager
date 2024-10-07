@@ -55,8 +55,6 @@ void showTiquetesMenu() {
         int choice = ticketMenu.getSelection();
         switch (choice) {
         case 1:
-            show();
-
             //std::cout << "Seleccionar tipo de cliente y servicio.\n\n";
             // Implementar lógica aquí
             
