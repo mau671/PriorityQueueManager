@@ -21,7 +21,7 @@ using std::string;
 
 class Area {
 private:
-	string codigo; //letra de inicio para el nombre de las ventanillas
+	string codigo; //inicio del nombre de las ventanillas
 	string descripcion;
 	int nVentanillas;
 	OrderedArrayList<Tiquete*>* tiquetes = nullptr;
@@ -33,7 +33,7 @@ public:
 		
 	}
 
-	Area(string descripcion, char codigo, int nVentanillas) {
+	Area(string descripcion, string codigo, int nVentanillas) {
 		this->descripcion = descripcion;
 		this->codigo = codigo;
 		this->nVentanillas = nVentanillas;

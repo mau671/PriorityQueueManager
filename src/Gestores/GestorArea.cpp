@@ -33,16 +33,19 @@ void addArea(List<Area*>* areas) {
     cout << "Código del área: ";
     std::getline(cin, codigo);
     cout << "Cantidad de ventanillas: ";
-    readInt(cin);
+    cin >> cantVentanillas;
 
-    Area* nuevaArea = new Area(descripcion, codigo, cantidadVentanillas);
+    Area* nuevaArea = new Area(descripcion, codigo, cantVentanillas);
     areas->append(nuevaArea);
 
     cout << "Área agregada exitosamente.\n";
+    areas->print();
+    pause();
 }
 
 // Función para modificar la cantidad de ventanillas de un área existente
 void modifyAreaVentanillas(List<Area*>* areas) {
+    /*
     string codigo;
     cout << "Código del área a modificar: ";
     std::getline(cin, codigo);
@@ -59,10 +62,39 @@ void modifyAreaVentanillas(List<Area*>* areas) {
 
     area->modificarVentanillas(nuevaCantidad);
     cout << "Cantidad de ventanillas modificada exitosamente.\n";
+    */
 }
 
 // Función para eliminar un área y sus ventanillas asociadas
 void deleteArea(List<Area*>* areas) {
+    if (areas->getSize() == 0) {
+        cout << "No hay areas para eliminar." << endl;
+        pause();
+        return;
+    }
+
+    Menu menu("== Eliminar tipo de usuario ==");
+    for (int i = 0; i < areas->getSize(); i++) {
+        areas->goToPos(i);
+        menu.addOption(areas->getElement()->getDescripcion()); //descripcion de las areas
+    }
+    menu.addOption("Cancelar");
+
+    int selection;
+    do {
+        menu.display();
+        selection = menu.getSelection();
+
+        if (selection == areas->getSize() + 1) {
+            cout << "Operación cancelada.\n";
+            return;
+        }
+
+        areas->goToPos(selection - 1);
+        delete areas->getElement(); // Liberar la memoria del objeto eliminado
+        cout << "Tipo de usuario eliminado.\n";
+        areas->remove();
+    } while (selection < 1 || selection > areas->getSize() + 1);
     
     
 
@@ -74,7 +106,7 @@ void deleteArea(List<Area*>* areas) {
 // Función para mostrar el menú de áreas
 void showAreaMenu(List<Area*>* areas) {
     Menu menu("== Menú de Áreas ==");
-    menu.addOption("Agregar Área");
+    menu.addOption("Agregar Área"); 
     menu.addOption("Modificar Ventanillas");
     menu.addOption("Eliminar Área");
     menu.addOption("Regresar");

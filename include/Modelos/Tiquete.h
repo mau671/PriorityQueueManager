@@ -20,12 +20,12 @@ using std::string;
 
 class Tiquete{
 private:
-	string codigo;
+	//string codigo;
 	string hora;
 	int prioridad;
 	int nTiquetes=100;//??
 	Servicio* servicio; //agregar clase servicio
-	Area* area;
+	//Area* area;
 
 public:
 	Tiquete() {
@@ -34,33 +34,33 @@ public:
 	Tiquete(string hora, Servicio* servicio) {
 		this->servicio = servicio;
 		this->hora = hora;
-		area = servicio->getArea();
-		codigo = area->getCodigo() + std::to_string(nTiquetes);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
+		//area = servicio->getArea();
+		//codigo = area->getCodigo() + std::to_string(nTiquetes);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
 		//calcular prioridad
 	}
 	~Tiquete() {
 		delete servicio;
-		delete area;
+		//delete area;
 	}
 
 	int getPrioridad() {
 		return prioridad;
 	}
 
-	Servicio getServicio() {
+	Servicio* getServicio() {
 		return servicio;
 	}
-
-	Area getArea() {
+	/*
+	Area* getArea() {
 		return area;
 	}
-
+	*/
 	string getHora() {
 		return hora;
 	}
-
+	/*
 	string getCodigo() {
 		return codigo;
-	}
+	}*/
 };
 

@@ -27,9 +27,16 @@
 // Utilidades
 #include "Utilidades/utils.h"
 
+#include "Modelos/Area.h"
+#include "Gestores/GestorArea.h"
+
  // Inicializa la lista de tipos de usuario como una lista de punteros
-void inicializateData(List<TipoUsuario*>*& userTypes) {
+void inicializateDataUsuario(List<TipoUsuario*>*& userTypes) {
     userTypes = new OrderedArrayList<TipoUsuario*>();
+}
+
+void initializeDataArea(List<Area*>*& areas) {
+    areas = new ArrayList<Area*>;
 }
 
 void showQueueStatusMenu() {
@@ -64,7 +71,7 @@ void showAtenderMenu() {
 	// Implementar lógica aquí
 }
 
-void showAdminMenu(List<TipoUsuario*>* userTypes) {
+void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>*& areas) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
@@ -83,7 +90,7 @@ void showAdminMenu(List<TipoUsuario*>* userTypes) {
             break;
         case 2:
             std::cout << "Áreas seleccionada.\n";
-            // Implementar lógica aquí
+            showAreaMenu(areas);
             pause();
             break;
         case 3:
@@ -112,7 +119,9 @@ int main() {
 
     // Inicializar la lista de tipos de usuario
     List<TipoUsuario*>* userTypes;
-    inicializateData(userTypes);
+    inicializateDataUsuario(userTypes);
+    List<Area*>* areas;
+    initializeDataArea(areas);
 
     Menu mainMenu("== Menú Principal ==");
     mainMenu.addOption("Estado de las colas");
@@ -144,7 +153,7 @@ int main() {
             break;
         case 4:
             std::cout << "Administración seleccionada.\n\n";
-            showAdminMenu(userTypes);  // Pasar la lista de tipos de usuario
+            showAdminMenu(userTypes, areas);// Pasar la lista de tipos de usuario
             pause();
             break;
         case 5:
