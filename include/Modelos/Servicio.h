@@ -27,6 +27,7 @@ public:
 		this->prioridad = prioridad;
 	}
 	~Servicio() {
+        delete area;
 	}
 
     void changeDescripcion(string descripcion) {

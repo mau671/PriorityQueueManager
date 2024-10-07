@@ -39,6 +39,8 @@ public:
 		//calcular prioridad
 	}
 	~Tiquete() {
+		delete servicio;
+		delete area;
 	}
 
 	int getPrioridad() {
