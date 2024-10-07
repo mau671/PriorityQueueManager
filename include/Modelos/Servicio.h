@@ -22,13 +22,14 @@ private:
 
 public:
     Servicio() {
-
     }
 
 	Servicio(string descripcion, int prioridad, Area area) {
 		this->area = area;
 		this->descripcion = descripcion;
 		this->prioridad = prioridad;
+
+        area.addSercivio(this);
 	}
 	~Servicio() {
 	}
@@ -41,16 +42,8 @@ public:
         return descripcion;
     }
 
-    void changePrioridad(int prioridad) {
-        this->prioridad = prioridad;
-    }
-
     int getPrioridad() const {
         return prioridad;
-    }
-
-    void changeArea(Area area) {
-        this->area = area;
     }
 
     Area getArea() const {

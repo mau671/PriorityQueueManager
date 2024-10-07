@@ -47,8 +47,11 @@ void showTiquetesMenu() {
         int choice = ticketMenu.getSelection();
         switch (choice) {
         case 1:
-            std::cout << "Seleccionar tipo de cliente y servicio.\n";
+            std::cout << "Seleccionar tipo de cliente y servicio.\n\n";
             // Implementar lógica aquí
+            
+            
+            pause();
             break;
         case 2:
             return; // Salir de la función y destruir automáticamente ticketMenu
@@ -76,18 +79,22 @@ void showAdminMenu(List<TipoUsuario*>* userTypes) {
         case 1:
             std::cout << "Tipos de usuario seleccionada.\n";
             showUserTypeMenu(userTypes); // Pasar la lista de tipos de usuario
+            pause();
             break;
         case 2:
             std::cout << "Áreas seleccionada.\n";
             // Implementar lógica aquí
+            pause();
             break;
         case 3:
             std::cout << "Servicios disponibles seleccionada.\n";
             // Implementar lógica aquí
+            pause();
             break;
         case 4:
             std::cout << "Limpiar colas y estadísticas seleccionada.\n";
             // Implementar lógica aquí
+            pause();
             break;
         case 5:
             return; // Salir de la función y destruir automáticamente adminMenu
@@ -121,24 +128,29 @@ int main() {
         int choice = mainMenu.getSelection();
         switch (choice) {
         case 1:
-            std::cout << "Estado de las colas seleccionada.\n";
+            std::cout << "Estado de las colas seleccionada.\n\n";
             showQueueStatusMenu();
+            pause();
             break;
         case 2:
-            std::cout << "Tiquetes seleccionada.\n";
+            std::cout << "Tiquetes seleccionada.\n\n";
             showTiquetesMenu();
+            pause();
             break;
         case 3:
-            std::cout << "Atender seleccionada.\n";
+            std::cout << "Atender seleccionada.\n\n";
             showAtenderMenu();
+            pause();
             break;
         case 4:
-            std::cout << "Administración seleccionada.\n";
+            std::cout << "Administración seleccionada.\n\n";
             showAdminMenu(userTypes);  // Pasar la lista de tipos de usuario
+            pause();
             break;
         case 5:
-            std::cout << "Estadísticas del sistema seleccionada.\n";
+            std::cout << "Estadísticas del sistema seleccionada.\n\n";
             showSystemStatsMenu();
+            pause();
             break;
         case 6:
             // Hacer print de cada tipo de usuario en la lista
@@ -146,6 +158,7 @@ int main() {
                 userTypes->goToPos(i);
                 std::cout << *(userTypes->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
             }
+            pause();
             pause();
             break;
         case 7:

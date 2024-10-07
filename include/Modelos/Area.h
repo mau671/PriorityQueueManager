@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <string>
 #include "Estructuras/Abstractas/List.h"
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
@@ -22,6 +23,7 @@ class Area {
 private:
 	string codigo; //letra de inicio para el nombre de las ventanillas
 	string descripcion;
+	int nVentanillas;
 	OrderedArrayList<Tiquete>* tiquetes = nullptr;
 	ArrayList<Ventanilla>* ventanillas = nullptr;
 	ArrayList<Servicio>* servicios = nullptr;
@@ -31,12 +33,18 @@ public:
 
 	}
 
-	Area(string descripcion, char codigo, int NVentanillas) {
-		ventanillas = new ArrayList<Ventanilla>(NVentanillas);
-		tiquetes = new OrderedArrayList<Tiquete>(1);//necesaroio??
-		servicios = new ArrayList<Servicio>(1);
+	Area(string descripcion, char codigo, int nVentanillas) {
 		this->descripcion = descripcion;
 		this->codigo = codigo;
+		this->nVentanillas = nVentanillas;
+
+		ventanillas = new ArrayList<Ventanilla>(nVentanillas);
+		for (int i = 0; i <= nVentanillas; i++) {
+			ventanillas->append(Ventanilla(""+codigo+ std::to_string(i+1)));
+			}
+
+		tiquetes = new OrderedArrayList<Tiquete>();
+		servicios = new ArrayList<Servicio>();
 	}
 	~Area() {
 		delete ventanillas;
@@ -44,25 +52,42 @@ public:
 		delete tiquetes;
 	} 
 
-	//geters
+	//setters y getters codigo, descripcion y ventanillas
 	string getCodigo() {
 		return codigo;
 	}
 
-	string getDescripvion() {
+	void setCodigo(string codigo) {
+		this->codigo = codigo;
+	}
+
+	string getDescripcion() {
 		return descripcion;
 	}
 
+	void setDescripcion() {
+		this->descripcion = descripcion;
+	}
+
 	int getNventanillas() {
-		return ventanillas->getSize();
+		return nVentanillas;
+	}
+
+	int setNventanillas(int nVentanillas) {
+		this->nVentanillas = nVentanillas;
+		ventanillas->clear();
+		for (int i = 0; i <= nVentanillas; i++) {
+			ventanillas->append(Ventanilla("" + codigo + std::to_string(i + 1)));
+		}
+	}
+
+	//print
+	void mostrarVentanillas() {
+		ventanillas->print();
 	}
 
 	void mostrarTiquetes() {
 		tiquetes->print();
-	}
-
-	void mostrarVentanillas() {
-		ventanillas->print();
 	}
 
 	void mostrarServicios() {
@@ -78,21 +103,17 @@ public:
 		servicios->append(servicio);
 	}
 
-	void addVentanillas(int nVentanillas) {
-		//
-	}
-
 	//del
 	/*
-	void addTiquete(Tiquete tiquete) {
+	void delTiquete(Tiquete tiquete) {
 		tiquetes->append(tiquete);
 	}
 
-	void addServicio(Servicio servicio) {
+	void delServicio(Servicio servicio) {
 		servicios->append(servicio);
 	}
 
-	void addVentanillas(int nVentanillas) {
+	void delVentanillas(int nVentanillas) {
 		//
 	}
 	*/

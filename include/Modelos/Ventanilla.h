@@ -19,15 +19,12 @@ using std::runtime_error;
 class Ventanilla {
 private:
 	bool ocupada;
-	Area area;
+	string descripcion;
 	Tiquete tiquete; //tiquete que esta atendiendo actualmente
 
 public:
-	Ventanilla() {
-	}
-
-	Ventanilla(Area area) {
-		this->area = area;
+	Ventanilla(string descripcion) {
+		this->descripcion = descripcion;
 	}
 
 	~Ventanilla() {
@@ -37,12 +34,20 @@ public:
 		ocupada = estado;
 	}
 
-	Area getArea() {
-		return area;
+	void setDescripcion(string descripcion) {
+		this->descripcion = descripcion;
+	}
+
+	string getDescripcion() {
+		return descripcion;
 	}
 
 	bool isOcupada() {
 		return ocupada;
+	}
+
+	void setTiquete(Tiquete tiquete) {
+		this->tiquete = tiquete;
 	}
 
 	Tiquete getTiquete() {
