@@ -18,6 +18,7 @@
 #include "Modelos/TipoUsuario.h"
 
 using std::string;
+using std::to_string;
 
 class Tiquete {
 private:
@@ -35,7 +36,7 @@ public:
 	Tiquete(const string hora, Servicio* servicio, TipoUsuario* usuario, int consecutivo)
 		: hora(hora), servicio(servicio)/*, usuario(usuario) */ {
 		//this->area = servicio->getArea();
-		this->codigo = servicio->getArea()->getCodigo() + std::to_string(consecutivo);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
+		this->codigo = servicio->getArea()->getCodigo() + to_string(consecutivo);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
 		this->prioridad = usuario->getPrioridad() * 10 + servicio->getPrioridad();
 	}
 	~Tiquete() {
