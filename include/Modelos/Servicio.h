@@ -18,23 +18,18 @@ class Servicio {
 private:
 	string descripcion;
 	int prioridad;
-	Area area;
+    Area area;
 
 public:
-    Servicio() {
-    }
 
 	Servicio(string descripcion, int prioridad, Area area) {
-		this->area = area;
 		this->descripcion = descripcion;
 		this->prioridad = prioridad;
-
-        area.addSercivio(this);
 	}
 	~Servicio() {
 	}
 
-    void changetDescripcion(string descripcion) {
+    void changeDescripcion(string descripcion) {
         this->descripcion = descripcion;
     }
 
@@ -45,11 +40,9 @@ public:
     int getPrioridad() const {
         return prioridad;
     }
-
+ 
     Area getArea() const {
         return area;
     }
-	
-
 };
 
