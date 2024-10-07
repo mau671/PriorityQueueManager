@@ -143,12 +143,12 @@
     <ClInclude Include="include\Estructuras\Concretas\MinHeap.h" />
     <ClInclude Include="include\Estructuras\Concretas\OrderedArrayList.h" />
     <ClInclude Include="include\Estructuras\Abstractas\PriorityQueue.h" />
+    <ClInclude Include="include\Modelos\Tiquete.h" />
     <ClInclude Include="include\Utilidades\utils.h" />
     <ClInclude Include="include\Estructuras\Abstractas\List.h" />
     <ClInclude Include="include\UI\Menu.h" />
     <ClInclude Include="include\Gestores\GestorTipoUsuario.h" />
     <ClInclude Include="include\Modelos\Servicio.h" />
-    <ClInclude Include="include\Modelos\Tiquete.h" />
     <ClInclude Include="include\Modelos\Ventanilla.h" />
     <ClInclude Include="include\Modelos\TipoUsuario.h" />
   </ItemGroup>

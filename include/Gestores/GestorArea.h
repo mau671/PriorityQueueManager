@@ -17,9 +17,10 @@ using std::string;
 
 // Declaraciones de las funciones para la gestión de áreas
 void addArea(List<Area*>* areas);
-void modifyAreaVentanillas(List<Area*>* areas);
+void modifyVentanillas(List<Area*>* areas);
 void deleteArea(List<Area*>* areas);
 void showAreaMenu(List<Area*>* areas);
-Area* buscarAreaPorCodigo(List<Area*>* areas, const string& codigo);
+void displayInfoArea(List<Area*>* areas);
+
 
 #endif // GESTORAREA_H

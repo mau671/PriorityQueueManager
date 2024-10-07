@@ -71,9 +71,6 @@
     <ClInclude Include="include\Modelos\Servicio.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\Modelos\Tiquete.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="include\Modelos\Ventanilla.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -81,6 +78,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="include\Gestores\GestorArea.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Modelos\Tiquete.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

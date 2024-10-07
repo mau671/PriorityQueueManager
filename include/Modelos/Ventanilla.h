@@ -20,7 +20,7 @@ class Ventanilla {
 private:
 	bool ocupada;
 	string descripcion;
-	Tiquete* tiquete; //tiquete que esta atendiendo actualmente
+	Tiquete* tiquete = nullptr;
 
 public:
 	Ventanilla(string descripcion) {

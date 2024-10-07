@@ -22,7 +22,7 @@ private:
 
 public:
 
-	Servicio(string descripcion, int prioridad, Area* area) {
+	Servicio(string descripcion, int prioridad, Area *area) {
 		this->descripcion = descripcion;
 		this->prioridad = prioridad;
 	}

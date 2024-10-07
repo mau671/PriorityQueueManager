@@ -29,6 +29,7 @@
 
 #include "Modelos/Area.h"
 #include "Gestores/GestorArea.h"
+#include "Gestores/GestorTiquete.cpp"
 
  // Inicializa la lista de tipos de usuario como una lista de punteros
 void inicializateDataUsuario(List<TipoUsuario*>*& userTypes) {
@@ -54,7 +55,9 @@ void showTiquetesMenu() {
         int choice = ticketMenu.getSelection();
         switch (choice) {
         case 1:
-            std::cout << "Seleccionar tipo de cliente y servicio.\n\n";
+            show();
+
+            //std::cout << "Seleccionar tipo de cliente y servicio.\n\n";
             // Implementar lógica aquí
             
             

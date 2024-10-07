@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <ctime>
 #include <string>
+#include <sstream>
 #include "Modelos/Tiquete.h"
 #include "UI/Menu.h"
 #include "Utilidades/utils.h"
