@@ -44,25 +44,39 @@ void addArea(List<Area*>* areas) {
 }
 
 // Función para modificar la cantidad de ventanillas de un área existente
-void modifyAreaVentanillas(List<Area*>* areas) {
-    /*
-    string codigo;
-    cout << "Código del área a modificar: ";
-    std::getline(cin, codigo);
-    
-    Area* area = buscarAreaPorCodigo(areas, codigo);
-    if (area == nullptr) {
-        cout << "Área no encontrada.\n";
+void modifyVentanillas(List<Area*>* areas) {
+    if (areas->getSize() == 0) {
+        cout << "No hay areas para modificar." << endl;
+        pause();
         return;
     }
-    
-    int cantidadVentanillasActual = area->getNventanillas();
-    cout << "Cantidad actual de ventanillas: " << cantidadVentanillasActual << "\n";
-    int nuevaCantidad = readInt("Nueva cantidad de ventanillas: ");
+    Menu menu("== Modificar ventanillas ==");
+    for (int i = 0; i < areas->getSize(); i++) {
+        areas->goToPos(i);
+        menu.addOption(areas->getElement()->getDescripcion());
+    }
+    menu.addOption("Cancelar");
 
-    area->modificarVentanillas(nuevaCantidad);
-    cout << "Cantidad de ventanillas modificada exitosamente.\n";
-    */
+    int selection;
+    do {
+        menu.display();
+        selection = menu.getSelection();
+
+        if (selection == areas->getSize() + 1) {
+            cout << "Operación cancelada.\n";
+            return;
+        }
+        
+        int nVentanillas;
+        nVentanillas = menu.getSelection();
+
+        areas->goToPos(selection - 1);
+        areas->getElement()->setNventanillas(nVentanillas);
+        
+        cout << "Ventanillas modificadas.\n";
+        areas->remove();
+    } while (selection < 1 || selection > areas->getSize() + 1);
+    
 }
 
 // Función para eliminar un área y sus ventanillas asociadas
@@ -73,7 +87,7 @@ void deleteArea(List<Area*>* areas) {
         return;
     }
 
-    Menu menu("== Eliminar tipo de usuario ==");
+    Menu menu("== Eliminar area ==");
     for (int i = 0; i < areas->getSize(); i++) {
         areas->goToPos(i);
         menu.addOption(areas->getElement()->getDescripcion()); //descripcion de las areas
@@ -103,12 +117,45 @@ void deleteArea(List<Area*>* areas) {
    
 }
 
+//funcion para mostrar la informacion del area
+void displayInfoArea(List<Area*>* areas) {
+    if (areas->getSize() == 0) {
+        cout << "No hay areas disponibles." << endl;
+        pause();
+        return;
+    }
+    Menu menu("== Mostrar Información ==");
+    for (int i = 0; i < areas->getSize(); i++) {
+        areas->goToPos(i);
+        menu.addOption(areas->getElement()->getDescripcion());
+    }
+    menu.addOption("Cancelar");
+
+    int selection;
+    do {
+        menu.display();
+        selection = menu.getSelection();
+
+        if (selection == areas->getSize() + 1) {
+            cout << "Operación cancelada.\n";
+            return;
+        }
+
+        areas->goToPos(selection - 1);
+        areas->getElement()->consultarInfo();
+
+        pause();
+    } while (selection < 1 || selection > areas->getSize() + 1);
+
+}
+
 // Función para mostrar el menú de áreas
 void showAreaMenu(List<Area*>* areas) {
     Menu menu("== Menú de Áreas ==");
     menu.addOption("Agregar Área"); 
     menu.addOption("Modificar Ventanillas");
     menu.addOption("Eliminar Área");
+    menu.addOption("Mostrar Información");
     menu.addOption("Regresar");
 
     int option;
@@ -121,12 +168,14 @@ void showAreaMenu(List<Area*>* areas) {
             addArea(areas);
             break;
         case 2:
-            modifyAreaVentanillas(areas);
+            modifyVentanillas(areas);
             break;
         case 3:
             deleteArea(areas);
             break;
         case 4:
+            displayInfoArea(areas);
+        case 5:
             cout << "Regresando al menú de administración...\n";
             break;
         default:

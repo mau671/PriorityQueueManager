@@ -34,6 +34,7 @@ public:
 	}
 
 	Area(string descripcion, string codigo, int nVentanillas) {
+		if (nVentanillas <= 0) throw runtime_error("La cantidad de ventanillas debe ser mayor que 0");
 		this->descripcion = descripcion;
 		this->codigo = codigo;
 		this->nVentanillas = nVentanillas;
@@ -73,12 +74,25 @@ public:
 		return nVentanillas;
 	}
 
-	int setNventanillas(int nVentanillas) {
+	void setNventanillas(int nVentanillas) {
 		this->nVentanillas = nVentanillas;
 		ventanillas->clear();
 		for (int i = 0; i <= nVentanillas; i++) {
 			ventanillas->append(new Ventanilla("" + codigo + std::to_string(i + 1)));
 		}
+	}
+
+	void consultarInfo() {
+		cout << descripcion + "\nCodigo: " + codigo + "\nnVentanillas: " + std::to_string(nVentanillas) << endl;
+		cout << "Ventanillas: ";
+		for (int i = 0; i < nVentanillas; i++) {
+			ventanillas->goToPos(i);
+			cout << ventanillas->getElement()->getDescripcion();
+			if (i != nVentanillas - 1) {
+				cout << ", ";
+			}
+		}
+		cout << endl;
 	}
 
 	//print
