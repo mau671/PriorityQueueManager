@@ -18,11 +18,11 @@ class Servicio {
 private:
 	string descripcion;
 	int prioridad;
-    //Area* area;
+    Area* area;
 
 public:
 
-	Servicio(string descripcion, int prioridad /*Area area*/) {
+	Servicio(string descripcion, int prioridad, Area* area) {
 		this->descripcion = descripcion;
 		this->prioridad = prioridad;
 	}
@@ -40,9 +40,8 @@ public:
     int getPrioridad() {
         return prioridad;
     }
- /*
     Area* getArea() {
         return area;
-    }*/
+    }
 };
 
