@@ -66,7 +66,7 @@ public:
 		return descripcion;
 	}
 
-	void setDescripcion() {
+	void setDescripcion(string descripcion) {
 		this->descripcion = descripcion;
 	}
 
