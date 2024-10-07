@@ -18,7 +18,7 @@ class Servicio {
 private:
 	string descripcion;
 	int prioridad;
-    Area area;
+    Area* area;
 
 public:
 
@@ -41,7 +41,7 @@ public:
         return prioridad;
     }
  
-    Area getArea() const {
+    Area* getArea() const {
         return area;
     }
 };

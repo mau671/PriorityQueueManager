@@ -24,18 +24,18 @@ private:
 	string hora;
 	int prioridad;
 	int nTiquetes=100;//??
-	Servicio servicio; //agregar clase servicio
-	Area area;
+	Servicio* servicio; //agregar clase servicio
+	Area* area;
 
 public:
 	Tiquete() {
 	}
 
-	Tiquete(string hora, Servicio servicio) {
+	Tiquete(string hora, Servicio* servicio) {
 		this->servicio = servicio;
 		this->hora = hora;
-		area = servicio.getArea();
-		codigo = area.getCodigo() + std::to_string(nTiquetes);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
+		area = servicio->getArea();
+		codigo = area->getCodigo() + std::to_string(nTiquetes);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
 		//calcular prioridad
 	}
 	~Tiquete() {

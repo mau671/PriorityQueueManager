@@ -1,10 +1,8 @@
 /*
  * Archivo: GestorArea.cpp
- * Descripción: Este archivo contiene la implementación de funciones para gestionar
- *              las áreas del sistema. Las funcionalidades incluyen agregar, modificar,
- *              eliminar áreas y mostrar el menú de áreas.
+ * Descripción: 
  *
- * Autor(es): Mauricio Gonzalez
+ * Autor(es): Mauricio Gonzalez, Lun Valverde
  */
 
 #include <iostream>
