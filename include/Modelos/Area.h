@@ -30,7 +30,7 @@ private:
 
 public:
 	Area() {
-
+		
 	}
 
 	Area(string descripcion, char codigo, int nVentanillas) {

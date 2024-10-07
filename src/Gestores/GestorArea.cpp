@@ -12,6 +12,9 @@
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Modelos/Area.h"
 #include "Utilidades/utils.h"
+#include "Modelos/Servicio.h"
+#include "Modelos/Ventanilla.h"
+#include "Modelos/Tiquete.h"
 
 using std::cout;
 using std::endl;
@@ -19,16 +22,18 @@ using std::cin;
 using std::string;
 
 // Función para agregar una nueva área
+
 void addArea(List<Area*>* areas) {
     string descripcion;
     string codigo;
-    int cantidadVentanillas;
+    int cantVentanillas;
 
-    cout << "Descripción del área: ";
+    cout << "Descripción/nombre del área: ";
     std::getline(cin, descripcion);
     cout << "Código del área: ";
     std::getline(cin, codigo);
-    cantidadVentanillas = readInt("Cantidad de ventanillas: ");
+    cout << "Cantidad de ventanillas: ";
+    readInt(cin);
 
     Area* nuevaArea = new Area(descripcion, codigo, cantidadVentanillas);
     areas->append(nuevaArea);
@@ -41,13 +46,13 @@ void modifyAreaVentanillas(List<Area*>* areas) {
     string codigo;
     cout << "Código del área a modificar: ";
     std::getline(cin, codigo);
-
+    
     Area* area = buscarAreaPorCodigo(areas, codigo);
     if (area == nullptr) {
         cout << "Área no encontrada.\n";
         return;
     }
-
+    
     int cantidadVentanillasActual = area->getNventanillas();
     cout << "Cantidad actual de ventanillas: " << cantidadVentanillasActual << "\n";
     int nuevaCantidad = readInt("Nueva cantidad de ventanillas: ");
@@ -58,34 +63,12 @@ void modifyAreaVentanillas(List<Area*>* areas) {
 
 // Función para eliminar un área y sus ventanillas asociadas
 void deleteArea(List<Area*>* areas) {
-    string codigo;
-    cout << "Código del área a eliminar: ";
-    std::getline(cin, codigo);
-
-    Area* area = buscarAreaPorCodigo(areas, codigo);
-    if (area == nullptr) {
-        cout << "Área no encontrada.\n";
-        return;
-    }
-
-    cout << "Servicios relacionados a este área:\n";
-    area->mostrarServicios();  // Mostrar servicios que serían eliminados
-
-    if (!readConfirmation("¿Desea continuar y eliminar el área? (s/n)")) {
-        cout << "Operación cancelada.\n";
-        return;
-    }
+    
+    
 
     // Eliminar el área de la lista y liberar la memoria
-    for (int i = 0; i < areas->getSize(); i++) {
-        areas->goToPos(i);
-        if (areas->getElement()->getCodigo() == codigo) {
-            delete areas->getElement();
-            areas->remove();
-            cout << "Área eliminada exitosamente.\n";
-            return;
-        }
-    }
+    
+   
 }
 
 // Función para mostrar el menú de áreas
@@ -118,15 +101,4 @@ void showAreaMenu(List<Area*>* areas) {
             cout << "Opción inválida. Intente de nuevo.\n";
         }
     } while (option != 4);
-}
-
-// Función auxiliar para buscar un área por su código
-Area* buscarAreaPorCodigo(List<Area*>* areas, const string& codigo) {
-    for (int i = 0; i < areas->getSize(); i++) {
-        areas->goToPos(i);
-        if (areas->getElement()->getCodigo() == codigo) {
-            return areas->getElement();
-        }
-    }
-    return nullptr;
 }
