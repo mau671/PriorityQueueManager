@@ -51,7 +51,7 @@ public:
 	}
 
 	Tiquete* getTiquete() {
-		if (ocupada = true) {
+		if (ocupada == true) {
 			return tiquete;
 		}
 		throw runtime_error("La ventanilla no está atendiendo a ningún tiquete.");
