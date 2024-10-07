@@ -24,9 +24,9 @@ private:
 	string codigo; //letra de inicio para el nombre de las ventanillas
 	string descripcion;
 	int nVentanillas;
-	OrderedArrayList<Tiquete>* tiquetes = nullptr;
-	ArrayList<Ventanilla>* ventanillas = nullptr;
-	ArrayList<Servicio>* servicios = nullptr;
+	OrderedArrayList<Tiquete*>* tiquetes = nullptr;
+	ArrayList<Ventanilla*>* ventanillas = nullptr;
+	ArrayList<Servicio*>* servicios = nullptr;
 
 public:
 	Area() {
@@ -38,13 +38,13 @@ public:
 		this->codigo = codigo;
 		this->nVentanillas = nVentanillas;
 
-		ventanillas = new ArrayList<Ventanilla>(nVentanillas);
+		ventanillas = new ArrayList<Ventanilla*>(nVentanillas);
 		for (int i = 0; i <= nVentanillas; i++) {
-			ventanillas->append(Ventanilla(""+codigo+ std::to_string(i+1)));
+			ventanillas->append(new Ventanilla(""+codigo+ std::to_string(i+1)));
 			}
 
-		tiquetes = new OrderedArrayList<Tiquete>();
-		servicios = new ArrayList<Servicio>();
+		tiquetes = new OrderedArrayList<Tiquete*>();
+		servicios = new ArrayList<Servicio*>();
 	}
 	~Area() {
 		delete ventanillas;
@@ -77,7 +77,7 @@ public:
 		this->nVentanillas = nVentanillas;
 		ventanillas->clear();
 		for (int i = 0; i <= nVentanillas; i++) {
-			ventanillas->append(Ventanilla("" + codigo + std::to_string(i + 1)));
+			ventanillas->append(new Ventanilla("" + codigo + std::to_string(i + 1)));
 		}
 	}
 
@@ -95,28 +95,22 @@ public:
 	}
 
 	//add
-	void addTiquete(Tiquete tiquete) {
+	void addTiquete(Tiquete* tiquete) {
 		tiquetes->append(tiquete);
 	}
 
-	void addServicio(Servicio servicio) {
+	void addServicio(Servicio* servicio) {
 		servicios->append(servicio);
 	}
 
 	//del
-	/*
-	void delTiquete(Tiquete tiquete) {
+	void delTiquete(Tiquete* tiquete) {
 		tiquetes->append(tiquete);
 	}
 
-	void delServicio(Servicio servicio) {
-		servicios->append(servicio);
+	void delServicio(Servicio* servicio) {
+		
 	}
-
-	void delVentanillas(int nVentanillas) {
-		//
-	}
-	*/
 
 };
 
