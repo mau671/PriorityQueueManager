@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="src\Gestores\GestorArea.cpp" />
     <ClCompile Include="src\Gestores\GestorServicio.cpp" />
+    <ClCompile Include="src\Gestores\GestorTiquete.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\UI\Menu.cpp" />
     <ClCompile Include="src\Gestores\GestorTipoUsuario.cpp" />

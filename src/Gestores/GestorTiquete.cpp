@@ -64,10 +64,11 @@ void crearTiquete(List<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<S
     Servicio* servicioSeleccionado = servicios->getElement();
 
     // Crear un nuevo tiquete con la información seleccionada
+    //const string hora, Servicio* servicio, TipoUsuario* usuario,     string codigoArea, int consecutivo
     string horaSolicitud = obtenerHoraActual();
     string codigoArea = servicioSeleccionado->getArea()->getCodigo();
-    Tiquete* nuevoTiquete = new Tiquete(horaSolicitud, codigoArea, usuarioSeleccionado, consecutivoGlobal);
-
+    Tiquete* nuevoTiquete = new Tiquete(horaSolicitud, servicioSeleccionado, usuarioSeleccionado, codigoArea, consecutivoGlobal);
+    servicioSeleccionado->getArea()->addTiquete(nuevoTiquete, nuevoTiquete->getPrioridad());
     // Aumentar el consecutivo global
     consecutivoGlobal++;
 

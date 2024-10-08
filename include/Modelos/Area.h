@@ -18,19 +18,20 @@
 #include "Estructuras/Concretas/OrderedArrayList.h"
 #include "Modelos/Servicio.h"
 #include "Modelos/Ventanilla.h"
-#include "Modelos/Tiquete.h"
 
 using std::string;
 using std::to_string;
 using std::endl;
 using std::cout;
 
+class Tiquete;
+
 class Area {
 private:
 	string codigo; //inicio del nombre de las ventanillas
 	string descripcion;
 	int nVentanillas = 0;
-	HeapPriorityQueue<Tiquete*>* tiquetes = nullptr;
+	HeapPriorityQueue<Tiquete*>* tiquetes;
 	ArrayList<Tiquete*>* tiquetesAtendidos = nullptr;
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
 
@@ -111,8 +112,8 @@ public:
 	}
 
 	//add
-	void addTiquete(Tiquete* tiquete) {
-		tiquetes->insert(tiquete, tiquete->getPrioridad());
+	void addTiquete(Tiquete* tiquete, int prioridad) {
+		tiquetes->insert(tiquete, prioridad);
 	}
 
 	//del
