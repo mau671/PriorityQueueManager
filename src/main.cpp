@@ -37,9 +37,18 @@ void inicializateDataUsuario(List<TipoUsuario*>*& userTypes) {
     userTypes = new OrderedArrayList<TipoUsuario*>();
 }
 
-void initializeDataArea(List<Area*>*& areas) {
+void initializeDataArea(ArrayList<Area*>*& areas) {
     areas = new ArrayList<Area*>;
 }
+
+void initializeDataServicios(List<Servicio*>*& servicios) {
+    //servicios = new ArrayList<Servicio*>*;
+}
+
+void initializeDataTiquetes(MinHeap<Tiquete*>*& tiquetes) {
+    tiquetes = new MinHeap<Tiquete*>;
+}
+
 
 void showQueueStatusMenu() {
 	std::cout << "== Estado de las colas ==\n";
@@ -47,7 +56,7 @@ void showQueueStatusMenu() {
 }
 
 // Función para mostrar el submenú de tiquetes
-void showTiquetesMenu() {
+void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, ArrayList<Servicio*>* servicios, ArrayList<Area*>* areas) {
     Menu ticketMenu("== Menú de Tiquetes ==");
     ticketMenu.addOption("Seleccionar tipo de cliente y servicio");
     ticketMenu.addOption("Regresar");
@@ -57,8 +66,8 @@ void showTiquetesMenu() {
         int choice = ticketMenu.getSelection();
         switch (choice) {
         case 1:
-            //std::cout << "Seleccionar tipo de cliente y servicio.\n\n";
-            // Implementar lógica aquí
+            cout << "Seleccionar tipo de cliente y servicio.\n\n";
+            // Implementar lógica aquí 
             
             
             pause();
@@ -74,7 +83,7 @@ void showAtenderMenu() {
 	// Implementar lógica aquí
 }
 
-void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, OrderedArrayList<Servicio*>* servicios ) {
+void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, ArrayList<Servicio*>* servicios ) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
@@ -123,9 +132,13 @@ int main() {
     // Inicializar la lista de tipos de usuario
     List<TipoUsuario*>* userTypes;
     inicializateDataUsuario(userTypes);
-    List<Area*>* areas;
+    ArrayList<Area*>* areas;
     initializeDataArea(areas);
-    OrderedArrayList<Servicio*>* servicios = new OrderedArrayList<Servicio*>();
+
+    ArrayList<Servicio*>* servicios = new ArrayList<Servicio*>();
+
+    MinHeap<Tiquete*>* tiquetes;
+    initializeDataTiquetes(tiquetes);
 
     Menu mainMenu("== Menú Principal ==");
     mainMenu.addOption("Estado de las colas");
@@ -147,7 +160,7 @@ int main() {
             break;
         case 2:
             std::cout << "Tiquetes seleccionada.\n\n";
-            showTiquetesMenu();
+            showTiquetesMenu(tiquetes, servicios, areas);
             pause();
             break;
         case 3:
@@ -184,5 +197,6 @@ int main() {
     }
     delete areas;
     delete servicios;
+    delete tiquetes;
     return 0;
 }

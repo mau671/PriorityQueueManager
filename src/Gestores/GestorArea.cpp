@@ -23,7 +23,7 @@ using std::string;
 
 // Función para agregar una nueva área
 
-void addArea(List<Area*>* areas) {
+void addArea(ArrayList<Area*>* areas) {
     string descripcion;
     string codigo;
     int cantVentanillas;
@@ -43,7 +43,7 @@ void addArea(List<Area*>* areas) {
 }
 
 // Función para modificar la cantidad de ventanillas de un área existente
-void modifyVentanillas(List<Area*>* areas) {
+void modifyVentanillas(ArrayList<Area*>* areas) {
     if (areas->getSize() == 0) {
         cout << "No hay areas para modificar." << endl;
         pause();
@@ -80,7 +80,7 @@ void modifyVentanillas(List<Area*>* areas) {
 }
 
 // Función para eliminar un área y sus ventanillas asociadas
-void deleteArea(List<Area*>* areas, OrderedArrayList<Servicio*>* servicios) {
+void deleteArea(List<Area*>* areas, ArrayList<Servicio*>* servicios) {
     if (areas->getSize() == 0) {
         cout << "No hay areas para eliminar." << endl;
         pause();
@@ -178,7 +178,7 @@ void displayInfoArea(List<Area*>* areas) {
 }
 
 // Función para mostrar el menú de áreas
-void showAreaMenu(List<Area*>* areas, OrderedArrayList<Servicio*>* servicios) {
+void showAreaMenu(ArrayList<Area*>* areas, ArrayList<Servicio*>* servicios) {
     Menu menu("== Menú de Áreas ==");
     menu.addOption("Agregar Área"); 
     menu.addOption("Modificar Ventanillas");

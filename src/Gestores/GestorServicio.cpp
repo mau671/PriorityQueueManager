@@ -22,7 +22,7 @@ using std::endl;
 using std::cin;
 
 
-void addServicio(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
+void addServicio(ArrayList<Servicio*>* servicios, List<Area*>* areas) {
     string descripcion;
     int prioridad;
     Area* area;
@@ -66,7 +66,7 @@ void addServicio(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void delServicio(OrderedArrayList<Servicio*>* servicios) {
+void delServicio(ArrayList<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios disponibles." << endl;
         pause();
@@ -98,7 +98,7 @@ void delServicio(OrderedArrayList<Servicio*>* servicios) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void reordenarServicios(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
+void reordenarServicios(ArrayList<Servicio*>* servicios, List<Area*>* areas) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios para reordenarr." << endl;
         pause();
@@ -135,7 +135,7 @@ void reordenarServicios(OrderedArrayList<Servicio*>* servicios, List<Area*>* are
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void displayInfoServicios(OrderedArrayList<Servicio*>* servicios) {
+void displayInfoServicios(ArrayList<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios para reordenarr." << endl;
         pause();
@@ -165,7 +165,7 @@ void displayInfoServicios(OrderedArrayList<Servicio*>* servicios) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void showServicioMenu(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
+void showServicioMenu(ArrayList<Servicio*>* servicios, List<Area*>* areas) {
     Menu menu("== Menú de servicios ==");
     menu.addOption("Agregar");
     menu.addOption("Eliminar");

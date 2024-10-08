@@ -56,6 +56,14 @@ public:
 	}
 	string getCodigo() {
 		return codigo;
+	}
 
+	//operadores
+	bool operator >(const Tiquete & other) {
+		return this->prioridad > other.prioridad;
 	};
+
+	bool operator <(const Tiquete & other) {
+		return this->prioridad < other.prioridad;
+	}
 };
