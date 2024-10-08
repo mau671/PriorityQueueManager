@@ -31,7 +31,9 @@ private:
 	TipoUsuario* usuario;
 
 public:
+
 	Tiquete() {
+
 	}
 
 	Tiquete(const string hora, string codigoArea, TipoUsuario* usuario, int consecutivo)

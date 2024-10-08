@@ -65,7 +65,8 @@ void crearTiquete(List<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<S
 
     // Crear un nuevo tiquete con la información seleccionada
     string horaSolicitud = obtenerHoraActual();
-    Tiquete* nuevoTiquete = new Tiquete(horaSolicitud, servicioSeleccionado->getArea(), usuarioSeleccionado, consecutivoGlobal);
+    string codigoArea = servicioSeleccionado->getArea()->getCodigo();
+    Tiquete* nuevoTiquete = new Tiquete(horaSolicitud, codigoArea, usuarioSeleccionado, consecutivoGlobal);
 
     // Aumentar el consecutivo global
     consecutivoGlobal++;
