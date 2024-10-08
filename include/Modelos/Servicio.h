@@ -10,7 +10,8 @@
 
 #include <iostream>
 #include <stdexcept>
-#include "Modelos/Area.h"
+
+class Area;
 
 using std::string;
 
@@ -22,9 +23,10 @@ private:
 
 public:
 
-	Servicio(string descripcion, int prioridad, Area *area) {
+	Servicio(string descripcion, int prioridad, Area* area) {
 		this->descripcion = descripcion;
 		this->prioridad = prioridad;
+        this->area = area;
 	}
 	~Servicio() {
 	}

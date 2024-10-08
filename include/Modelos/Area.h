@@ -14,8 +14,9 @@
 #include "Estructuras/Abstractas/List.h"
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
-#include "Modelos/Tiquete.h"
+#include "Modelos/Servicio.h"
 #include "Modelos/Ventanilla.h"
+#include "Modelos/Tiquete.h"
 
 using std::string;
 
@@ -119,7 +120,7 @@ public:
 
 	//del
 	void delTiquete(Tiquete* tiquete) {
-		tiquetes->append(tiquete);
+		
 	}
 
 	void delServicio(Servicio* servicio) {

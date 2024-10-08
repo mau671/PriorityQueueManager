@@ -16,10 +16,13 @@
 #include "UI/Menu.h"
 
 // Gestores
+#include "Gestores/GestorArea.h"
+#include "Gestores/GestorTiquete.cpp"
 #include "Gestores/GestorTipoUsuario.h"
 
 // Modelos
 #include "Modelos/TipoUsuario.h"
+#include "Modelos/Area.h"
 
 // Estructuras de datos
 #include "Estructuras/Concretas/OrderedArrayList.h"
@@ -27,9 +30,6 @@
 // Utilidades
 #include "Utilidades/utils.h"
 
-#include "Modelos/Area.h"
-#include "Gestores/GestorArea.h"
-#include "Gestores/GestorTiquete.cpp"
 
  // Inicializa la lista de tipos de usuario como una lista de punteros
 void inicializateDataUsuario(List<TipoUsuario*>*& userTypes) {

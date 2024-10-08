@@ -10,11 +10,13 @@
 
 #include <iostream>
 #include <stdexcept>
-#include "Modelos/Area.h"
-#include "Modelos/Tiquete.h"
+
 
 using std::string;
 using std::runtime_error;
+
+class Tiquete;
+class Servicio;
 
 class Ventanilla {
 private:
@@ -25,9 +27,11 @@ private:
 public:
 	Ventanilla(string descripcion) {
 		this->descripcion = descripcion;
+		ocupada = true;
 	}
 
 	~Ventanilla() {
+		delete tiquete;
 	}
 
 	void setDescripcion(string descripcion) {

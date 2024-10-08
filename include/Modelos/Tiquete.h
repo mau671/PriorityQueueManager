@@ -13,12 +13,14 @@
 #include "Estructuras/Abstractas/List.h"
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
-#include "Modelos/Area.h"
-#include "Modelos/Servicio.h"
-#include "Modelos/TipoUsuario.h"
+#include "TipoUsuario.h"
+#include "Area.h"
 
 using std::string;
 using std::to_string;
+
+class Area;
+class Servicio;
 
 class Tiquete {
 private:
@@ -26,7 +28,6 @@ private:
 	string hora;
 	int prioridad;
 	Servicio* servicio; //agregar clase servicio
-	//Area* area;
 	TipoUsuario* usuario;
 
 public:
@@ -34,14 +35,12 @@ public:
 	}
 
 	Tiquete(const string hora, Servicio* servicio, TipoUsuario* usuario, int consecutivo)
-		: hora(hora), servicio(servicio)/*, usuario(usuario) */ {
-		//this->area = servicio->getArea();
+		: hora(hora), servicio(servicio), usuario(usuario) {
 		this->codigo = servicio->getArea()->getCodigo() + to_string(consecutivo);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
 		this->prioridad = usuario->getPrioridad() * 10 + servicio->getPrioridad();
 	}
 	~Tiquete() {
 		delete servicio;
-		//delete area;
 	}
 
 	int getPrioridad() {
@@ -51,12 +50,7 @@ public:
 	Servicio* getServicio() {
 		return servicio;
 	}
-	/*
-
-	Area* getArea() {
-		return area;
-	}
-	*/
+	
 	string getHora() {
 		return hora;
 	}
