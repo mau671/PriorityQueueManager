@@ -34,9 +34,9 @@ public:
 	Tiquete() {
 	}
 
-	Tiquete(const string hora, Servicio* servicio, TipoUsuario* usuario, int consecutivo)
+	Tiquete(const string hora, string codigoArea, TipoUsuario* usuario, int consecutivo)
 		: hora(hora), servicio(servicio), usuario(usuario) {
-		this->codigo = servicio->getArea()->getCodigo() + to_string(consecutivo);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
+		this->codigo = codigoArea + to_string(consecutivo);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
 		this->prioridad = usuario->getPrioridad() * 10 + servicio->getPrioridad();
 	}
 	~Tiquete() {

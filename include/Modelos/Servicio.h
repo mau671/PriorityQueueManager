@@ -19,7 +19,7 @@ class Servicio {
 private:
 	string descripcion;
 	int prioridad;
-    Area* area;
+    Area* area = nullptr;
 
 public:
 
