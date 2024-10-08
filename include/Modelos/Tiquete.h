@@ -26,9 +26,9 @@ class Tiquete {
 private:
 	string codigo;
 	string hora;
-	int prioridad;
-	Servicio* servicio; //agregar clase servicio
-	TipoUsuario* usuario;
+	int prioridad = 0;
+	Servicio* servicio = nullptr; //agregar clase servicio
+	TipoUsuario* usuario = nullptr;
 
 public:
 
@@ -45,7 +45,7 @@ public:
 		delete servicio;
 	}
 
-	int getPrioridad() {
+	int getPrioridad() const {
 		return prioridad;
 	}
 

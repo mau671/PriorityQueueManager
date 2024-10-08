@@ -9,7 +9,9 @@
 #define DEFAULT_MAX 1024
 
 #include <iostream>
+#include <string>
 #include <stdexcept>
+#include "Modelos/Tiquete.h"
 
 using std::string;
 using std::runtime_error;
@@ -41,7 +43,7 @@ public:
 		return descripcion;
 	}
 
-	bool isOcupada() {
+	bool isOcupada() const {
 		return ocupada;
 	}
 

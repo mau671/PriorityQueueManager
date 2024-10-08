@@ -39,7 +39,7 @@ public:
         return descripcion;
     }
 
-    int getPrioridad() {
+    int getPrioridad() const {
         return prioridad;
     }
     Area* getArea() {

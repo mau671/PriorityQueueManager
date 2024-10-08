@@ -24,7 +24,7 @@ class Area {
 private:
 	string codigo; //inicio del nombre de las ventanillas
 	string descripcion;
-	int nVentanillas;
+	int nVentanillas = 0;
 	OrderedArrayList<Tiquete*>* tiquetes = nullptr;
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
 	ArrayList<Servicio*>* servicios = nullptr;
@@ -71,7 +71,7 @@ public:
 		this->descripcion = descripcion;
 	}
 
-	int getNventanillas() {
+	int getNventanillas() const {
 		return nVentanillas;
 	}
 
