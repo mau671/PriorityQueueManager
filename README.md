@@ -12,7 +12,7 @@ II Semestre, 2024
 Integrantes:
 - Mauricio González Prendas (carné 2024143009)
 - Lun Valverde Villalobos (carné 2024080542)
-- Josué
+- Josué Meza Solano (carné 2024240640)
 
 [Presentación](https://docs.google.com/presentation/d/1x3NYHb97RlHZmXwpiqScOGtEKyBftnQI7fV0pM5J_UA/edit?usp=sharing)
 
