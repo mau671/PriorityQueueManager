@@ -153,9 +153,7 @@ int main() {
             pause();
             break;
         case 4:
-            std::cout << "Administración seleccionada.\n\n";
             showAdminMenu(userTypes, areas);// Pasar la lista de tipos de usuario
-            pause();
             break;
         case 5:
             std::cout << "Estadísticas del sistema seleccionada.\n\n";
@@ -168,7 +166,6 @@ int main() {
                 userTypes->goToPos(i);
                 std::cout << *(userTypes->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
             }
-            pause();
             pause();
             break;
         case 7:

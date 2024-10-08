@@ -175,11 +175,12 @@ void showAreaMenu(List<Area*>* areas) {
             break;
         case 4:
             displayInfoArea(areas);
+            break;
         case 5:
             cout << "Regresando al menú de administración...\n";
             break;
         default:
             cout << "Opción inválida. Intente de nuevo.\n";
         }
-    } while (option != 4);
+    } while (option != 5);
 }
