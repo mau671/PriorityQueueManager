@@ -39,7 +39,6 @@ void addArea(List<Area*>* areas) {
     areas->append(nuevaArea);
 
     cout << "Área agregada exitosamente.\n";
-    areas->print();
     pause();
 }
 
@@ -66,6 +65,8 @@ void modifyVentanillas(List<Area*>* areas) {
             cout << "Operación cancelada.\n";
             return;
         }
+
+        //agregar confirmacion
         
         int nVentanillas;
         nVentanillas = menu.getSelection();

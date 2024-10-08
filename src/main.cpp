@@ -17,8 +17,9 @@
 
 // Gestores
 #include "Gestores/GestorArea.h"
-#include "Gestores/GestorTiquete.cpp"
+//#include "Gestores/GestorTiquete.h"
 #include "Gestores/GestorTipoUsuario.h"
+#include "Gestores/GestorServicio.h"
 
 // Modelos
 #include "Modelos/TipoUsuario.h"
@@ -42,6 +43,7 @@ void initializeDataArea(List<Area*>*& areas) {
 
 void showQueueStatusMenu() {
 	std::cout << "== Estado de las colas ==\n";
+    //Areas, cantidad de ventanillas por area, mostar ventanillas y su ultimo tiquete atendido, codigo de cada tiquete
 }
 
 // Función para mostrar el submenú de tiquetes
@@ -72,7 +74,7 @@ void showAtenderMenu() {
 	// Implementar lógica aquí
 }
 
-void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>*& areas) {
+void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, OrderedArrayList<Servicio*>* servicios ) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
@@ -96,7 +98,7 @@ void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>*& areas) {
             break;
         case 3:
             std::cout << "Servicios disponibles seleccionada.\n";
-            // Implementar lógica aquí
+            showServicioMenu(servicios, areas);
             pause();
             break;
         case 4:
@@ -123,6 +125,7 @@ int main() {
     inicializateDataUsuario(userTypes);
     List<Area*>* areas;
     initializeDataArea(areas);
+    OrderedArrayList<Servicio*>* servicios = new OrderedArrayList<Servicio*>();
 
     Menu mainMenu("== Menú Principal ==");
     mainMenu.addOption("Estado de las colas");
@@ -153,7 +156,7 @@ int main() {
             pause();
             break;
         case 4:
-            showAdminMenu(userTypes, areas);// Pasar la lista de tipos de usuario
+            showAdminMenu(userTypes, areas, servicios);// Pasar la lista de tipos de usuario
             break;
         case 5:
             std::cout << "Estadísticas del sistema seleccionada.\n\n";
@@ -179,6 +182,7 @@ int main() {
             return 0;
         }
     }
-
+    delete areas;
+    delete servicios;
     return 0;
 }

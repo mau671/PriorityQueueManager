@@ -24,7 +24,7 @@ using std::string;
 
 // Función para agregar un nuevo tipo de usuario
 void addUserType(List<TipoUsuario*>* userTypes, const string& description, int priority) {
-    if (priority < 1) {
+    if (priority < 0) {
         cout << "Prioridad inválida. Debe ser un número positivo.\n";
         return;
     }

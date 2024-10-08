@@ -13,21 +13,26 @@
 #include <string>
 #include "Estructuras/Abstractas/List.h"
 #include "Estructuras/Concretas/ArrayList.h"
+#include "Estructuras/Abstractas/PriorityQueue.h"
+#include "Estructuras/Concretas/HeapPriorityQueue.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
 #include "Modelos/Servicio.h"
 #include "Modelos/Ventanilla.h"
 #include "Modelos/Tiquete.h"
 
 using std::string;
+using std::to_string;
+using std::endl;
+using std::cout;
 
 class Area {
 private:
 	string codigo; //inicio del nombre de las ventanillas
 	string descripcion;
 	int nVentanillas = 0;
-	OrderedArrayList<Tiquete*>* tiquetes = nullptr;
+	HeapPriorityQueue<Tiquete*>* tiquetes = nullptr;
+	ArrayList<Tiquete*>* tiquetesAtendidos = nullptr;
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
-	ArrayList<Servicio*>* servicios = nullptr;
 
 public:
 	Area() {
@@ -45,13 +50,13 @@ public:
 			ventanillas->append(new Ventanilla(""+codigo+ std::to_string(i+1)));
 			}
 
-		tiquetes = new OrderedArrayList<Tiquete*>();
-		servicios = new ArrayList<Servicio*>();
+		tiquetes = new HeapPriorityQueue<Tiquete*>();
+		tiquetesAtendidos = new ArrayList<Tiquete*>;
 	}
 	~Area() {
 		delete ventanillas;
-		delete servicios;
 		delete tiquetes;
+		delete tiquetesAtendidos;
 	} 
 
 	//setters y getters codigo, descripcion y ventanillas
@@ -105,26 +110,24 @@ public:
 		tiquetes->print();
 	}
 
-	void mostrarServicios() {
-		servicios->print();
-	}
-
 	//add
 	void addTiquete(Tiquete* tiquete) {
-		tiquetes->append(tiquete);
-	}
-
-	void addServicio(Servicio* servicio) {
-		servicios->append(servicio);
+		tiquetes->insert(tiquete, tiquete->getPrioridad());
 	}
 
 	//del
-	void delTiquete(Tiquete* tiquete) {
-		
-	}
-
-	void delServicio(Servicio* servicio) {
-		
+	Tiquete* atenderTiqueteActual() {
+		if (tiquetes->isEmpty()) throw runtime_error("No hay tiquetes para atender");
+		for (int i = 0; i <= nVentanillas; i++) {
+			ventanillas->goToPos(i);
+			if (ventanillas->getElement()->isOcupada() == false) {
+				ventanillas->getElement()->setTiquete(tiquetes->removeMin());
+				cout<< "La ventanilla " << ventanillas->getElement()->getDescripcion() << " esta atendiendo al tiquete " << ventanillas->getElement()->getTiquete() <<endl;
+				return ventanillas->getElement()->getTiquete();
+			}
+		}
+		cout << "No se encontro ninguna ventanilla disponible";
+		return nullptr;
 	}
 
 };

@@ -13,8 +13,8 @@
 #include "Estructuras/Abstractas/List.h"
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
-#include "TipoUsuario.h"
-#include "Area.h"
+#include "Modelos/TipoUsuario.h"
+#include "Modelos/Area.h"
 
 using std::string;
 using std::to_string;
@@ -41,8 +41,7 @@ public:
 		this->codigo = codigoArea + to_string(consecutivo);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
 		this->prioridad = usuario->getPrioridad() * 10 + servicio->getPrioridad();
 	}
-	~Tiquete() {
-		delete servicio;
+	~Tiquete() {	
 	}
 
 	int getPrioridad() const {

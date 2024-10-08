@@ -1,0 +1,175 @@
+/*
+ * Archivo: GestorArea.cpp
+ * Descripción:
+ *
+ * Autor(es): Lun Valverde
+ */
+
+#include <iostream>
+#include <string>
+#include <stdexcept>
+#include "UI/Menu.h"
+#include "Estructuras/Concretas/ArrayList.h"
+#include "Modelos/Area.h"
+#include "Utilidades/utils.h"
+#include "Modelos/Servicio.h"
+#include "Modelos/Ventanilla.h"
+#include "Modelos/Tiquete.h"
+
+using std::string;
+using std::cout;
+using std::endl;
+using std::cin;
+
+
+void addServicio(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
+    string descripcion;
+    int prioridad;
+    Area* area;
+
+    if (areas->getSize() == 0) {
+        cout << "No hay areas disponibles";
+        pause();
+        return;
+    }
+    Menu menu("Seleccione el area: ");
+    for (int i = 0; i < areas->getSize(); i++) {
+        servicios->goToPos(i);
+        menu.addOption(areas->getElement()->getDescripcion()); //descripcion de las areas
+    }
+    menu.addOption("Cancelar");
+    int selection;
+    do {
+        menu.display();
+        selection = menu.getSelection();
+
+        if (selection == areas->getSize() + 1) {
+            cout << "Operación cancelada.\n";
+            return;
+        }
+        areas->goToPos(selection - 1);
+        Area* area = areas->getElement();
+        cout << "Descripción/nombre del servicio: ";
+        std::getline(cin, descripcion);
+        cout << "Prioridad del servicio: ";
+        cin >> prioridad;
+        if (prioridad < 0) {
+            cout << "Prioridad inválida. Debe ser un número positivo.\n";
+            return;
+        }
+        Servicio* servicio = new Servicio(descripcion, prioridad, area);
+        servicios->insert(servicio);
+
+        cout << "Servicio agregado exitosamente.\n";
+        pause();
+   
+    } while (selection < 1 || selection > servicios->getSize() + 1);
+}
+
+void delServicio(OrderedArrayList<Servicio*>* servicios) {
+    if (servicios->getSize() == 0) {
+        cout << "No hay servicios para eliminar." << endl;
+        pause();
+        return;
+    }
+    Menu menu("== Eliminar servicio ==");
+    for (int i = 0; i < servicios->getSize(); i++) {
+        servicios->goToPos(i);
+        menu.addOption(servicios->getElement()->getDescripcion()); //descripcion de las areas
+    }
+    menu.addOption("Cancelar");
+
+    int selection;
+    do {
+        menu.display();
+        selection = menu.getSelection();
+
+        if (selection == servicios->getSize() + 1) {
+            cout << "Operación cancelada.\n";
+            return;
+        }
+
+        servicios->goToPos(selection - 1);
+        delete servicios->getElement(); // Liberar la memoria del objeto eliminado
+        cout << "Servicio eliminado eliminado.\n";
+        servicios->remove();
+        pause();
+    } while (selection < 1 || selection > servicios->getSize() + 1);
+}
+
+void reordenarServicios(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
+    if (servicios->getSize() == 0) {
+        cout << "No hay servicios para reordenarr." << endl;
+        pause();
+        return;
+    }
+    Menu menu("== Reordenar servicios ==");
+    for (int i = 0; i < servicios->getSize(); i++) {
+        servicios->goToPos(i);
+        menu.addOption(servicios->getElement()->getDescripcion()); //descripcion de las areas
+    }
+    menu.addOption("Cancelar");
+
+    int selection;
+    do {
+        menu.display();
+        selection = menu.getSelection();
+
+        if (selection == servicios->getSize() + 1) {
+            cout << "Operación cancelada.\n";
+            return;
+        }
+
+        /* 
+        * 
+        * 
+        *  reordenamiento aqui
+        * 
+        * 
+        */
+
+        //cout << "Servicio agregado exitosamente.\n";
+        pause();
+
+    } while (selection < 1 || selection > servicios->getSize() + 1);
+}
+
+void displayInfoServicios(OrderedArrayList<Servicio*>* servicios) {
+    //implementar?? idk no es tan importante solo serviria para pruebas
+}
+
+void showServicioMenu(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
+    Menu menu("== Menú de servicios ==");
+    menu.addOption("Agregar");
+    menu.addOption("Eliminar");
+    menu.addOption("Reordenar");
+    menu.addOption("Mostrar informacion");
+    menu.addOption("Regresar");
+
+    int option;
+    do {
+        menu.display();
+        option = menu.getSelection();
+
+        switch (option) {
+        case 1:
+            addServicio(servicios, areas);
+            break;
+        case 2:
+            delServicio(servicios);
+            break;
+        case 3:
+            reordenarServicios(servicios, areas);
+            break;
+        case 4:
+            displayInfoServicios(servicios);
+            break;
+        case 5:
+            cout << "Regresando al menú de administración...\n";
+            break;
+        default:
+            cout << "Opción inválida. Intente de nuevo.\n";
+        }
+    } while (option != 5);
+
+}
