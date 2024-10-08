@@ -28,7 +28,7 @@ void addServicio(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
     Area* area;
 
     if (areas->getSize() == 0) {
-        cout << "No hay areas disponibles";
+        cout << "No hay areas disponibles" << endl;
         pause();
         return;
     }
