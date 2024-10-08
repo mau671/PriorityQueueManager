@@ -1,9 +1,10 @@
 /*
- * Archivo: Servicio.h
- * Descripción: Clase que representa los servicios que se pueden realizar.
- *
- * Autor(es): Lun Valverde
- */
+*
+* Archivo:Servicio.h
+* Descripci?n : Clase que representa los servicios que se pueden realizar.
+*
+* Autor(es) : Lun Valverde
+*/
 
 #pragma once
 #define DEFAULT_MAX 1024
@@ -17,19 +18,19 @@ using std::string;
 
 class Servicio {
 private:
-	string descripcion;
-	int prioridad;
+    string descripcion;
+    int prioridad;
     Area* area = nullptr;
 
 public:
 
-	Servicio(string descripcion, int prioridad, Area* area) {
-		this->descripcion = descripcion;
-		this->prioridad = prioridad;
+    Servicio(string descripcion, int prioridad, Area* area) {
+        this->descripcion = descripcion;
+        this->prioridad = prioridad;
         this->area = area;
-	}
-	~Servicio() {
-	}
+    }
+    ~Servicio() {
+    }
 
     void changeDescripcion(string descripcion) {
         this->descripcion = descripcion;
@@ -46,4 +47,3 @@ public:
         return area;
     }
 };
-

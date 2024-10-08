@@ -93,7 +93,7 @@ void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, OrderedArr
             break;
         case 2:
             std::cout << "Áreas seleccionada.\n";
-            showAreaMenu(areas);
+            showAreaMenu(areas, servicios);
             pause();
             break;
         case 3:

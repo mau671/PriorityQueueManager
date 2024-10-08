@@ -75,13 +75,12 @@ void modifyVentanillas(List<Area*>* areas) {
         areas->getElement()->setNventanillas(nVentanillas);
         
         cout << "Ventanillas modificadas.\n";
-        areas->remove();
     } while (selection < 1 || selection > areas->getSize() + 1);
     
 }
 
 // Función para eliminar un área y sus ventanillas asociadas
-void deleteArea(List<Area*>* areas) {
+void deleteArea(List<Area*>* areas, OrderedArrayList<Servicio*>* servicios) {
     if (areas->getSize() == 0) {
         cout << "No hay areas para eliminar." << endl;
         pause();
@@ -105,17 +104,45 @@ void deleteArea(List<Area*>* areas) {
             return;
         }
 
+        if (servicios->getSize() == 0) {
+            cout << "Esta area no tiene servicios asociados." << endl;
+        }
+        else {
+            cout << "Servicios que se eliminaran: " << endl;
+            for (int i = 0; i < servicios->getSize(); i++) {
+                servicios->goToPos(i);
+                cout << i + 1 << " . " << servicios->getElement()->getDescripcion();
+            }
+            cout << endl;
+        }
+
+        string input;
+        while (true) {
+            cout << "Esta seguro de que desea continuar?" << "(s / n)";
+            getline(cin, input);
+
+            if (input == "s" || input == "S") {
+                break;
+            }
+            else if (input == "n" || input == "N") {
+                cout << "Operación cancelada.\n";
+                return;
+            }
+            cout << "Respuesta no válida. Intente nuevamente.\n";
+        }
+
         areas->goToPos(selection - 1);
+        for (int i = servicios->getSize() - 1; i >= 0; i--) {
+            servicios->goToPos(i);
+            if (servicios->getElement()->getArea() == areas->getElement()) {
+                delete servicios->getElement();
+                servicios->remove();
+            }
+        }
         delete areas->getElement(); // Liberar la memoria del objeto eliminado
-        cout << "Tipo de usuario eliminado.\n";
+        cout << "Area eliminada exitosamente.\n";
         areas->remove();
     } while (selection < 1 || selection > areas->getSize() + 1);
-    
-    
-
-    // Eliminar el área de la lista y liberar la memoria
-    
-   
 }
 
 //funcion para mostrar la informacion del area
@@ -151,7 +178,7 @@ void displayInfoArea(List<Area*>* areas) {
 }
 
 // Función para mostrar el menú de áreas
-void showAreaMenu(List<Area*>* areas) {
+void showAreaMenu(List<Area*>* areas, OrderedArrayList<Servicio*>* servicios) {
     Menu menu("== Menú de Áreas ==");
     menu.addOption("Agregar Área"); 
     menu.addOption("Modificar Ventanillas");
@@ -172,7 +199,7 @@ void showAreaMenu(List<Area*>* areas) {
             modifyVentanillas(areas);
             break;
         case 3:
-            deleteArea(areas);
+            deleteArea(areas, servicios);
             break;
         case 4:
             displayInfoArea(areas);

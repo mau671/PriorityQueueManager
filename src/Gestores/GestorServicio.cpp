@@ -34,7 +34,7 @@ void addServicio(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
     }
     Menu menu("Seleccione el area: ");
     for (int i = 0; i < areas->getSize(); i++) {
-        servicios->goToPos(i);
+        areas->goToPos(i);
         menu.addOption(areas->getElement()->getDescripcion()); //descripcion de las areas
     }
     menu.addOption("Cancelar");
@@ -68,14 +68,15 @@ void addServicio(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
 
 void delServicio(OrderedArrayList<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
-        cout << "No hay servicios para eliminar." << endl;
+        cout << "No hay servicios disponibles." << endl;
         pause();
         return;
     }
     Menu menu("== Eliminar servicio ==");
+    
     for (int i = 0; i < servicios->getSize(); i++) {
         servicios->goToPos(i);
-        menu.addOption(servicios->getElement()->getDescripcion()); //descripcion de las areas
+        menu.addOption(servicios->getElement()->getDescripcion());
     }
     menu.addOption("Cancelar");
 
@@ -128,14 +129,40 @@ void reordenarServicios(OrderedArrayList<Servicio*>* servicios, List<Area*>* are
         * 
         */
 
-        //cout << "Servicio agregado exitosamente.\n";
+        //cout << "Prioridad modificada exitosamente.\n";
         pause();
 
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
 void displayInfoServicios(OrderedArrayList<Servicio*>* servicios) {
-    //implementar?? idk no es tan importante solo serviria para pruebas
+    if (servicios->getSize() == 0) {
+        cout << "No hay servicios para reordenarr." << endl;
+        pause();
+        return;
+    }
+    Menu menu("== Consultar informacion servicios ==");
+    for (int i = 0; i < servicios->getSize(); i++) {
+        servicios->goToPos(i);
+        menu.addOption(servicios->getElement()->getDescripcion());
+    }
+    menu.addOption("Cancelar");
+
+    int selection;
+    do {
+        menu.display();
+        selection = menu.getSelection();
+
+        if (selection == servicios->getSize() + 1) {
+            cout << "Operación cancelada.\n";
+            return;
+        }
+
+        servicios->goToPos(selection - 1);
+        cout << servicios->getElement()->getDescripcion() << " Prioridad: " << servicios->getElement()->getPrioridad() << " Area: " << servicios->getElement()->getArea()->getDescripcion()<<endl;
+        pause();
+
+    } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
 void showServicioMenu(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
