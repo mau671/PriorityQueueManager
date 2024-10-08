@@ -15,11 +15,11 @@
 
 using std::string;
 
-void addServicio(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas);
-void delServicio(OrderedArrayList<Servicio*>* servicios);
-void reordenarServicios(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas);
-void displayInfoServicios(OrderedArrayList<Servicio*>* servicios);
-void showServicioMenu(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas);
+void addServicio(ArrayList<Servicio*>* servicios, List<Area*>* areas);
+void delServicio(ArrayList<Servicio*>* servicios);
+void reordenarServicios(ArrayList<Servicio*>* servicios, List<Area*>* areas);
+void displayInfoServicios(ArrayList<Servicio*>* servicios);
+void showServicioMenu(ArrayList<Servicio*>* servicios, List<Area*>* areas);
 
 
 #endif
