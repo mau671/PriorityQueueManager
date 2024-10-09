@@ -9,7 +9,7 @@
 #include <string>
 #include <stdexcept>
 #include "UI/Menu.h"
-#include "Estructuras/Concretas/ArrayList.h"
+#include "Estructuras/Abstractas/List.h"
 #include "Modelos/Area.h"
 #include "Utilidades/utils.h"
 #include "Modelos/Servicio.h"
@@ -23,7 +23,7 @@ using std::string;
 
 // Función para agregar una nueva área
 
-void addArea(ArrayList<Area*>* areas) {
+void addArea(List<Area*>* areas) {
     string descripcion;
     string codigo;
     int cantVentanillas;
@@ -43,7 +43,7 @@ void addArea(ArrayList<Area*>* areas) {
 }
 
 // Función para modificar la cantidad de ventanillas de un área existente
-void modifyVentanillas(ArrayList<Area*>* areas) {
+void modifyVentanillas(List<Area*>* areas) {
     if (areas->getSize() == 0) {
         cout << "No hay areas para modificar." << endl;
         pause();

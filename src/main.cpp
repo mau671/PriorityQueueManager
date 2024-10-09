@@ -24,6 +24,8 @@
 // Modelos
 #include "Modelos/TipoUsuario.h"
 #include "Modelos/Area.h"
+#include "Modelos/Servicio.h"
+#include "Modelos/Tiquete.h"
 
 // Estructuras de datos
 #include "Estructuras/Concretas/OrderedArrayList.h"
@@ -38,7 +40,7 @@ void showQueueStatusMenu() {
 }
 
 // Función para mostrar el submenú de tiquetes
-void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, ArrayList<Servicio*>* servicios, ArrayList<Area*>* areas) {
+void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<Servicio*>* servicios, List<Area*>* areas) {
     Menu ticketMenu("== Menú de Tiquetes ==");
     ticketMenu.addOption("Seleccionar tipo de cliente y servicio");
     ticketMenu.addOption("Regresar");
@@ -115,6 +117,7 @@ int main() {
     List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>();  // Crear OrderedArrayList para tipos de usuario
     List<Area*>* areas = new ArrayList<Area*>();                          // Crear ArrayList para áreas
     List<Servicio*>* servicios = new ArrayList<Servicio*>();
+    MinHeap<Tiquete*>* tiquetes = new MinHeap<Tiquete*>(100); // Crear MinHeap para tiquetes
 
     Menu mainMenu("== Menú Principal ==");
     mainMenu.addOption("Estado de las colas");
