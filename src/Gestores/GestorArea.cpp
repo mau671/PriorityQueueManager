@@ -116,19 +116,11 @@ void deleteArea(List<Area*>* areas, ArrayList<Servicio*>* servicios) {
             cout << endl;
         }
 
-        string input;
-        while (true) {
-            cout << "Esta seguro de que desea continuar?" << "(s / n)";
-            getline(cin, input);
-
-            if (input == "s" || input == "S") {
-                break;
-            }
-            else if (input == "n" || input == "N") {
-                cout << "Operación cancelada.\n";
-                return;
-            }
-            cout << "Respuesta no válida. Intente nuevamente.\n";
+        bool input = readConfirmation("Esta seguro de que desea continuar?");
+        if (input == false) {
+            cout << "Operacion cancelada";
+            pause();
+            return;
         }
 
         areas->goToPos(selection - 1);
