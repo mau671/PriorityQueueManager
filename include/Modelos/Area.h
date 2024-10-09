@@ -31,7 +31,7 @@ private:
 	string codigo; //inicio del nombre de las ventanillas
 	string descripcion;
 	int nVentanillas = 0;
-	HeapPriorityQueue<Tiquete*>* tiquetes;
+	MinHeap<Tiquete*>* tiquetes;
 	ArrayList<Tiquete*>* tiquetesAtendidos = nullptr;
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
 
@@ -51,7 +51,7 @@ public:
 			ventanillas->append(new Ventanilla(""+codigo+ std::to_string(i+1)));
 			}
 
-		tiquetes = new HeapPriorityQueue<Tiquete*>();
+		tiquetes = new MinHeap<Tiquete*>();
 		tiquetesAtendidos = new ArrayList<Tiquete*>;
 	}
 	~Area() {
@@ -113,7 +113,7 @@ public:
 
 	//add
 	void addTiquete(Tiquete* tiquete, int prioridad) {
-		tiquetes->insert(tiquete, prioridad);
+		tiquetes->insert(tiquete);
 	}
 
 	//del
@@ -122,7 +122,7 @@ public:
 		for (int i = 0; i <= nVentanillas; i++) {
 			ventanillas->goToPos(i);
 			if (ventanillas->getElement()->isOcupada() == false) {
-				ventanillas->getElement()->setTiquete(tiquetes->removeMin());
+				ventanillas->getElement()->setTiquete(tiquetes->removeFirst());
 				cout<< "La ventanilla " << ventanillas->getElement()->getDescripcion() << " esta atendiendo al tiquete " << ventanillas->getElement()->getTiquete() <<endl;
 				return ventanillas->getElement()->getTiquete();
 			}
