@@ -40,11 +40,8 @@ void showQueueStatusMenu() {
 }
 
 // Función para mostrar el submenú de tiquetes
-<<<<<<< Updated upstream
-void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<Servicio*>* servicios, List<Area*>* areas) {
-=======
+
 void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
->>>>>>> Stashed changes
     Menu ticketMenu("== Menú de Tiquetes ==");
     ticketMenu.addOption("Seleccionar tipo de cliente y servicio");
     ticketMenu.addOption("Regresar");
@@ -140,7 +137,7 @@ int main() {
             break;
         case 2:
             std::cout << "Tiquetes seleccionada.\n\n";
-            showTiquetesMenu(tiquetes, userTypes, servicios);
+            showTiquetesMenu(tiquetes, tiposDeUsuarios, servicios);
             pause();
             break;
         case 3:
