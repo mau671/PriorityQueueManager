@@ -25,14 +25,14 @@ void Menu::addOption(const string& option) {
     options.append(option); // Almacenar opciones usando ArrayList
 }
 
-void Menu::display() {
+void Menu::display(const string& message) {
     clearConsole(); // Limpiar la consola
     cout << title << "\n";
     for (int i = 0; i < options.getSize(); i++) {
         options.goToPos(i); // Mover el cursor a la posición actual
         cout << i + 1 << ". " << options.getElement() << "\n"; // Mostrar opción
     }
-    cout << "Seleccione una opción: ";
+    cout << message; // Mostrar mensaje de selección
 }
 
 int Menu::getSelection() {

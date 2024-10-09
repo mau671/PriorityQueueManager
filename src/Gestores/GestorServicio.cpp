@@ -2,7 +2,7 @@
  * Archivo: GestorServicio.cpp
  * Descripción:
  *
- * Autor(es): Lun Valverde
+ * Autor(es): Lun Valverde, Mauricio González
  */
 
 #include <iostream>
@@ -116,7 +116,7 @@ void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
 
     int selection;
     do {
-        menu.display();
+        menu.display("Seleccione el servicio a reordenar: ");
         selection = menu.getSelection();
 
         if (selection == servicios->getSize() + 1) {
@@ -124,15 +124,13 @@ void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
             return;
         }
 
-        /* 
-        * 
-        * 
-        *  reordenamiento aqui
-        * 
-        * 
-        */
+        // Solicitar la posicion de destino
+        int newPos = readInt("Ingrese la nueva posición del servicio: ", servicios->getSize());
 
-        //cout << "Prioridad modificada exitosamente.\n";
+        // Reordenar el servicio
+        servicios->swap(selection - 1, newPos - 1);
+
+        cout << "Servicio reordenado exitosamente.\n";
         pause();
 
     } while (selection < 1 || selection > servicios->getSize() + 1);
