@@ -83,7 +83,7 @@ void showAtenderMenu() {
 	// Implementar lógica aquí
 }
 
-void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, ArrayList<Servicio*>* servicios ) {
+void showAdminMenu(List<TipoUsuario*>* userTypes, ArrayList<Area*>* areas, ArrayList<Servicio*>* servicios ) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
