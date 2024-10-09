@@ -130,6 +130,19 @@ public:
 		cout << "No se encontro ninguna ventanilla disponible";
 		return nullptr;
 	}
-
+	friend ostream& operator<<(ostream& os, const Area& area) {
+		os << "Area: " << area.descripcion << "\nCodigo: " << area.codigo << "\nNumero de ventanillas: " << area.nVentanillas << "\nVentanillas: ";
+		for (int i = 0; i < area.nVentanillas; i++) {
+			area.ventanillas->goToPos(i);
+			os << area.ventanillas->getElement()->getDescripcion();
+			if (i != area.nVentanillas - 1) {
+				os << ", ";
+			}
+		}
+		os << "\n";
+		os << "Tiquetes: ";
+		area.tiquetes->print();
+		return os;
+	}
 };
 

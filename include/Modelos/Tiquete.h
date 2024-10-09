@@ -69,4 +69,13 @@ public:
 	bool operator ==(const Tiquete& other) {
 		return this->prioridad == other.prioridad;
 	}
+
+	friend ostream& operator <<(ostream& os, const Tiquete& tiquete) {
+		os << "Código: " << tiquete.codigo << endl;
+		os << "Hora: " << tiquete.hora << endl;
+		os << "Prioridad: " << tiquete.prioridad << endl;
+		os << "Servicio: " << tiquete.servicio->getDescripcion() << endl;
+		os << "Usuario: " << tiquete.usuario->getDescripcion() << endl;
+		return os;
+	}
 };

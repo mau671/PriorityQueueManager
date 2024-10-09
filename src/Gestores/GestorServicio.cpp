@@ -21,6 +21,8 @@ using std::string;
 using std::cout;
 using std::endl;
 using std::cin;
+using std::to_string;
+using std::stringstream;
 
 
 void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
@@ -99,42 +101,92 @@ void delServicio(List<Servicio*>* servicios) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
+void reordenarServicios(List<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
-        cout << "No hay servicios para reordenarr." << endl;
+        cout << "No hay servicios para reordenar." << endl;
         pause();
         return;
     }
-    Menu menu("== Reordenar servicios ==");
+
+    // Mostrar el orden actual de los servicios
+    cout << "Orden actual:\n";
     for (int i = 0; i < servicios->getSize(); i++) {
         servicios->goToPos(i);
-        menu.addOption(servicios->getElement()->getDescripcion()); //descripcion de las areas
+        cout << i + 1 << ". " << servicios->getElement()->getDescripcion() << endl;
     }
-    menu.addOption("Cancelar");
 
-    int selection;
-    do {
-        menu.display();
-        selection = menu.getSelection();
+    // Solicitar el nuevo orden al usuario
+    cout << "Ingrese el nuevo orden (separado por comas, por ejemplo: 3,1,2): ";
+    string nuevoOrden;
+    cin.ignore();  // Limpiar cualquier entrada previa en el buffer
+    std::getline(cin, nuevoOrden);
 
-        if (selection == servicios->getSize() + 1) {
-            cout << "Operación cancelada.\n";
+    // Procesar el input y convertirlo en una lista de índices (sin usar std::getline con delimitador)
+    int numServicios = servicios->getSize();
+    int* nuevoOrdenIndices = new int[numServicios];  // Crear un array para almacenar los nuevos índices
+    int count = 0;
+    size_t start = 0;
+    size_t end = nuevoOrden.find(',');
+
+    while (end != string::npos) {
+        // Convertir el substring entre comas a entero
+        int index = std::stoi(nuevoOrden.substr(start, end - start)) - 1;
+        if (index >= 0 && index < numServicios) {
+            nuevoOrdenIndices[count++] = index;
+        }
+        else {
+            cout << "Índice fuera de rango. Operación cancelada.\n";
+            delete[] nuevoOrdenIndices;  // Liberar memoria
+            pause();
             return;
         }
+        // Mover al siguiente token
+        start = end + 1;
+        end = nuevoOrden.find(',', start);
+    }
 
-        /* 
-        * 
-        * 
-        *  reordenamiento aqui
-        * 
-        * 
-        */
-
-        //cout << "Prioridad modificada exitosamente.\n";
+    // Procesar el último token
+    int index = std::stoi(nuevoOrden.substr(start)) - 1;
+    if (index >= 0 && index < numServicios) {
+        nuevoOrdenIndices[count++] = index;
+    }
+    else {
+        cout << "Índice fuera de rango. Operación cancelada.\n";
+        delete[] nuevoOrdenIndices;  // Liberar memoria
         pause();
+        return;
+    }
 
-    } while (selection < 1 || selection > servicios->getSize() + 1);
+    // Verificación de la cantidad de elementos
+    if (count != numServicios) {
+        cout << "El número de elementos ingresados no coincide con la cantidad de servicios. Operación cancelada.\n";
+        delete[] nuevoOrdenIndices;  // Liberar memoria
+        pause();
+        return;
+    }
+
+    // Crear un nuevo ArrayList temporal para almacenar los servicios en el nuevo orden
+    ArrayList<Servicio*>* nuevoOrdenServicios = new ArrayList<Servicio*>(numServicios);
+    for (int i = 0; i < numServicios; i++) {
+        servicios->goToPos(nuevoOrdenIndices[i]);
+        nuevoOrdenServicios->append(servicios->getElement());
+    }
+
+    // Limpiar la lista original y reasignar el nuevo orden desde el ArrayList temporal
+    servicios->clear();
+    for (int i = 0; i < nuevoOrdenServicios->getSize(); i++) {
+        nuevoOrdenServicios->goToPos(i);
+        servicios->append(nuevoOrdenServicios->getElement());
+    }
+
+    // Liberar la memoria del array de índices y el ArrayList temporal
+    delete[] nuevoOrdenIndices;
+    delete nuevoOrdenServicios;
+
+    cout << "Servicios reordenados exitosamente.\n";
+    pause();
 }
+
 
 void displayInfoServicios(List<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
@@ -187,7 +239,7 @@ void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas) {
             delServicio(servicios);
             break;
         case 3:
-            reordenarServicios(servicios, areas);
+            reordenarServicios(servicios);
             break;
         case 4:
             displayInfoServicios(servicios);
