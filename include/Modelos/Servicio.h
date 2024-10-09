@@ -46,5 +46,39 @@ public:
     Area* getArea() {
         return area;
     }
+
+    void setArea(Area* area) {
+		this->area = area;
+	}
+
+    bool operator<(const Servicio& otro) const {
+		return this->prioridad < otro.prioridad;
+	}
+
+	bool operator>(const Servicio& otro) const {
+		return this->prioridad > otro.prioridad;
+	}
+
+	bool operator==(const Servicio& otro) const {
+		return this->prioridad == otro.prioridad;
+	}
+
+	bool operator!=(const Servicio& otro) const {
+		return this->prioridad != otro.prioridad;
+	}
+
+	bool operator<=(const Servicio& otro) const {
+		return this->prioridad <= otro.prioridad;
+	}
+
+	bool operator>=(const Servicio& otro) const {
+		return this->prioridad >= otro.prioridad;
+	}
+
+    friend std::ostream& operator<<(std::ostream& os, const Servicio& servicio) {
+		os << "Descripción: " << servicio.descripcion << std::endl;
+		os << "Prioridad: " << servicio.prioridad << std::endl;
+		return os;
+	}
 };
 

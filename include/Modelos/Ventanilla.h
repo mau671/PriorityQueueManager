@@ -62,5 +62,28 @@ public:
 		throw runtime_error("La ventanilla no está atendiendo a ningún tiquete.");
 	}
 
+	void liberar() {
+		delete tiquete;
+		tiquete = nullptr;
+		ocupada = false;
+	}
+
+	bool operator==(const Ventanilla& otro) const {
+		return this->descripcion == otro.descripcion;
+	}
+
+	bool operator!=(const Ventanilla& otro) const {
+		return !(*this == otro);
+	}
+
+	friend std::ostream& operator<<(std::ostream& os, const Ventanilla& ventanilla) {
+		os << "Descripción: " << ventanilla.descripcion << std::endl;
+		os << "Ocupada: " << ventanilla.ocupada << std::endl;
+		if (ventanilla.ocupada) {
+			os << "Tiquete: " << ventanilla.tiquete->getCodigo() << std::endl;
+		}
+		return os;
+	}
+
 };
 
