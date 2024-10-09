@@ -77,7 +77,7 @@ void addTiquete(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<
     string horaSolicitud = obtenerHoraActual();
     string codigoArea = servicioSeleccionado->getArea()->getCodigo();
     Tiquete* nuevoTiquete = new Tiquete(horaSolicitud, servicioSeleccionado, usuarioSeleccionado, codigoArea, consecutivoGlobal);
-    servicioSeleccionado->getArea()->addTiquete(nuevoTiquete, nuevoTiquete->getPrioridad());
+    servicioSeleccionado->getArea()->addTiquete(nuevoTiquete);//agregar el tiquete a la lista del area
     // Aumentar el consecutivo global
     consecutivoGlobal++;
 

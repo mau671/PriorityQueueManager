@@ -64,7 +64,7 @@ void showAtenderMenu() {
 	// Implementar lógica aquí
 }
 
-void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servicio*>* servicios ) {
+void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
@@ -82,11 +82,11 @@ void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servi
             break;
         case 2:
             std::cout << "Áreas seleccionada.\n";
-            showAreaMenu(areas, servicios);
+            showAreaMenu(areas, servicios, tiquetes);
             break;
         case 3:
             std::cout << "Servicios disponibles seleccionada.\n";
-            showServicioMenu(servicios, areas);
+            showServicioMenu(servicios, areas,tiquetes);
             break;
         case 4:
             std::cout << "Limpiar colas y estadísticas seleccionada.\n";
@@ -142,7 +142,7 @@ int main() {
             pause();
             break;
         case 4:
-            showAdminMenu(tiposDeUsuarios, areas, servicios);// Pasar la lista de tipos de usuario
+            showAdminMenu(tiposDeUsuarios, areas, servicios, tiquetes);// Pasar la lista de tipos de usuario
             break;
         case 5:
             std::cout << "Estadísticas del sistema seleccionada.\n\n";

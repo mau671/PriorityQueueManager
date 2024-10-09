@@ -80,7 +80,7 @@ void modifyVentanillas(List<Area*>* areas) {
 }
 
 // Función para eliminar un área y sus ventanillas asociadas
-void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
+void deleteArea(List<Area*>* areas, List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
     if (areas->getSize() == 0) {
         cout << "No hay areas para eliminar." << endl;
         pause();
@@ -123,17 +123,29 @@ void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
             return;
         }
 
-        areas->goToPos(selection - 1);
-        for (int i = servicios->getSize() - 1; i >= 0; i--) {
-            servicios->goToPos(i);
-            if (servicios->getElement()->getArea() == areas->getElement()) {
-                delete servicios->getElement();
-                servicios->remove();
+
+        areas->goToPos(selection - 1);//va al area seeccionada
+        if (tiquetes->isEmpty()) {
+            for (int i = servicios->getSize() - 1; i >= 0; i--) {//va uno por uno en la lista de servicios
+                servicios->goToPos(i);
+                delete servicios->remove();
+            }
+        }
+        else {
+            for (int i = servicios->getSize() - 1; i >= 0; i--) {//va uno por uno en la lista de servicios
+                servicios->goToPos(i);
+                if (servicios->getElement()->getArea() == areas->getElement()) {//si el area del servicio coincide con el area seleccionada, se elimina
+                    for (int e = tiquetes->getSize() - 1; e >= 0; e--) {//cuando se encuentra un area, se busca en la cola los tiquetes con esa area
+                        if (tiquetes->get(i)->getServicio() == servicios->getElement()) delete tiquetes->remove(e);//se elimina el tiquete si tiene el servicio
+                    }
+                    delete servicios->remove();
+                }
             }
         }
         delete areas->getElement(); // Liberar la memoria del objeto eliminado
         cout << "Area eliminada exitosamente.\n";
         areas->remove();
+
     } while (selection < 1 || selection > areas->getSize() + 1);
 }
 
@@ -170,7 +182,7 @@ void displayInfoArea(List<Area*>* areas) {
 }
 
 // Función para mostrar el menú de áreas
-void showAreaMenu(List<Area*>* areas, List<Servicio*>* servicios) {
+void showAreaMenu(List<Area*>* areas, List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
     Menu menu("== Menú de Áreas ==");
     menu.addOption("Agregar Área"); 
     menu.addOption("Modificar Ventanillas");
@@ -191,7 +203,7 @@ void showAreaMenu(List<Area*>* areas, List<Servicio*>* servicios) {
             modifyVentanillas(areas);
             break;
         case 3:
-            deleteArea(areas, servicios);
+            deleteArea(areas, servicios, tiquetes);
             break;
         case 4:
             displayInfoArea(areas);
