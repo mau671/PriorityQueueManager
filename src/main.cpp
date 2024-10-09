@@ -17,7 +17,7 @@
 
 // Gestores
 #include "Gestores/GestorArea.h"
-//#include "Gestores/GestorTiquete.h"
+#include "Gestores/GestorTiquete.h"
 #include "Gestores/GestorTipoUsuario.h"
 #include "Gestores/GestorServicio.h"
 
@@ -40,7 +40,11 @@ void showQueueStatusMenu() {
 }
 
 // Función para mostrar el submenú de tiquetes
+<<<<<<< Updated upstream
 void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<Servicio*>* servicios, List<Area*>* areas) {
+=======
+void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
+>>>>>>> Stashed changes
     Menu ticketMenu("== Menú de Tiquetes ==");
     ticketMenu.addOption("Seleccionar tipo de cliente y servicio");
     ticketMenu.addOption("Regresar");
@@ -50,10 +54,7 @@ void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<Servicio*>* servicios, L
         int choice = ticketMenu.getSelection();
         switch (choice) {
         case 1:
-            cout << "Seleccionar tipo de cliente y servicio.\n\n";
-            // Implementar lógica aquí 
-            
-            
+            addTiquete(tiquetes, usuarios, servicios);
             pause();
             break;
         case 2:
@@ -139,7 +140,7 @@ int main() {
             break;
         case 2:
             std::cout << "Tiquetes seleccionada.\n\n";
-            showTiquetesMenu(tiquetes, servicios, areas);
+            showTiquetesMenu(tiquetes, userTypes, servicios);
             pause();
             break;
         case 3:
