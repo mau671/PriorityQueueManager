@@ -18,8 +18,8 @@ using std::string;
 // Declaraciones de las funciones para la gestión de áreas
 void addArea(List<Area*>* areas);
 void modifyVentanillas(List<Area*>* areas);
-void deleteArea(List<Area*>* areas, OrderedArrayList<Servicio*>* servicios);
-void showAreaMenu(List<Area*>* areas, OrderedArrayList<Servicio*>* servicios);
+void deleteArea(List<Area*>* areas, List<Servicio*>* servicios);
+void showAreaMenu(List<Area*>* areas, List<Servicio*>* servicios);
 void displayInfoArea(List<Area*>* areas);
 
 

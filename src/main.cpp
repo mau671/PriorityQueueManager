@@ -32,15 +32,6 @@
 #include "Utilidades/utils.h"
 
 
- // Inicializa la lista de tipos de usuario como una lista de punteros
-void inicializateDataUsuario(List<TipoUsuario*>*& userTypes) {
-    userTypes = new OrderedArrayList<TipoUsuario*>();
-}
-
-void initializeDataArea(List<Area*>*& areas) {
-    areas = new ArrayList<Area*>;
-}
-
 void showQueueStatusMenu() {
 	std::cout << "== Estado de las colas ==\n";
     //Areas, cantidad de ventanillas por area, mostar ventanillas y su ultimo tiquete atendido, codigo de cada tiquete
@@ -74,7 +65,7 @@ void showAtenderMenu() {
 	// Implementar lógica aquí
 }
 
-void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, OrderedArrayList<Servicio*>* servicios ) {
+void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servicio*>* servicios ) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
@@ -121,11 +112,9 @@ int main() {
     setlocale(LC_ALL, "spanish");
 
     // Inicializar la lista de tipos de usuario
-    List<TipoUsuario*>* userTypes;
-    inicializateDataUsuario(userTypes);
-    List<Area*>* areas;
-    initializeDataArea(areas);
-    OrderedArrayList<Servicio*>* servicios = new OrderedArrayList<Servicio*>();
+    List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>();  // Crear OrderedArrayList para tipos de usuario
+    List<Area*>* areas = new ArrayList<Area*>();                          // Crear ArrayList para áreas
+    List<Servicio*>* servicios = new ArrayList<Servicio*>();
 
     Menu mainMenu("== Menú Principal ==");
     mainMenu.addOption("Estado de las colas");
@@ -156,7 +145,7 @@ int main() {
             pause();
             break;
         case 4:
-            showAdminMenu(userTypes, areas, servicios);// Pasar la lista de tipos de usuario
+            showAdminMenu(tiposDeUsuarios, areas, servicios);// Pasar la lista de tipos de usuario
             break;
         case 5:
             std::cout << "Estadísticas del sistema seleccionada.\n\n";
@@ -165,20 +154,20 @@ int main() {
             break;
         case 6:
             // Hacer print de cada tipo de usuario en la lista
-            for (int i = 0; i < userTypes->getSize(); i++) {
-                userTypes->goToPos(i);
-                std::cout << *(userTypes->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
+            for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
+                tiposDeUsuarios->goToPos(i);
+                std::cout << *(tiposDeUsuarios->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
             }
             pause();
             break;
         case 7:
             std::cout << "Saliendo del programa...\n";
             // Liberar la memoria de todos los punteros en la lista
-            for (int i = 0; i < userTypes->getSize(); i++) {
-                userTypes->goToPos(i);
-                delete userTypes->getElement(); // Eliminar el objeto apuntado
+            for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
+                tiposDeUsuarios->goToPos(i);
+                delete tiposDeUsuarios->getElement(); // Eliminar el objeto apuntado
             }
-            delete userTypes;  // Limpiar la lista al salir
+            delete tiposDeUsuarios;  // Limpiar la lista al salir
             return 0;
         }
     }

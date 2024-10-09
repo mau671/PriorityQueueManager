@@ -80,7 +80,7 @@ void modifyVentanillas(List<Area*>* areas) {
 }
 
 // Función para eliminar un área y sus ventanillas asociadas
-void deleteArea(List<Area*>* areas, OrderedArrayList<Servicio*>* servicios) {
+void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
     if (areas->getSize() == 0) {
         cout << "No hay areas para eliminar." << endl;
         pause();
@@ -178,7 +178,7 @@ void displayInfoArea(List<Area*>* areas) {
 }
 
 // Función para mostrar el menú de áreas
-void showAreaMenu(List<Area*>* areas, OrderedArrayList<Servicio*>* servicios) {
+void showAreaMenu(List<Area*>* areas, List<Servicio*>* servicios) {
     Menu menu("== Menú de Áreas ==");
     menu.addOption("Agregar Área"); 
     menu.addOption("Modificar Ventanillas");

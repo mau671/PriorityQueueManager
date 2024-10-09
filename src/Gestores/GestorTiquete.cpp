@@ -1,5 +1,5 @@
 /*
- * Archivo: tiquete.cpp
+ * Archivo: GestorTiquete.cpp
  * Descripción: Este archivo contiene la implementación de las funciones para la creación y gestión de tiquetes.
  *
  * Autor(es): Josué Meza

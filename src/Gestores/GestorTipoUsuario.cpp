@@ -60,6 +60,12 @@ void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
             return;
         }
 
+        bool confirmacion = readConfirmation("¿Está seguro que desea eliminar este tipo de usuario?");
+        if (!confirmacion) {
+			cout << "Operación cancelada.\n";
+			return;
+		}
+
         userTypes->goToPos(selection - 1);
         delete userTypes->getElement(); // Liberar la memoria del objeto eliminado
         cout << "Tipo de usuario eliminado.\n";

@@ -1,5 +1,5 @@
 /*
- * Archivo: GestorArea.cpp
+ * Archivo: GestorServicio.cpp
  * Descripción:
  *
  * Autor(es): Lun Valverde
@@ -10,6 +10,7 @@
 #include <stdexcept>
 #include "UI/Menu.h"
 #include "Estructuras/Concretas/ArrayList.h"
+#include "Estructuras/Abstractas/List.h"
 #include "Modelos/Area.h"
 #include "Utilidades/utils.h"
 #include "Modelos/Servicio.h"
@@ -22,7 +23,7 @@ using std::endl;
 using std::cin;
 
 
-void addServicio(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
+void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
     string descripcion;
     int prioridad;
     Area* area;
@@ -66,7 +67,7 @@ void addServicio(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void delServicio(OrderedArrayList<Servicio*>* servicios) {
+void delServicio(List<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios disponibles." << endl;
         pause();
@@ -98,7 +99,7 @@ void delServicio(OrderedArrayList<Servicio*>* servicios) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void reordenarServicios(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
+void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios para reordenarr." << endl;
         pause();
@@ -135,7 +136,7 @@ void reordenarServicios(OrderedArrayList<Servicio*>* servicios, List<Area*>* are
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void displayInfoServicios(OrderedArrayList<Servicio*>* servicios) {
+void displayInfoServicios(List<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios para reordenarr." << endl;
         pause();
@@ -165,7 +166,7 @@ void displayInfoServicios(OrderedArrayList<Servicio*>* servicios) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void showServicioMenu(OrderedArrayList<Servicio*>* servicios, List<Area*>* areas) {
+void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas) {
     Menu menu("== Menú de servicios ==");
     menu.addOption("Agregar");
     menu.addOption("Eliminar");
