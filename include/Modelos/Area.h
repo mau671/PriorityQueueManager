@@ -55,9 +55,15 @@ public:
 		tiquetesAtendidos = new ArrayList<Tiquete*>;
 	}
 	~Area() {
+		while (ventanillas->getSize()!=0) {
+			delete ventanillas->remove();
+		}
 		delete ventanillas;
-		delete tiquetes;
+		while (tiquetesAtendidos->getSize() != 0) {
+			delete tiquetesAtendidos->remove();
+		}
 		delete tiquetesAtendidos;
+		delete tiquetes;
 	} 
 
 	//setters y getters codigo, descripcion y ventanillas
@@ -112,7 +118,7 @@ public:
 	}
 
 	//add
-	void addTiquete(Tiquete* tiquete, int prioridad) {
+	void addTiquete(Tiquete* tiquete) {
 		tiquetes->insert(tiquete);
 	}
 

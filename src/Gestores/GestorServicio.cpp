@@ -67,7 +67,7 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void delServicio(List<Servicio*>* servicios) {
+void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios disponibles." << endl;
         pause();
@@ -92,9 +92,11 @@ void delServicio(List<Servicio*>* servicios) {
         }
 
         servicios->goToPos(selection - 1);
-        delete servicios->getElement(); // Liberar la memoria del objeto eliminado
+        for (int e = tiquetes->getSize() - 1; e >= 0; e--) {//se busca en la cola los tiquetes, los que tengan el area del servicio
+            if (tiquetes->get(e)->getServicio() == servicios->getElement()) delete tiquetes->remove(e);//se elimina el tiquete si tiene el servicio
+        }
+        delete servicios->remove(); // Liberar la memoria del objeto eliminado
         cout << "Servicio eliminado eliminado.\n";
-        servicios->remove();
         pause();
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
@@ -166,7 +168,7 @@ void displayInfoServicios(List<Servicio*>* servicios) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
-void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas) {
+void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas, MinHeap<Tiquete*>* tiquetes) {
     Menu menu("== Menú de servicios ==");
     menu.addOption("Agregar");
     menu.addOption("Eliminar");
@@ -184,7 +186,7 @@ void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas) {
             addServicio(servicios, areas);
             break;
         case 2:
-            delServicio(servicios);
+            delServicio(servicios, tiquetes);
             break;
         case 3:
             reordenarServicios(servicios, areas);

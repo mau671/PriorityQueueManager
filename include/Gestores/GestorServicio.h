@@ -16,10 +16,10 @@
 using std::string;
 
 void addServicio(List<Servicio*>* servicios, List<Area*>* areas);
-void delServicio(List<Servicio*>* servicios);
+void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes);
 void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas);
 void displayInfoServicios(List<Servicio*>* servicios);
-void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas);
+void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas, MinHeap<Tiquete*>* tiquetes);
 
 
 #endif
