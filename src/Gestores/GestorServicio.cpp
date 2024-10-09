@@ -193,8 +193,7 @@ void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas) {
             displayInfoServicios(servicios);
             break;
         case 5:
-            cout << "Regresando al menú de administración...\n";
-            break;
+            return;
         default:
             cout << "Opción inválida. Intente de nuevo.\n";
         }

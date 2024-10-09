@@ -44,7 +44,7 @@ string obtenerHoraActual() {
 void addTiquete(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
     // Tipos de usuario
     if (usuarios->getSize() == 0) {
-        cout << "No hay usuarios disponibles para crear un tiquete." << endl;
+        cout << "No hay tipos de usuarios disponibles para crear un tiquete." << endl;
         return;
     }
     if (servicios->getSize() == 0) {
