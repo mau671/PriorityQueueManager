@@ -23,7 +23,7 @@ using std::string;
 
 // Función para agregar una nueva área
 
-void addArea(List<Area*>* areas) {
+void addArea(ArrayList<Area*>* areas) {
     string descripcion;
     string codigo;
     int cantVentanillas;
@@ -43,7 +43,7 @@ void addArea(List<Area*>* areas) {
 }
 
 // Función para modificar la cantidad de ventanillas de un área existente
-void modifyVentanillas(List<Area*>* areas) {
+void modifyVentanillas(ArrayList<Area*>* areas) {
     if (areas->getSize() == 0) {
         cout << "No hay areas para modificar." << endl;
         pause();
@@ -116,19 +116,11 @@ void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
             cout << endl;
         }
 
-        string input;
-        while (true) {
-            cout << "Esta seguro de que desea continuar?" << "(s / n)";
-            getline(cin, input);
-
-            if (input == "s" || input == "S") {
-                break;
-            }
-            else if (input == "n" || input == "N") {
-                cout << "Operación cancelada.\n";
-                return;
-            }
-            cout << "Respuesta no válida. Intente nuevamente.\n";
+        bool input = readConfirmation("Esta seguro de que desea continuar?");
+        if (input == false) {
+            cout << "Operacion cancelada";
+            pause();
+            return;
         }
 
         areas->goToPos(selection - 1);

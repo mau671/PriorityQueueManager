@@ -38,7 +38,7 @@ void showQueueStatusMenu() {
 }
 
 // Función para mostrar el submenú de tiquetes
-void showTiquetesMenu() {
+void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, ArrayList<Servicio*>* servicios, ArrayList<Area*>* areas) {
     Menu ticketMenu("== Menú de Tiquetes ==");
     ticketMenu.addOption("Seleccionar tipo de cliente y servicio");
     ticketMenu.addOption("Regresar");
@@ -48,8 +48,8 @@ void showTiquetesMenu() {
         int choice = ticketMenu.getSelection();
         switch (choice) {
         case 1:
-            //std::cout << "Seleccionar tipo de cliente y servicio.\n\n";
-            // Implementar lógica aquí
+            cout << "Seleccionar tipo de cliente y servicio.\n\n";
+            // Implementar lógica aquí 
             
             
             pause();
@@ -136,7 +136,7 @@ int main() {
             break;
         case 2:
             std::cout << "Tiquetes seleccionada.\n\n";
-            showTiquetesMenu();
+            showTiquetesMenu(tiquetes, servicios, areas);
             pause();
             break;
         case 3:
@@ -173,5 +173,6 @@ int main() {
     }
     delete areas;
     delete servicios;
+    delete tiquetes;
     return 0;
 }
