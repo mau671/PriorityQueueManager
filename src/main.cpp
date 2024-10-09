@@ -52,7 +52,6 @@ void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios,
         switch (choice) {
         case 1:
             addTiquete(tiquetes, usuarios, servicios);
-            pause();
             break;
         case 2:
             return; // Salir de la función y destruir automáticamente ticketMenu
@@ -80,17 +79,14 @@ void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servi
         case 1:
             std::cout << "Tipos de usuario seleccionada.\n";
             showUserTypeMenu(userTypes); // Pasar la lista de tipos de usuario
-            pause();
             break;
         case 2:
             std::cout << "Áreas seleccionada.\n";
             showAreaMenu(areas, servicios);
-            pause();
             break;
         case 3:
             std::cout << "Servicios disponibles seleccionada.\n";
             showServicioMenu(servicios, areas);
-            pause();
             break;
         case 4:
             std::cout << "Limpiar colas y estadísticas seleccionada.\n";

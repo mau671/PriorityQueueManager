@@ -26,7 +26,7 @@ using std::cin;
 void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
     string descripcion;
     int prioridad;
-    Area* area;
+    Area* area = nullptr;
 
     if (areas->getSize() == 0) {
         cout << "No hay areas disponibles" << endl;
@@ -193,8 +193,7 @@ void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas) {
             displayInfoServicios(servicios);
             break;
         case 5:
-            cout << "Regresando al menú de administración...\n";
-            break;
+            return;
         default:
             cout << "Opción inválida. Intente de nuevo.\n";
         }

@@ -100,8 +100,7 @@ void showUserTypeMenu(List<TipoUsuario*>* userTypes) {
             displayAndRemoveUserType(userTypes);  // Pasar la lista de tipos de usuario
             break;
         case 3:
-            cout << "Saliendo del menú de tipos de usuario.\n";
-            break;
+            return;
         default:
             cout << "Opción inválida. Intente de nuevo.\n";
         }
