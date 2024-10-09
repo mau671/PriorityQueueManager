@@ -155,6 +155,11 @@ int main() {
                 tiposDeUsuarios->goToPos(i);
                 std::cout << *(tiposDeUsuarios->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
             }
+            // imprimir areas
+            for (int i = 0; i < areas->getSize(); i++) {
+				areas->goToPos(i);
+				std::cout << *(areas->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
+			}
             pause();
             break;
         case 7:
