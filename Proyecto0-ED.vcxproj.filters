@@ -92,5 +92,8 @@
     <ClInclude Include="include\Gestores\GestorServicio.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="include\Gestores\GestorTiquete.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

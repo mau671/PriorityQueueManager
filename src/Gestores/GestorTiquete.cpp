@@ -24,6 +24,7 @@ using std::stringstream;
 using std::setw;
 using std::setfill;
 
+
 int consecutivoGlobal = 100;
 
 //Hora actual en formato HH:MM:SS
@@ -40,8 +41,16 @@ string obtenerHoraActual() {
 
 
 // Crear un nuevo tiquete
-void crearTiquete(List<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
+void addTiquete(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
     // Tipos de usuario
+    if (usuarios->getSize() == 0) {
+        cout << "No hay usuarios disponibles para crear un tiquete." << endl;
+        return;
+    }
+    if (servicios->getSize() == 0) {
+        cout << "No hay servicios disponibles para crear un tiquete." << endl;
+        return;
+    }
     Menu menuUsuarios("== Seleccione su tipo de usuario ==");
     for (int i = 0; i < usuarios->getSize(); i++) {
         usuarios->goToPos(i);
@@ -73,7 +82,7 @@ void crearTiquete(List<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<S
     consecutivoGlobal++;
 
     // Agregar el tiquete a la lista
-    tiquetes->append(nuevoTiquete);
+    tiquetes->insert(nuevoTiquete);
 
     // Mostrar el código y los detalles del tiquete generado
     cout << "Tiquete generado exitosamente.\n";

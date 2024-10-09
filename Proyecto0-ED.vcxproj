@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="include\Gestores\GestorArea.h" />
     <ClInclude Include="include\Gestores\GestorServicio.h" />
+    <ClInclude Include="include\Gestores\GestorTiquete.h" />
     <ClInclude Include="include\Modelos\Area.h" />
     <ClInclude Include="include\Estructuras\Concretas\ArrayList.h" />
     <ClInclude Include="include\Estructuras\Concretas\HeapPriorityQueue.h" />
