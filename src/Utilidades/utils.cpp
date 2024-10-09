@@ -38,30 +38,21 @@ void pause() {
 	std::cin.get();
 }
 
-int readInt(const std::string& message, const int& max ) {
-    std::string input;
-    int value;
+int readInt(const std::string& message) {
+	std::string input;
+	int value;
 
-    while (true) {
-        std::cout << message;
-        std::getline(std::cin, input);
+	while (true) {
+		std::cout << message;
+		std::getline(std::cin, input);
 
-        try {
-            value = std::stoi(input);
+		try {
+			value = std::stoi(input);
+			break;
+		} catch (std::invalid_argument&) {
+			std::cout << "Valor no válido. Intente nuevamente.\n";
+		}
+	}
 
-            // Si max es mayor a 0, verifica que value sea positivo y que no exceda max
-            // Si max es 0, solo verifica que value sea mayor a 0
-            if (value > 0 && (max == 0 || value <= max)) {
-                break;
-            }
-            else {
-                std::cout << "Valor no válido. Intente nuevamente.\n";
-            }
-        }
-        catch (std::invalid_argument&) {
-            std::cout << "Valor no válido. Intente nuevamente.\n";
-        }
-    }
-
-    return value;
+	return value;
 }

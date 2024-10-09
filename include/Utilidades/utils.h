@@ -12,6 +12,6 @@
 void clearConsole();
 bool readConfirmation(const std::string& message);
 void pause();
-int readInt(const std::string& message, const int& max = 0);
+int readInt(const std::string& message);
 
 #endif

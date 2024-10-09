@@ -99,10 +99,6 @@ public:
         return data->contains(element);
     }
 
-    void swap(int i, int j) {
-		data->swap(i, j);
-	}
-
     // Imprime la lista
     void print() {
         data->print();

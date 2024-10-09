@@ -22,6 +22,6 @@ private:
 public:
     Menu(const string& title);
     void addOption(const string& option);
-    void display(const string& message = "Seleccione una opción: ");
+    void display();
     int getSelection();
 };

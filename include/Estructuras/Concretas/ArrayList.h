@@ -136,18 +136,6 @@ public:
 		return indexOf(element, 0) != -1;
 	}
 
-	void swap(int posOrigen, int posDestino) {
-		// Verificar que las posiciones estén dentro de los límites
-		if (posOrigen < 0 || posOrigen >= size || posDestino < 0 || posDestino >= size) {
-			throw std::runtime_error("Index out of bounds.");
-		}
-
-		// Intercambiar los elementos
-		E temp = elements[posOrigen];
-		elements[posOrigen] = elements[posDestino];
-		elements[posDestino] = temp;
-	}
-
 	void print() {
 		cout << "[ ";
 		for (int i = 0; i < size; i++) {

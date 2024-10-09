@@ -36,7 +36,6 @@ public:
 	virtual void print() = 0;
 
 	// metodos adicionales
-	virtual void swap(int i, int j) = 0;
 	virtual int indexOf(E element, int start = 0) = 0;
 	virtual bool contains(E element) = 0;
 };
