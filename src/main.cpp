@@ -160,6 +160,13 @@ int main() {
 				areas->goToPos(i);
 				std::cout << *(areas->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
 			}
+
+            // imprimir servicios
+            for (int i = 0; i < servicios->getSize(); i++) {
+                servicios->goToPos(i);
+                std::cout << *(servicios->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
+            }
+
             pause();
             break;
         case 7:

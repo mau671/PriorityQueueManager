@@ -30,8 +30,7 @@ void addUserType(List<TipoUsuario*>* userTypes, const string& description, int p
     }
     userTypes->insert(new TipoUsuario(description, priority));
     cout << "Tipo de usuario '" << description << "' con prioridad " << priority << " agregado exitosamente.\n";
-    cout << "Presione Enter para continuar...";
-    cin.get();
+    pause();
 }
 
 
