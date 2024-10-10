@@ -18,6 +18,9 @@
 
 using std::string;
 using std::to_string;
+using std::endl;
+using std::cout;
+using std::ostream;
 
 class Servicio;
 
@@ -74,8 +77,8 @@ public:
 		os << "Código: " << tiquete.codigo << endl;
 		os << "Hora: " << tiquete.hora << endl;
 		os << "Prioridad: " << tiquete.prioridad << endl;
-		os << "Servicio: " << tiquete.servicio->getDescripcion() << endl;
-		os << "Usuario: " << tiquete.usuario->getDescripcion() << endl;
+		os << "Servicio: " << tiquete.servicio->getDescripcion() << endl; // Asegúrate de que servicio no sea nullptr
+		os << "Usuario: " << tiquete.usuario->getDescripcion() << endl; // Asegúrate de que usuario no sea nullptr
 		return os;
 	}
 };
