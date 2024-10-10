@@ -81,7 +81,6 @@ public:
 
 	void liberar() {
 		tiqueteAnterior = tiquete;
-		tiquete = nullptr;
 		ocupada = false;
 	}
 

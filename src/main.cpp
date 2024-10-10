@@ -47,21 +47,20 @@ void showQueueStatusMenu(List<Area*>* areas) {
 		cout << "No hay áreas registradas.\n";
 		return;
 	}
-    for (int i = 0; i < areas->getSize(); ++i) {
-        areas->goToPos(i);
+    for (areas->goToStart(); !areas->atEnd(); areas->next()) {
         Area* area = areas->getElement();
 
-        cout << "Área: " << area->getDescripcion() << "\n";
+        cout << "Área: " << area->getDescripcion() << endl;
+        cout << "-----------------------------------------------" << endl;
+        cout << "Ventanillas disponibles: " << area->getNventanillas() << endl;
         cout << "-----------------------------------------------\n";
-        cout << "Ventanillas disponibles: " << area->getNventanillas() << "\n";
-        cout << "-----------------------------------------------\n";
-        cout << "Tiquetes en cola:\n";
+        cout << "Tiquetes en cola:" << endl;
 
         // Mostrar los tiquetes en cola
         MinHeap<Tiquete*>* tiquetes = area->getTiquetes();
 
         if (tiquetes->isEmpty()) {
-			cout << "    (No hay tiquetes en cola)\n";
+			cout << "    (No hay tiquetes en cola) " << endl;
 		}
 		else {
             cout << "    [";
@@ -74,18 +73,24 @@ void showQueueStatusMenu(List<Area*>* areas) {
         cout << "-----------------------------------------------\n";
 
         // Mostrar el último tiquete atendido por cada ventanilla
-        cout << "Último tiquete atendido en cada ventanilla:\n";
-        for (int j = 0; j < area->getNventanillas(); ++j) {
-            area->getVentanillas()->goToPos(j);
-            Ventanilla* ventanilla = area->getVentanillas()->getElement();
-            cout << "    Ventanilla " << (j + 1) << ": ";
-            if (ventanilla->getTiquetesAtendidos() > 0) {
-                //cout << ventanilla->getTiqueteAnterior()->getCodigo() << "\n";
-            }
-            else {
-                cout << "(No se ha atendido ningún tiquete)\n";
+
+        try {
+            cout << "Último tiquete atendido en cada ventanilla:\n";
+            for (int j = 0; j < area->getNventanillas(); ++j) {
+                area->getVentanillas()->goToPos(j);
+                Ventanilla* ventanilla = area->getVentanillas()->getElement();
+                cout << "    Ventanilla " << (j + 1) << ": ";
+                if (ventanilla->getTiquetesAtendidos() > 0) {
+                    //cout << ventanilla->getTiqueteAnterior()->getCodigo() << "\n";
+                }
+                else {
+                    cout << "(No se ha atendido ningún tiquete)\n";
+                }
             }
         }
+        catch (string error) {
+        }
+
         cout << "-----------------------------------------------\n\n";
     }
 }
