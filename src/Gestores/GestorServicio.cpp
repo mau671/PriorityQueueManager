@@ -59,7 +59,7 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
             return;
         }
         Servicio* servicio = new Servicio(descripcion, prioridad, area);
-        servicios->insert(servicio);
+        servicios->append(servicio);
 
         cout << "Servicio agregado exitosamente.\n";
         pause();
