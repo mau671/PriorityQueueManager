@@ -24,7 +24,6 @@ private:
 	bool ocupada;
 	string descripcion;
 	Tiquete* tiquete = nullptr;
-	Tiquete* tiqueteAnterior = nullptr;
 	int tiquetesAtendidos = 0;
 
 	// Constructor de copia y asignación como privados
@@ -75,12 +74,9 @@ public:
 		return tiquetesAtendidos;
 	}
 
-	Tiquete* getTiqueteAnterior() {
-		return tiqueteAnterior;
-	}
-
 	void liberar() {
-		tiqueteAnterior = tiquete;
+		delete tiquete;
+		tiquete = nullptr;
 		ocupada = false;
 	}
 

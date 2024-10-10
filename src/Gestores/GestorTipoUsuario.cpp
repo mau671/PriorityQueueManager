@@ -23,14 +23,13 @@ using std::cin;
 using std::string;
 
 // Funci�n para agregar un nuevo tipo de usuario
-void addUserType(List<TipoUsuario*>* userTypes, const string& description, int priority) {
-    if (priority < 0) {
-        cout << "Prioridad inv�lida. Debe ser un n�mero positivo.\n";
-        return;
-    }
+void addUserType(List<TipoUsuario*>* tiposDeUsuarios) {
+    string description = readString("Descripción del tipo de usuario: ");
+    int prioridad = readInt("Prioridad del tipo de usuario: ");
 
-    userTypes->insert(new TipoUsuario(description, priority));
-    cout << "Tipo de usuario '" << description << "' con prioridad " << priority << " agregado exitosamente.\n";
+
+    tiposDeUsuarios->insert(new TipoUsuario(description, prioridad));
+    cout << "Tipo de usuario '" << description << "' con prioridad " << prioridad << " agregado exitosamente.\n";
     pause();
 }
 
@@ -52,17 +51,17 @@ void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
 
     int selection;
     do {
-        menu.display();
+        menu.display("Seleccione un tipo de usuario: "); //
         selection = menu.getSelection();
 
         if (selection == userTypes->getSize() + 1) {
-            cout << "Operaci�n cancelada.\n";
+            cout << "Operación cancelada.\n";
             return;
         }
 
-        bool confirmacion = readConfirmation("�Est� seguro que desea eliminar este tipo de usuario?");
+        bool confirmacion = readConfirmation("¿Está seguro que desea eliminar este tipo de usuario?");
         if (!confirmacion) {
-            cout << "Operaci�n cancelada.\n";
+            cout << "Operación cancelada.\n";
             return;
         }
 
@@ -76,8 +75,8 @@ void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
 
 
 // Funci�n para mostrar el men� de tipos de usuario
-void showUserTypeMenu(List<TipoUsuario*>* userTypes) {
-    Menu menu("== Men� de tipos de usuario ==");
+void showUserTypeMenu(List<TipoUsuario*>* tiposDeUsuarios) {
+    Menu menu("== Menú de tipos de usuario ==");
     menu.addOption("Agregar");
     menu.addOption("Eliminar");
     menu.addOption("Regresar");
@@ -88,22 +87,14 @@ void showUserTypeMenu(List<TipoUsuario*>* userTypes) {
         option = menu.getSelection();
 
         switch (option) {
-        case 1: {
-            string description;
-            int priority;
-            cout << "Descripci�n: ";
-            std::getline(cin, description);
-            priority = readInt("Prioridad: ");
-            addUserType(userTypes, description, priority);
+        case 1: 
+            addUserType(tiposDeUsuarios);
             break;
-        }
         case 2:
-            displayAndRemoveUserType(userTypes);  // Pasar la lista de tipos de usuario
+            displayAndRemoveUserType(tiposDeUsuarios);  // Pasar la lista de tipos de usuario
             break;
         case 3:
             return;
-        default:
-            cout << "Opci�n inv�lida. Intente de nuevo.\n";
         }
     } while (option != 3);
 }

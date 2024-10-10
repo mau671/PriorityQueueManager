@@ -29,15 +29,15 @@ void addArea(List<Area*>* areas) {
     for (int i = 0; i < areas->getSize(); i++) {
         areas->goToPos(i);
         if (areas->getElement()->getDescripcion() == descripcion) { //se asegura de que el area no exista todavía
-            cout << "Area ya existende." << endl;
+            cout << "Area ya existente." << endl;
             return;
         }
     }
     string codigo = readString("Código del área: ");
     int cantVentanillas = readInt("Cantidad de ventanillas: ");
-    cantVentanillas = readInt("Cantidad de ventanillas: ");
     Area* nuevaArea = new Area(descripcion, codigo, cantVentanillas);//crear la nueva area con la informacion recibida
 
+    areas->append(nuevaArea);//agregar el area a la lista de areas
     cout << "Área agregada exitosamente.\n";
     pause();
 }

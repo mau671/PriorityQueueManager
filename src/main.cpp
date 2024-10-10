@@ -81,14 +81,14 @@ void showQueueStatusMenu(List<Area*>* areas) {
                 Ventanilla* ventanilla = area->getVentanillas()->getElement();
                 cout << "    Ventanilla " << (j + 1) << ": ";
                 if (ventanilla->getTiquetesAtendidos() > 0) {
-                    //cout << ventanilla->getTiqueteAnterior()->getCodigo() << "\n";
+                    cout << ventanilla->getTiquete()->getCodigo() << endl;
                 }
                 else {
                     cout << "(No se ha atendido ningún tiquete)\n";
                 }
             }
-        }
-        catch (string error) {
+        } catch (std::out_of_range& e) {
+			cout << "Error: " << e.what() << endl;
         }
 
         cout << "-----------------------------------------------\n\n";

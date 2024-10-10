@@ -49,20 +49,19 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
             return;
         }
         areas->goToPos(selection - 1);
-        cout << "Descripción/nombre del servicio: ";
-        std::getline(cin, descripcion);
+        descripcion = readString("Descripción/nombre del servicio: ");
+
         for (int i = 0; i < servicios->getSize(); i++) {//va por la lista de servicios para asegurarse de que no exista aún.
             servicios->goToPos(i);
             if (servicios->getElement()->getDescripcion() == descripcion) {
-                cout << "Servicio ya existende." << endl;
+                cout << "Servicio ya existente." << endl;
                 return;
             }
         }
-        prioridad = readInt("Prioridad del servicio: ");
+        int prioridad = readInt("Prioridad del servicio: ");
         Servicio* servicio = new Servicio(descripcion, prioridad, areas->getElement());//se crea el nuevo servicio
         servicios->append(servicio);//se agrega a la lista de servicios
-        Area* area = areas->getElement();
-        descripcion = readString("Descripción/nombre del servicio: ");
+
         cout << "Servicio agregado exitosamente." << endl;
         pause();
    
