@@ -32,9 +32,7 @@ void addArea(List<Area*>* areas) {
     std::getline(cin, descripcion);
     cout << "Código del área: ";
     std::getline(cin, codigo);
-    cout << "Cantidad de ventanillas: ";
-    cin >> cantVentanillas;
-
+    cantVentanillas = readInt("Cantidad de ventanillas: ");
     Area* nuevaArea = new Area(descripcion, codigo, cantVentanillas);
     areas->append(nuevaArea);
 

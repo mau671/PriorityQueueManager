@@ -52,8 +52,7 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
         Area* area = areas->getElement();
         cout << "Descripción/nombre del servicio: ";
         std::getline(cin, descripcion);
-        cout << "Prioridad del servicio: ";
-        cin >> prioridad;
+        prioridad = readInt("Prioridad del servicio: ");
         if (prioridad < 0) {
             cout << "Prioridad inválida. Debe ser un número positivo.\n";
             return;

@@ -68,7 +68,7 @@ public:
 		return tiquetesAtendidos;
 	}
 
-	void liberar() {
+	void liberarTiquete() {
 		delete tiquete;
 		tiquete = nullptr;
 		ocupada = false;
