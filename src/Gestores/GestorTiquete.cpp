@@ -24,21 +24,7 @@ using std::stringstream;
 using std::setw;
 using std::setfill;
 
-
 int consecutivoGlobal = 100;
-
-//Hora actual en formato HH:MM:SS
-string obtenerHoraActual() {
-    time_t t = time(nullptr);
-    tm now;
-    localtime_s(&now, &t);  // Usar localtime_s en lugar de localtime
-    stringstream ss;
-    ss << setw(2) << setfill('0') << now.tm_hour << ":"
-        << setw(2) << setfill('0') << now.tm_min << ":"
-        << setw(2) << setfill('0') << now.tm_sec;
-    return ss.str();
-}
-
 
 // Crear un nuevo tiquete
 void addTiquete(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
