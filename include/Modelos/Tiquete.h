@@ -29,6 +29,7 @@ class Tiquete {
 private:
 	string codigo;
 	string hora;
+	string horaAtendido;
 	int segundosTardados = 0;
 	int prioridad = 0;
 	Servicio* servicio = nullptr; //agregar clase servicio
@@ -46,11 +47,13 @@ public:
 		: hora(hora), servicio(servicio), usuario(usuario) {
 		this->codigo = codigoArea + to_string(consecutivo);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
 		this->prioridad = usuario->getPrioridad() * 10 + servicio->getPrioridad();
+		segundosTardados = 0;
 	}
 	// Destructor
 	~Tiquete() {}
 
 	void setHoraAtendido(string horaA) {
+		horaAtendido = horaA;
 		int hA = stoi(to_string(horaA[0]) + to_string(horaA[1]));
 		int mA = stoi(to_string(horaA[3]) + to_string(horaA[4]));
 		int sA = stoi(to_string(horaA[6]) + to_string(horaA[7]));
@@ -59,17 +62,19 @@ public:
 		int m = stoi(to_string(hora[3]) + to_string(hora[4]));
 		int s = stoi(to_string(hora[6]) + to_string(hora[7]));
 
-		int totalA = hA * 3600 + mA * 60 + sA;
-		int total = h * 3600 + m * 60 + s;
+		int totalA = hA * 3600 + mA * 60 + sA;//hora atendido
+		int totalP = h * 3600 + m * 60 + s;//hora solicitado
 
-		//diferencia en segundos
-		segundosTardados = totalA - total;
+		if (totalA > totalP)
+			segundosTardados = totalA - totalP;
+		else segundosTardados = 0;
 	}
 
 	int tiempoTardado() {
 		return segundosTardados;
 	}
-	
+
+
 	int getPrioridad() const {
 		return prioridad;
 	}

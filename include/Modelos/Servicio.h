@@ -13,6 +13,7 @@
 #include <stdexcept>
 
 class Area;
+class Tiquete;
 
 using std::string;
 

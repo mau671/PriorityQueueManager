@@ -16,14 +16,14 @@
 using std::string;
 using std::runtime_error;
 
-class Tiquete;
 class Servicio;
+class Tiquete;
 
 class Ventanilla {
 private:
 	bool ocupada;
 	string descripcion;
-	Tiquete* tiquete = nullptr;
+	Tiquete* tiquete;
 	int tiquetesAtendidos = 0;
 
 	// Constructor de copia y asignación como privados
@@ -34,6 +34,7 @@ public:
 	Ventanilla(string descripcion) {
 		this->descripcion = descripcion;
 		ocupada = true;
+		tiquete = nullptr;
 	}
 
 	~Ventanilla() {
@@ -58,7 +59,6 @@ public:
 		if (this->tiquete != nullptr) {
 			delete this->tiquete;
 		}
-		//tiquete->setHoraAtendido(hora);
 		this->tiquete = tiquete;
 		ocupada = true;
 		tiquetesAtendidos++;

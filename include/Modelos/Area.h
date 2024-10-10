@@ -26,6 +26,8 @@ using std::to_string;
 using std::endl;
 using std::cout;
 
+class Tiquete;
+
 class Area {
 private:
 	string codigo; //inicio del nombre de las ventanillas

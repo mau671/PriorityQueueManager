@@ -150,8 +150,9 @@ void showAtenderMenu(List<Area*>* areas) {
             iventanilla = MenuVentanillas.getSelection()-1;//indice de la ventanilla
             ventanillas->goToPos(iventanilla);
             Tiquete* tiquete = areas->getElement()->atenderTiquete(ventanillas->getElement()->getDescripcion());
-
             cout << "Se ha atendido el tiquete " << tiquete->getCodigo() << " exitosamente." << endl;
+            string hora = obtenerHoraActual();
+            tiquete->setHoraAtendido(hora);
             return;
         } while (iventanilla<1 || iventanilla> areas->getSize() + 1);
     } while (selection < 1 || selection > areas->getSize() + 1);
