@@ -17,14 +17,13 @@
 #include "Estructuras/Concretas/HeapPriorityQueue.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
 #include "Modelos/Servicio.h"
+#include "Tiquete.h"
 #include "Modelos/Ventanilla.h"
 
 using std::string;
 using std::to_string;
 using std::endl;
 using std::cout;
-
-class Tiquete;
 
 class Area {
 private:

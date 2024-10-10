@@ -130,6 +130,8 @@ void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
         // Reordenar el servicio
         servicios->swap(selection - 1, newPos - 1);
 
+        //Area* area = servicios->goToPos(selection - 1)->getArea();
+
         cout << "Servicio reordenado exitosamente.\n";
         pause();
 
