@@ -37,9 +37,57 @@
 using std::cout;
 using std::endl;
 
-void showQueueStatusMenu() {
-	std::cout << "== Estado de las colas ==\n";
-    //Areas, cantidad de ventanillas por area, mostar ventanillas y su ultimo tiquete atendido, codigo de cada tiquete
+void showQueueStatusMenu(List<Area*>* areas) {
+    clearConsole();
+    cout << "===============================================\n";
+    cout << "            ESTADO DE LAS COLAS\n";
+    cout << "===============================================\n\n";
+
+    if (areas->getSize() == 0) {
+		cout << "No hay áreas registradas.\n";
+		return;
+	}
+    for (int i = 0; i < areas->getSize(); ++i) {
+        areas->goToPos(i);
+        Area* area = areas->getElement();
+
+        cout << "Área: " << area->getDescripcion() << "\n";
+        cout << "-----------------------------------------------\n";
+        cout << "Ventanillas disponibles: " << area->getNventanillas() << "\n";
+        cout << "-----------------------------------------------\n";
+        cout << "Tiquetes en cola:\n";
+
+        // Mostrar los tiquetes en cola
+        MinHeap<Tiquete*>* tiquetes = area->getTiquetes();
+
+        if (tiquetes->isEmpty()) {
+			cout << "    (No hay tiquetes en cola)\n";
+		}
+		else {
+            cout << "    [";
+			for (int j = 0; j < tiquetes->getSize(); ++j) {
+				cout << " " << tiquetes->get(j)->getCodigo();
+			}
+            cout << " ]\n";
+		}
+
+        cout << "-----------------------------------------------\n";
+
+        // Mostrar el último tiquete atendido por cada ventanilla
+        cout << "Último tiquete atendido en cada ventanilla:\n";
+        for (int j = 0; j < area->getNventanillas(); ++j) {
+            area->getVentanillas()->goToPos(j);
+            Ventanilla* ventanilla = area->getVentanillas()->getElement();
+            cout << "    Ventanilla " << (j + 1) << ": ";
+            if (ventanilla->getTiquetesAtendidos() > 0) {
+                cout << ventanilla->getTiqueteAnterior()->getCodigo() << "\n";
+            }
+            else {
+                cout << "(No se ha atendido ningún tiquete)\n";
+            }
+        }
+        cout << "-----------------------------------------------\n\n";
+    }
 }
 
 // Función para mostrar el submenú de tiquetes
@@ -162,17 +210,13 @@ int main() {
         int choice = mainMenu.getSelection();
         switch (choice) {
         case 1:
-            std::cout << "Estado de las colas seleccionada.\n\n";
-            showQueueStatusMenu();
+            showQueueStatusMenu(areas);
             pause();
             break;
         case 2:
-            std::cout << "Tiquetes seleccionada.\n\n";
             showTiquetesMenu(tiquetes, tiposDeUsuarios, servicios);
-            pause();
             break;
         case 3:
-            std::cout << "Atender seleccionada.\n\n";
             showAtenderMenu();
             pause();
             break;
@@ -182,7 +226,6 @@ int main() {
         case 5:
             std::cout << "Estadísticas del sistema seleccionada.\n\n";
             showSystemStatsMenu();
-            pause();
             break;
         case 6:
             // Hacer print de cada tipo de usuario en la lista

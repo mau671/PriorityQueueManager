@@ -23,6 +23,10 @@ private:
     Area* area = nullptr;
     int tiquetesSolicitados = 0;
 
+    // Constructor de copia y asignación como privados
+    Servicio(const Servicio&) = delete;
+    Servicio& operator=(const Servicio&) = delete;
+
 public:
 
     Servicio(string descripcion, int prioridad, Area* area) {

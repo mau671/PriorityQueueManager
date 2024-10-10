@@ -37,23 +37,23 @@ void addTiquete(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<
         cout << "No hay servicios disponibles para crear un tiquete." << endl;
         return;
     }
-    Menu menuUsuarios("== Seleccione su tipo de usuario ==");
+    Menu menuUsuarios("== Tipos de usuario ==");
     for (int i = 0; i < usuarios->getSize(); i++) {
         usuarios->goToPos(i);
         menuUsuarios.addOption(usuarios->getElement()->getDescripcion());
     }
-    menuUsuarios.display();
+    menuUsuarios.display("Seleccione el tipo de usuario: ");
     int seleccionUsuario = menuUsuarios.getSelection() - 1;  // Restar 1 para obtener el índice
     usuarios->goToPos(seleccionUsuario);
     TipoUsuario* usuarioSeleccionado = usuarios->getElement();
 
     // Mostrar servicios disponibles
-    Menu menuServicios("== Seleccione el servicio que desea solicitar ==");
+    Menu menuServicios("== Servicios disponibles ==");
     for (int i = 0; i < servicios->getSize(); i++) {
         servicios->goToPos(i);
         menuServicios.addOption(servicios->getElement()->getDescripcion());
     }
-    menuServicios.display();
+    menuServicios.display("Seleccione el servicio: ");
     int seleccionServicio = menuServicios.getSelection() - 1;  // Restar 1 para obtener el índice
     servicios->goToPos(seleccionServicio);
     Servicio* servicioSeleccionado = servicios->getElement();

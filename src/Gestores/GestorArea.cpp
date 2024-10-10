@@ -24,16 +24,9 @@ using std::string;
 // Función para agregar una nueva área
 
 void addArea(List<Area*>* areas) {
-    string descripcion;
-    string codigo;
-    int cantVentanillas;
-
-    cout << "Descripción/nombre del área: ";
-    std::getline(cin, descripcion);
-    cout << "Código del área: ";
-    std::getline(cin, codigo);
-    cout << "Cantidad de ventanillas: ";
-    cin >> cantVentanillas;
+    string descripcion = readString("Descripción/nombre del área: ");
+    string codigo = readString("Código del área: ");
+    int cantVentanillas = readInt("Cantidad de ventanillas: ");
 
     Area* nuevaArea = new Area(descripcion, codigo, cantVentanillas);
     areas->append(nuevaArea);

@@ -87,3 +87,35 @@ string obtenerHoraActual() {
         << setw(2) << setfill('0') << now.tm_sec;
     return ss.str();
 }
+
+string readString(const std::string& message) {
+    std::string input;
+    std::cout << message;
+    std::getline(std::cin, input);
+
+    // Validate that the input is not an integer or float
+    bool isInteger = true;
+    bool isFloat = true;
+    for (char c : input) {
+        if (!isdigit(c)) {
+            isInteger = false;
+            break;
+        }
+    }
+    if (isInteger) {
+        std::cout << "Valor no válido. Debe ingresar un string.\n";
+        return readString(message);
+    }
+    for (char c : input) {
+        if (!isdigit(c) && c != '.') {
+            isFloat = false;
+            break;
+        }
+    }
+    if (isFloat) {
+        std::cout << "Valor no válido. Debe ingresar un string.\n";
+        return readString(message);
+    }
+
+    return input;
+}
