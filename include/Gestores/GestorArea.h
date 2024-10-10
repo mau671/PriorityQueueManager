@@ -1,7 +1,7 @@
 /*
  * Archivo: GestorArea.h
  * Descripción: Declaraciones de funciones para gestionar las áreas del sistema.
- *              Las funcionalidades incluyen agregar, modificar, eliminar áreas y mostrar el menú de áreas.
+ *              Las funcionalidades incluyen agregar, modificar las ventanillas, eliminar áreas y mostrar el menú de áreas.
  *
  * Autor(es): Mauricio Gonzalez
  */

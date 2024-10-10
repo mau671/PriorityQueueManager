@@ -2,7 +2,7 @@
  * Archivo: Tiquete.h
  * Descripción: Clase que representa los tiquetes a atender.
  *
- * Autor(es): Lun Valverde y Josué Meza
+ * Autor(es): Lun Valverde, Josué Meza
  */
 
 #pragma once

@@ -1,6 +1,7 @@
 /*
  * Archivo: GestorServicio.cpp
- * Descripción:
+ * Descripción: Declaraciones de funciones para gestionar los servicios del sistema.
+ *              Las funcionalidades incluyen agregar, eliminar y mostrar el menú de servicios.
  *
  * Autor(es): Lun Valverde, Mauricio González
  */
@@ -22,13 +23,12 @@ using std::cout;
 using std::endl;
 using std::cin;
 
-
+//funcion que agrega un area
 void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
     string descripcion;
     int prioridad;
-    Area* area = nullptr;
 
-    if (areas->getSize() == 0) {
+    if (areas->getSize() == 0) {//se asegura de que haya al menos un area de la cual esocger
         cout << "No hay areas disponibles" << endl;
         pause();
         return;
@@ -49,20 +49,27 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
             return;
         }
         areas->goToPos(selection - 1);
-        Area* area = areas->getElement();
-
-        descripcion = readString("Descripción/nombre del servicio: ");
+        cout << "Descripción/nombre del servicio: ";
+        std::getline(cin, descripcion);
+        for (int i = 0; i < servicios->getSize(); i++) {//va por la lista de servicios para asegurarse de que no exista aún.
+            servicios->goToPos(i);
+            if (servicios->getElement()->getDescripcion() == descripcion) {
+                cout << "Servicio ya existende." << endl;
+                return;
+            }
+        }
         prioridad = readInt("Prioridad del servicio: ");
-
-        Servicio* servicio = new Servicio(descripcion, prioridad, area);
-        servicios->append(servicio);
-
+        Servicio* servicio = new Servicio(descripcion, prioridad, areas->getElement());//se crea el nuevo servicio
+        servicios->append(servicio);//se agrega a la lista de servicios
+        Area* area = areas->getElement();
+        descripcion = readString("Descripción/nombre del servicio: ");
         cout << "Servicio agregado exitosamente." << endl;
         pause();
    
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
+//elimina un servicio
 void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios disponibles." << endl;
@@ -73,7 +80,7 @@ void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
     
     for (int i = 0; i < servicios->getSize(); i++) {
         servicios->goToPos(i);
-        menu.addOption(servicios->getElement()->getDescripcion());
+        menu.addOption(servicios->getElement()->getDescripcion());//nombre de los servicios
     }
     menu.addOption("Cancelar");
 
@@ -103,6 +110,7 @@ void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
+//reordena los servicios en la lista
 void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios para reordenar." << endl;
@@ -140,6 +148,7 @@ void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
+//muestra la informacion de los servicios
 void displayInfoServicios(List<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios." << endl;
@@ -170,6 +179,7 @@ void displayInfoServicios(List<Servicio*>* servicios) {
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
 
+//muestra el menú para servicios
 void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas, MinHeap<Tiquete*>* tiquetes) {
     Menu menu("== Menú de servicios ==");
     menu.addOption("Agregar");

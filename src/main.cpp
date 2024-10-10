@@ -138,7 +138,7 @@ void showAtenderMenu(List<Area*>* areas) {
             cout << "No hay tiquetes pendientes en esta area" << endl;
             return;
         }
-        
+        cout << "Cantidad de tiquetes pendientes: " << areas->getElement()->getSizeTiquetes();
         Menu MenuVentanillas("Seleccione la ventanilla: ");
         for (int i = 0; i < ventanillas->getSize(); i++) {
             ventanillas->goToPos(i);
@@ -147,12 +147,12 @@ void showAtenderMenu(List<Area*>* areas) {
         int iventanilla;
         do {
             MenuVentanillas.display();
-            cout << "Cantidad de tiquetes pendientes: " << ventanillas->getSize() << endl;
-            iventanilla = MenuVentanillas.getSelection();//indice de la ventanilla
+            iventanilla = MenuVentanillas.getSelection()-1;//indice de la ventanilla
             ventanillas->goToPos(iventanilla);
-            areas->getElement()->atenderTiquete(ventanillas->getElement()->getDescripcion());
+            Tiquete* tiquete = areas->getElement()->atenderTiquete(ventanillas->getElement()->getDescripcion());
 
-            cout << "Se ha atendido el tiquete " << ventanillas->getElement()->getDescripcion()<< " exitosamente." << endl;
+            cout << "Se ha atendido el tiquete " << tiquete->getCodigo() << " exitosamente." << endl;
+            return;
         } while (iventanilla<1 || iventanilla> areas->getSize() + 1);
     } while (selection < 1 || selection > areas->getSize() + 1);
 }
@@ -280,7 +280,7 @@ int main() {
             }
 
             cout << "Areas:\n";
-            // imprimir areas
+            // imprimir areas 
             for (int i = 0; i < areas->getSize(); i++) {
 				areas->goToPos(i);
 				std::cout << *(areas->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
@@ -304,10 +304,23 @@ int main() {
                 delete tiposDeUsuarios->getElement(); // Eliminar el objeto apuntado
             }
             delete tiposDeUsuarios;  // Limpiar la lista al salir
-            delete areas;
-            delete servicios;
-            delete tiquetes;
-            return 0;
+
+            //se hace lo mismo con todos
+            for (int i = 0; i < areas->getSize(); i++) {
+                areas->goToPos(i);
+                delete areas->getElement();
+                delete areas;
+                for (int i = 0; i < servicios->getSize(); i++) {
+                    servicios->goToPos(i);
+                    delete servicios->getElement();
+                }
+                delete servicios;
+                for (int i = tiquetes->getSize(); i >= 0; i++) {
+                    delete tiquetes->remove(i);
+                }
+                delete tiquetes;
+                return 0;
+            }
         }
     }
     return 0;

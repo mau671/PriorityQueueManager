@@ -1,6 +1,7 @@
 /*
  * Archivo: GestorArea.cpp
- * Descripción: 
+ * Descripción: Declaraciones de funciones para gestionar las áreas del sistema.
+ *              Las funcionalidades incluyen agregar, modificar las ventanillas, eliminar áreas y mostrar el menú de áreas.
  *
  * Autor(es): Mauricio Gonzalez, Lun Valverde
  */
@@ -22,14 +23,20 @@ using std::cin;
 using std::string;
 
 // Función para agregar una nueva área
-
 void addArea(List<Area*>* areas) {
     string descripcion = readString("Descripción/nombre del área: ");
+
+    for (int i = 0; i < areas->getSize(); i++) {
+        areas->goToPos(i);
+        if (areas->getElement()->getDescripcion() == descripcion) { //se asegura de que el area no exista todavía
+            cout << "Area ya existende." << endl;
+            return;
+        }
+    }
     string codigo = readString("Código del área: ");
     int cantVentanillas = readInt("Cantidad de ventanillas: ");
-
-    Area* nuevaArea = new Area(descripcion, codigo, cantVentanillas);
-    areas->append(nuevaArea);
+    cantVentanillas = readInt("Cantidad de ventanillas: ");
+    Area* nuevaArea = new Area(descripcion, codigo, cantVentanillas);//crear la nueva area con la informacion recibida
 
     cout << "Área agregada exitosamente.\n";
     pause();
@@ -43,7 +50,7 @@ void modifyVentanillas(List<Area*>* areas) {
         return;
     }
     Menu menu("== Modificar ventanillas ==");
-    for (int i = 0; i < areas->getSize(); i++) {
+    for (int i = 0; i < areas->getSize(); i++) {//agregar cada area a la lista de opciones
         areas->goToPos(i);
         menu.addOption(areas->getElement()->getDescripcion());
     }
@@ -59,13 +66,11 @@ void modifyVentanillas(List<Area*>* areas) {
             return;
         }
 
-        //agregar confirmacion
-        
         int nVentanillas;
-        nVentanillas = menu.getSelection();
+        nVentanillas = readInt("Cantidad de ventanillas: ");
 
         areas->goToPos(selection - 1);
-        areas->getElement()->setNventanillas(nVentanillas);
+        areas->getElement()->setNventanillas(nVentanillas);//se modifican las ventanas
         
         cout << "Ventanillas modificadas.\n";
     } while (selection < 1 || selection > areas->getSize() + 1);
@@ -117,8 +122,8 @@ void deleteArea(List<Area*>* areas, List<Servicio*>* servicios, MinHeap<Tiquete*
         }
 
 
-        areas->goToPos(selection - 1);//va al area seeccionada
-        if (tiquetes->isEmpty()) {
+        areas->goToPos(selection - 1);//va al area seleccionada
+        if (tiquetes->isEmpty()) {//si no existen tiquetes
             for (int i = servicios->getSize() - 1; i >= 0; i--) {//va uno por uno en la lista de servicios
                 servicios->goToPos(i);
                 delete servicios->remove();

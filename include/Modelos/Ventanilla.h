@@ -1,6 +1,6 @@
 /*
  * Archivo: Ventanilla.h
- * Descripción: Clas que representa las ventanillas donde se atienden los tiquetes
+ * Descripción: Clase que representa las ventanillas donde se atienden los tiquetes.
  *
  * Autor(es): Lun Valverde
  */
