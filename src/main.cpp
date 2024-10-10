@@ -75,11 +75,6 @@ void showAtenderMenu() {
     }
 }
 
-
-
-
-}
-
 void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
