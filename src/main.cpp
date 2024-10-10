@@ -83,7 +83,6 @@ void showAtenderMenu(List<Area*>* areas) {
 
         if (areas->getElement()->getSizeTiquetes() == 0) {
             cout << "No hay tiquetes pendientes en esta area" << endl;
-            pause();
             return;
         }
         
@@ -92,15 +91,16 @@ void showAtenderMenu(List<Area*>* areas) {
             ventanillas->goToPos(i);
             MenuVentanillas.addOption(ventanillas->getElement()->getDescripcion()); //descripcion de las areas
         }
-        MenuVentanillas.display();
-        int iventanilla = MenuVentanillas.getSelection();//indice de la ventanilla
-        ventanillas->goToPos(iventanilla);
-        areas->getElement()->atenderTiquete(ventanillas->getElement()->getDescripcion());
+        int iventanilla;
+        do {
+            MenuVentanillas.display();
+            cout << "Cantidad de tiquetes pendientes: " << ventanillas->getSize() << endl;
+            iventanilla = MenuVentanillas.getSelection();//indice de la ventanilla
+            ventanillas->goToPos(iventanilla);
+            areas->getElement()->atenderTiquete(ventanillas->getElement()->getDescripcion());
 
-        cout << "Se ha atendido el tiquete " << ventanillas->getElement()->getDescripcion()<< " exitosamente." << endl;
-        pause();
-        return;
-
+            cout << "Se ha atendido el tiquete " << ventanillas->getElement()->getDescripcion()<< " exitosamente." << endl;
+        } while (iventanilla<1 || iventanilla> areas->getSize() + 1);
     } while (selection < 1 || selection > areas->getSize() + 1);
 }
 
