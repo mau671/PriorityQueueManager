@@ -117,6 +117,10 @@ public:
 		tiquetesDispensados++;
 	}
 
+	int getTiquetesDispensados() {
+		return tiquetesDispensados;
+	}
+
 	//del
 	Tiquete* atenderTiqueteActual() {
 		if (tiquetes->isEmpty()) throw runtime_error("No hay tiquetes para atender");
