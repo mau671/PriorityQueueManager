@@ -31,7 +31,7 @@ private:
 	string codigo; //inicio del nombre de las ventanillas
 	string descripcion;
 	int nVentanillas = 0;
-	MinHeap<Tiquete*>* tiquetes;
+	MinHeap<Tiquete*>* tiquetes = nullptr;
 	ArrayList<Tiquete*>* tiquetesAtendidos = nullptr;
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
 
@@ -147,7 +147,7 @@ public:
 		}
 		os << "\n";
 		os << "Tiquetes: ";
-		area.tiquetes->print();
+		
 		return os;
 	}
 };
