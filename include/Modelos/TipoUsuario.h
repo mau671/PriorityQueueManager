@@ -63,7 +63,7 @@ public:
 		tiquetesSolicitados++;
 	}
 
-    void getTiquetesSolicitados(int tiquetesSolicitados) {
+    void setTiquetesSolicitados(int tiquetesSolicitados) {
         this->tiquetesSolicitados = tiquetesSolicitados;
     }
 

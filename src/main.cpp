@@ -34,6 +34,9 @@
 #include "Utilidades/utils.h"
 
 
+using std::cout;
+using std::endl;
+
 void showQueueStatusMenu() {
 	std::cout << "== Estado de las colas ==\n";
     //Areas, cantidad de ventanillas por area, mostar ventanillas y su ultimo tiquete atendido, codigo de cada tiquete
@@ -64,7 +67,43 @@ void showAtenderMenu() {
 	// Implementar lógica aquí
 }
 
-void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
+void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposDeUsuarios) {
+
+    int tiquetesEliminados = 0;
+
+    // Limpiar colas de tiquetes de cada area
+    for (int i = 0; i < areas->getSize(); i++) {
+        areas->goToPos(i);
+        Area* area = areas->getElement();
+        tiquetesEliminados += area->limpiarTiquetes();
+        area->setTiquetesDispensados(0);
+    }
+
+    // Limpiar tiquetes de cada servicio
+    for (int i = 0; i < servicios->getSize(); i++) {
+        servicios->goToPos(i);
+        Servicio* servicio = servicios->getElement();
+        servicio->setTiquetesSolicitados(0);
+    }
+
+    // Limpiar tiquetes de cada tipo de usuario
+    for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
+        tiposDeUsuarios->goToPos(i);
+        TipoUsuario* tipoUsuario = tiposDeUsuarios->getElement();
+        tipoUsuario->setTiquetesSolicitados(0);
+    }
+
+    // Mostrar un resumen de las colas limpiadas
+    if (tiquetesEliminados > 0) {
+        cout << "Se han eliminado " << tiquetesEliminados << " tiquetes de las colas." << endl;
+    } else {
+        cout << "No hay tiquetes para eliminar." << endl;
+    }
+    cout << "Se han reiniciado las estadísticas de tiquetes solicitados." << endl;
+    pause();
+}
+
+void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
@@ -77,7 +116,7 @@ void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servi
         int choice = adminMenu.getSelection();
         switch (choice) {
         case 1:
-            showUserTypeMenu(userTypes); // Pasar la lista de tipos de usuario
+            showUserTypeMenu(tiposDeUsuarios); // Pasar la lista de tipos de usuario
             break;
         case 2:
             showAreaMenu(areas, servicios, tiquetes);
@@ -86,15 +125,14 @@ void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servi
             showServicioMenu(servicios, areas,tiquetes);
             break;
         case 4:
-            std::cout << "Limpiar colas y estadísticas seleccionada.\n";
-            // Implementar lógica aquí
-            pause();
+            limpiarColasYEstadisticas(areas, servicios, tiposDeUsuarios);
             break;
         case 5:
             return; // Salir de la función y destruir automáticamente adminMenu
         }
     }
 }
+
 
 void showSystemStatsMenu() {
 	std::cout << "Estadísticas del sistema.\n";

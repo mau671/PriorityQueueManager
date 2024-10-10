@@ -52,6 +52,7 @@ public:
 
 		tiquetes = new MinHeap<Tiquete*>();
 	}
+
 	~Area() {
 		while (ventanillas->getSize()!=0) {
 			delete ventanillas->remove();
@@ -124,6 +125,14 @@ public:
 	void setTiquetesDispensados(int tiquetesDispensados) {
 		this->tiquetesDispensados = tiquetesDispensados;
 	}
+
+	int limpiarTiquetes() {
+		int tiquetesEliminados = tiquetes->getSize();
+		tiquetes->clear();
+		return tiquetesEliminados;
+	}
+
+
 
 	//del
 	Tiquete* atenderTiqueteActual() {
