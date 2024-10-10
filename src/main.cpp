@@ -64,7 +64,7 @@ void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios,
 
 void showAtenderMenu() {
 	std::cout << "Atender.\n";
-	// Implementar lógica aquí
+    
 }
 
 void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposDeUsuarios) {
@@ -218,11 +218,11 @@ int main() {
                 delete tiposDeUsuarios->getElement(); // Eliminar el objeto apuntado
             }
             delete tiposDeUsuarios;  // Limpiar la lista al salir
+            delete areas;
+            delete servicios;
+            delete tiquetes;
             return 0;
         }
     }
-    delete areas;
-    delete servicios;
-    delete tiquetes;
     return 0;
 }
