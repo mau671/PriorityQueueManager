@@ -49,7 +49,6 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
             return;
         }
         areas->goToPos(selection - 1);
-<<<<<<< HEAD
         cout << "Descripción/nombre del servicio: ";
         std::getline(cin, descripcion);
         for (int i = 0; i < servicios->getSize(); i++) {//va por la lista de servicios para asegurarse de que no exista aún.
@@ -62,16 +61,8 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
         prioridad = readInt("Prioridad del servicio: ");
         Servicio* servicio = new Servicio(descripcion, prioridad, areas->getElement());//se crea el nuevo servicio
         servicios->append(servicio);//se agrega a la lista de servicios
-=======
         Area* area = areas->getElement();
-
         descripcion = readString("Descripción/nombre del servicio: ");
-        prioridad = readInt("Prioridad del servicio: ");
-
-        Servicio* servicio = new Servicio(descripcion, prioridad, area);
-        servicios->append(servicio);
->>>>>>> 4faefd36dababc9b89bf513279dab014a657a3aa
-
         cout << "Servicio agregado exitosamente." << endl;
         pause();
    

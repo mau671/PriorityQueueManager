@@ -150,13 +150,7 @@ public:
 				return tiquete;
 			}
 		}
-<<<<<<< HEAD
-=======
-		return;
-
-
->>>>>>> 4faefd36dababc9b89bf513279dab014a657a3aa
-	}
+	 }
 
 	friend ostream& operator<<(ostream& os, const Area& area) {
 		os << "Area: " << area.descripcion << "\nCodigo: " << area.codigo << "\nNumero de ventanillas: " << area.nVentanillas << "\nVentanillas: ";

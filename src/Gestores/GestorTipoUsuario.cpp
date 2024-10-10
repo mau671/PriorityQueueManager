@@ -1,8 +1,8 @@
-/*
+ï»¿/*
  * Archivo: GestorTipoUsuario.cpp
- * Descripción: Este archivo contiene la implementación de funciones para gestionar
+ * Descripciï¿½n: Este archivo contiene la implementaciï¿½n de funciones para gestionar
  *              los tipos de usuario en el sistema. Las funcionalidades incluyen agregar
- *              nuevos tipos de usuario, eliminar tipos de menor prioridad, y mostrar un menú
+ *              nuevos tipos de usuario, eliminar tipos de menor prioridad, y mostrar un menï¿½
  *              interactivo para gestionar los tipos de usuario.
  *              Se utiliza una lista ordenada para almacenar los tipos de usuario.
  *
@@ -22,12 +22,12 @@ using std::endl;
 using std::cin;
 using std::string;
 
-// Función para agregar un nuevo tipo de usuario
-void addUserType(List<TipoUsuario*>* userTypes) {
-
-    string description = readString("Descripción/nombre del tipo de usuario: ");
-
-    int priority = readInt("Prioridad del tipo de usuario: ");
+// Funciï¿½n para agregar un nuevo tipo de usuario
+void addUserType(List<TipoUsuario*>* userTypes, const string& description, int priority) {
+    if (priority < 0) {
+        cout << "Prioridad invï¿½lida. Debe ser un nï¿½mero positivo.\n";
+        return;
+    }
 
     userTypes->insert(new TipoUsuario(description, priority));
     cout << "Tipo de usuario '" << description << "' con prioridad " << priority << " agregado exitosamente.\n";
@@ -35,7 +35,7 @@ void addUserType(List<TipoUsuario*>* userTypes) {
 }
 
 
-// Función para mostrar todos los tipos de usuario y eliminar el seleccionado
+// Funciï¿½n para mostrar todos los tipos de usuario y eliminar el seleccionado
 void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
     if (userTypes->getSize() == 0) {
         cout << "No hay tipos de usuario para eliminar." << endl;
@@ -46,38 +46,38 @@ void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
     Menu menu("== Eliminar tipo de usuario ==");
     for (int i = 0; i < userTypes->getSize(); i++) {
         userTypes->goToPos(i);
-        menu.addOption(userTypes->getElement()->getDescripcion()); // Agregar la descripción del tipo de usuario
+        menu.addOption(userTypes->getElement()->getDescripcion()); // Agregar la descripciï¿½n del tipo de usuario
     }
     menu.addOption("Cancelar");
 
     int selection;
     do {
-        menu.display("Seleccione un tipo de usuario a eliminar: ");
+        menu.display();
         selection = menu.getSelection();
 
         if (selection == userTypes->getSize() + 1) {
-            cout << "Operación cancelada.\n";
+            cout << "Operaciï¿½n cancelada.\n";
             return;
         }
 
-        bool confirmacion = readConfirmation("¿Está seguro que desea eliminar este tipo de usuario?");
+        bool confirmacion = readConfirmation("ï¿½Estï¿½ seguro que desea eliminar este tipo de usuario?");
         if (!confirmacion) {
-			cout << "Operación cancelada.\n";
-			return;
-		}
+            cout << "Operaciï¿½n cancelada.\n";
+            return;
+        }
 
         userTypes->goToPos(selection - 1);
         delete userTypes->getElement(); // Liberar la memoria del objeto eliminado
         cout << "Tipo de usuario eliminado.\n";
         userTypes->remove();
-        pause();
+
     } while (selection < 1 || selection > userTypes->getSize() + 1);
 }
 
 
-// Función para mostrar el menú de tipos de usuario
+// Funciï¿½n para mostrar el menï¿½ de tipos de usuario
 void showUserTypeMenu(List<TipoUsuario*>* userTypes) {
-    Menu menu("== Menú de tipos de usuario ==");
+    Menu menu("== Menï¿½ de tipos de usuario ==");
     menu.addOption("Agregar");
     menu.addOption("Eliminar");
     menu.addOption("Regresar");
@@ -88,34 +88,22 @@ void showUserTypeMenu(List<TipoUsuario*>* userTypes) {
         option = menu.getSelection();
 
         switch (option) {
-<<<<<<< HEAD
         case 1: {
             string description;
             int priority;
-            cout << "Descripción: ";
-            for (int i = 0; i < userTypes->getSize(); i++) {
-                userTypes->goToPos(i);
-                if (userTypes->getElement()->getDescripcion() == description) {
-                    cout << "Usuario ya existende." << endl;
-                    return;
-                }
-            }
+            cout << "Descripciï¿½n: ";
             std::getline(cin, description);
             priority = readInt("Prioridad: ");
             addUserType(userTypes, description, priority);
-=======
-        case 1:
-            addUserType(userTypes);
->>>>>>> 4faefd36dababc9b89bf513279dab014a657a3aa
             break;
+        }
         case 2:
             displayAndRemoveUserType(userTypes);  // Pasar la lista de tipos de usuario
             break;
         case 3:
             return;
         default:
-            cout << "Opción inválida. Intente de nuevo.\n";
+            cout << "Opciï¿½n invï¿½lida. Intente de nuevo.\n";
         }
     } while (option != 3);
 }
-
