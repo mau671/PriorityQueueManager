@@ -90,6 +90,13 @@ void showUserTypeMenu(List<TipoUsuario*>* userTypes) {
             string description;
             int priority;
             cout << "Descripción: ";
+            for (int i = 0; i < userTypes->getSize(); i++) {
+                userTypes->goToPos(i);
+                if (userTypes->getElement()->getDescripcion() == description) {
+                    cout << "Usuario ya existende." << endl;
+                    return;
+                }
+            }
             std::getline(cin, description);
             priority = readInt("Prioridad: ");
             addUserType(userTypes, description, priority);

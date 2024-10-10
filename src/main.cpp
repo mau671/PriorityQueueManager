@@ -231,7 +231,7 @@ int main() {
             }
 
             cout << "Areas:\n";
-            // imprimir areas
+            // imprimir areas 
             for (int i = 0; i < areas->getSize(); i++) {
 				areas->goToPos(i);
 				std::cout << *(areas->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<

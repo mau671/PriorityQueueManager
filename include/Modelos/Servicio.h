@@ -1,7 +1,7 @@
 /*
 *
 * Archivo:Servicio.h
-* Descripci?n : Clase que representa los servicios que se pueden realizar.
+* Descripción : Clase que representa los servicios que se brindan.
 *
 * Autor(es) : Lun Valverde
 */

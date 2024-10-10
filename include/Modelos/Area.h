@@ -66,16 +66,8 @@ public:
 		return codigo;
 	}
 
-	void setCodigo(string codigo) {
-		this->codigo = codigo;
-	}
-
 	string getDescripcion() {
 		return descripcion;
-	}
-
-	void setDescripcion(string descripcion) {
-		this->descripcion = descripcion;
 	}
 
 	int getNventanillas() const {
@@ -94,6 +86,7 @@ public:
 		return ventanillas;
 	}
 
+	//devuelve la informacion relacionada a el area
 	void consultarInfo() {
 		cout << descripcion + "\nCodigo: " + codigo + "\nnVentanillas: " + std::to_string(nVentanillas) << endl;
 		cout << "Ventanillas: ";
@@ -121,6 +114,10 @@ public:
 		tiquetes->insert(tiquete);
 		tiquetesDispensados++;
 	}
+	
+	int getSizeTiquetes() {
+		return tiquetes->getSize();
+	}
 
 	int getTiquetesDispensados() {
 		return tiquetesDispensados;
@@ -136,11 +133,7 @@ public:
 		return tiquetesEliminados;
 	}
 
-	int getSizeTiquetes() {
-		return tiquetes->getSize();
-	}
-
-
+	
 	void atenderTiquete(string nVentanilla) {
 		if (tiquetes->isEmpty()) throw runtime_error("No hay tiquetes para atender");
 		for (int i = 0; i < ventanillas->getSize(); i++) {
@@ -151,18 +144,6 @@ public:
 			}
 		}
 		return;
-
-		/*
-		for (int i = 0; i <= nVentanillas; i++) {
-			ventanillas->goToPos(i);
-			if (ventanillas->getElement()->isOcupada() == false) {
-				ventanillas->getElement()->setTiquete(tiquetes->removeFirst());
-				cout<< "La ventanilla " << ventanillas->getElement()->getDescripcion() << " esta atendiendo al tiquete " << ventanillas->getElement()->getTiquete() <<endl;
-				return ventanillas->getElement()->getTiquete();
-			}
-		}
-		cout << "No se encontro ninguna ventanilla disponible";
-		return nullptr;*/
 	}
 
 	friend ostream& operator<<(ostream& os, const Area& area) {

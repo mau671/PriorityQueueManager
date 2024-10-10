@@ -1,6 +1,7 @@
 /*
- * Archivo: GestorArea.h
- * Descripción: 
+ * Archivo: GestoServicio.h
+ * Descripción: Declaraciones de funciones para gestionar los servicios del sistema.
+ *              Las funcionalidades incluyen agregar, eliminar y mostrar el menú de servicios.
  *
  * Autor(es): Lun Valverde Villalobos
  */
