@@ -134,7 +134,6 @@ public:
 			cout << "[ ]\n";
 	}
 
-	//METODO AGREGADO
 	E get(int index) {
 		if (index < 0 || index >= size) {
 			throw runtime_error("Index out of bounds.");

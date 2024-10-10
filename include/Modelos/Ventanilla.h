@@ -24,7 +24,12 @@ private:
 	bool ocupada;
 	string descripcion;
 	Tiquete* tiquete = nullptr;
+	Tiquete* tiqueteAnterior = nullptr;
 	int tiquetesAtendidos = 0;
+
+	// Constructor de copia y asignación como privados
+	Ventanilla(const Ventanilla&) = delete;
+	Ventanilla& operator=(const Ventanilla&) = delete;
 
 public:
 	Ventanilla(string descripcion) {
@@ -33,7 +38,9 @@ public:
 	}
 
 	~Ventanilla() {
-		delete tiquete;
+		if (tiquete != nullptr) {
+			delete tiquete;
+		}
 	}
 
 	void setDescripcion(string descripcion) {
@@ -68,8 +75,12 @@ public:
 		return tiquetesAtendidos;
 	}
 
-	void liberarTiquete() {
-		delete tiquete;
+	Tiquete* getTiqueteAnterior() {
+		return tiqueteAnterior;
+	}
+
+	void liberar() {
+		tiqueteAnterior = tiquete;
 		tiquete = nullptr;
 		ocupada = false;
 	}

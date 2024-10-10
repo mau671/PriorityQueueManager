@@ -32,19 +32,21 @@ private:
 	Servicio* servicio = nullptr; //agregar clase servicio
 	TipoUsuario* usuario = nullptr;
 
+	// Constructor de copia y asignación como privados
+	Tiquete(const Tiquete&) = delete;
+	Tiquete& operator=(const Tiquete&) = delete;
+
 public:
 
-	Tiquete() {
-
-	}
+	Tiquete() {}
 
 	Tiquete(const string hora, Servicio* servicio, TipoUsuario* usuario, string codigoArea, int consecutivo)
 		: hora(hora), servicio(servicio), usuario(usuario) {
 		this->codigo = codigoArea + to_string(consecutivo);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
 		this->prioridad = usuario->getPrioridad() * 10 + servicio->getPrioridad();
 	}
-	~Tiquete() {
-	}
+	// Destructor
+	~Tiquete() {}
 	
 	int getPrioridad() const {
 		return prioridad;
@@ -74,11 +76,7 @@ public:
 	}
 
 	friend ostream& operator <<(ostream& os, const Tiquete& tiquete) {
-		os << "Código: " << tiquete.codigo << endl;
-		os << "Hora: " << tiquete.hora << endl;
-		os << "Prioridad: " << tiquete.prioridad << endl;
-		os << "Servicio: " << tiquete.servicio->getDescripcion() << endl; // Asegúrate de que servicio no sea nullptr
-		os << "Usuario: " << tiquete.usuario->getDescripcion() << endl; // Asegúrate de que usuario no sea nullptr
+		os << tiquete.codigo;
 		return os;
 	}
 };
