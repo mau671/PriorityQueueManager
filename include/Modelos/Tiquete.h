@@ -38,7 +38,7 @@ public:
 
 	}
 
-	Tiquete(const string hora, Servicio* servicio, TipoUsuario* usuario,     string codigoArea, int consecutivo)
+	Tiquete(const string hora, Servicio* servicio, TipoUsuario* usuario, string codigoArea, int consecutivo)
 		: hora(hora), servicio(servicio), usuario(usuario) {
 		this->codigo = codigoArea + to_string(consecutivo);//buscar donde poner un numero global en el proyecto para utilizarlo para los códigos
 		this->prioridad = usuario->getPrioridad() * 10 + servicio->getPrioridad();

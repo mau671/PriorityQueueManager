@@ -31,8 +31,8 @@ private:
 	string descripcion;
 	int nVentanillas = 0;
 	MinHeap<Tiquete*>* tiquetes = nullptr;
-	ArrayList<Tiquete*>* tiquetesAtendidos = nullptr;
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
+	int tiquetesDispensados = 0;
 
 public:
 	Area() {
@@ -51,17 +51,12 @@ public:
 			}
 
 		tiquetes = new MinHeap<Tiquete*>();
-		tiquetesAtendidos = new ArrayList<Tiquete*>;
 	}
 	~Area() {
 		while (ventanillas->getSize()!=0) {
 			delete ventanillas->remove();
 		}
 		delete ventanillas;
-		while (tiquetesAtendidos->getSize() != 0) {
-			delete tiquetesAtendidos->remove();
-		}
-		delete tiquetesAtendidos;
 		delete tiquetes;
 	} 
 
@@ -119,6 +114,7 @@ public:
 	//add
 	void addTiquete(Tiquete* tiquete) {
 		tiquetes->insert(tiquete);
+		tiquetesDispensados++;
 	}
 
 	//del
@@ -135,6 +131,7 @@ public:
 		cout << "No se encontro ninguna ventanilla disponible";
 		return nullptr;
 	}
+
 	friend ostream& operator<<(ostream& os, const Area& area) {
 		os << "Area: " << area.descripcion << "\nCodigo: " << area.codigo << "\nNumero de ventanillas: " << area.nVentanillas << "\nVentanillas: ";
 		for (int i = 0; i < area.nVentanillas; i++) {

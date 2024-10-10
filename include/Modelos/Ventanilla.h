@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include "Modelos/Tiquete.h"
 
 using std::string;
 using std::runtime_error;
