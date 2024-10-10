@@ -151,15 +151,21 @@ int main() {
             break;
         case 6:
             // Hacer print de cada tipo de usuario en la lista
+
+            cout << "Tipos de usuario:\n";
             for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
                 tiposDeUsuarios->goToPos(i);
                 std::cout << *(tiposDeUsuarios->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
             }
+
+            cout << "Areas:\n";
             // imprimir areas
             for (int i = 0; i < areas->getSize(); i++) {
 				areas->goToPos(i);
 				std::cout << *(areas->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
 			}
+
+            cout << "Servicios:\n";
 
             // imprimir servicios
             for (int i = 0; i < servicios->getSize(); i++) {
