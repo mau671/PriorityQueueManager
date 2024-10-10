@@ -61,7 +61,23 @@ void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios,
 
 void showAtenderMenu() {
 	std::cout << "Atender.\n";
-	// Implementar lógica aquí
+    Menu adminMenu("Area donde se atiende el tiquete");
+    adminMenu.addOption("Tipos de usuario");
+    adminMenu.addOption("Áreas");
+    adminMenu.addOption("Servicios disponibles");
+    adminMenu.addOption("Limpiar colas y estadísticas");
+    adminMenu.addOption("Regresar");
+
+    while (true) {
+        adminMenu.display();
+        int choice = adminMenu.getSelection();
+
+    }
+}
+
+
+
+
 }
 
 void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
@@ -183,11 +199,11 @@ int main() {
                 delete tiposDeUsuarios->getElement(); // Eliminar el objeto apuntado
             }
             delete tiposDeUsuarios;  // Limpiar la lista al salir
+            delete areas;
+            delete servicios;
+            delete tiquetes;
             return 0;
         }
     }
-    delete areas;
-    delete servicios;
-    delete tiquetes;
     return 0;
 }
