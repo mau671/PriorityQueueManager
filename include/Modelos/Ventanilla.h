@@ -11,7 +11,6 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
-#include "Modelos/Tiquete.h"
 
 using std::string;
 using std::runtime_error;
@@ -24,6 +23,7 @@ private:
 	bool ocupada;
 	string descripcion;
 	Tiquete* tiquete = nullptr;
+	int tiquetesAtendidos = 0;
 
 public:
 	Ventanilla(string descripcion) {
@@ -53,6 +53,7 @@ public:
 		}
 		this->tiquete = tiquete;
 		ocupada = true;
+		tiquetesAtendidos++;
 	}
 
 	Tiquete* getTiquete() {
@@ -60,6 +61,10 @@ public:
 			return tiquete;
 		}
 		throw runtime_error("La ventanilla no está atendiendo a ningún tiquete.");
+	}
+
+	int getTiquetesAtendidos() {
+		return tiquetesAtendidos;
 	}
 
 	void liberar() {
