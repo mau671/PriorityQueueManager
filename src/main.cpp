@@ -306,21 +306,22 @@ int main() {
             delete tiposDeUsuarios;  // Limpiar la lista al salir
 
             //se hace lo mismo con todos
-            for (int i = 0; i < areas->getSize(); i++) {
+            for (int i = areas->getSize()-1; i >= 0; i--) {
                 areas->goToPos(i);
                 delete areas->getElement();
-                delete areas;
-                for (int i = 0; i < servicios->getSize(); i++) {
-                    servicios->goToPos(i);
-                    delete servicios->getElement();
-                }
-                delete servicios;
-                for (int i = tiquetes->getSize(); i >= 0; i++) {
-                    delete tiquetes->remove(i);
-                }
-                delete tiquetes;
-                return 0;
             }
+            delete areas;
+            for (int i = servicios->getSize()-1; i >= 0; i--) {
+                servicios->goToPos(i);
+                delete servicios->getElement();
+            }
+            delete servicios;
+            for (int i = tiquetes->getSize() - 1; i >= 0; i--) {
+                delete tiquetes->remove(i);
+            }
+            delete tiquetes;
+            return 0;
+            
         }
     }
     return 0;

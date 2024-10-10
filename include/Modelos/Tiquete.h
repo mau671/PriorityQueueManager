@@ -24,10 +24,12 @@ using std::ostream;
 
 class Servicio;
 
+
 class Tiquete {
 private:
 	string codigo;
 	string hora;
+	int segundosTardados = 0;
 	int prioridad = 0;
 	Servicio* servicio = nullptr; //agregar clase servicio
 	TipoUsuario* usuario = nullptr;
@@ -47,6 +49,26 @@ public:
 	}
 	// Destructor
 	~Tiquete() {}
+
+	void setHoraAtendido(string horaA) {
+		int hA = stoi(to_string(horaA[0]) + to_string(horaA[1]));
+		int mA = stoi(to_string(horaA[3]) + to_string(horaA[4]));
+		int sA = stoi(to_string(horaA[6]) + to_string(horaA[7]));
+
+		int h = stoi(to_string(hora[0]) + to_string(hora[1]));
+		int m = stoi(to_string(hora[3]) + to_string(hora[4]));
+		int s = stoi(to_string(hora[6]) + to_string(hora[7]));
+
+		int totalA = hA * 3600 + mA * 60 + sA;
+		int total = h * 3600 + m * 60 + s;
+
+		//diferencia en segundos
+		segundosTardados = totalA - total;
+	}
+
+	int tiempoTardado() {
+		return segundosTardados;
+	}
 	
 	int getPrioridad() const {
 		return prioridad;

@@ -19,6 +19,7 @@
 #include "Modelos/Servicio.h"
 #include "Modelos/Tiquete.h"
 #include "Modelos/Ventanilla.h"
+#include "Utilidades/utils.h"
 
 using std::string;
 using std::to_string;
@@ -141,12 +142,13 @@ public:
 
 	
 	 Tiquete* atenderTiquete(string nVentanilla) {
+		string hora = obtenerHoraActual();
 		if (tiquetes->isEmpty()) throw runtime_error("No hay tiquetes para atender");
 		for (int i = 0; i < ventanillas->getSize(); i++) {
 			ventanillas->goToPos(i);
 			if (ventanillas->getElement()->getDescripcion() == nVentanilla) {
 				Tiquete* tiquete = tiquetes->removeFirst();
-				ventanillas->getElement()->setTiquete(tiquete);
+				ventanillas->getElement()->setTiquete(tiquete, hora);
 				return tiquete;
 			}
 		}

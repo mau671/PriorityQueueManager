@@ -54,10 +54,11 @@ public:
 		return ocupada;
 	}
 
-	void setTiquete(Tiquete* tiquete) {
+	void setTiquete(Tiquete* tiquete, string hora) {
 		if (this->tiquete != nullptr) {
 			delete this->tiquete;
 		}
+		//tiquete->setHoraAtendido(hora);
 		this->tiquete = tiquete;
 		ocupada = true;
 		tiquetesAtendidos++;
