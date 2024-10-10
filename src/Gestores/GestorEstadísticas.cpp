@@ -19,81 +19,72 @@ using std::cout;
 using std::endl;
 using std::string;
 
-void TiempoPromedioEspera(List<Servicio*>* servicios, List<Area*>* areas) {
-    string descripcion;
-    int prioridad;
-    Area* area = nullptr;
-
-    if (areas->getSize() == 0) {
-        cout << "No hay areas disponibles" << endl;
-        pause();
-        return;
-    }
-    Menu menu("Seleccione el area: ");
+// Función para calcular tiempo promedio de espera por cada área
+void TiempoPromedioEspera(List<Area*>* areas) {
+    cout << "== Tiempo promedio de espera por área ==" << endl;
     for (int i = 0; i < areas->getSize(); i++) {
         areas->goToPos(i);
-        menu.addOption(areas->getElement()->getDescripcion()); //descripcion de las areas
-    }
-    menu.addOption("Cancelar");
-    int selection;
-    do {
-        menu.display();
-        selection = menu.getSelection();
-
-        if (selection == areas->getSize() + 1) {
-            cout << "Operación cancelada.\n";
-            return;
-        }
-        areas->goToPos(selection - 1);
         Area* area = areas->getElement();
-        cout << "Descripción/nombre del servicio: ";
-        std::getline(cin, descripcion);
-        cout << "Prioridad del servicio: ";
-        cin >> prioridad;
-        if (prioridad < 0) {
-            cout << "Prioridad inválida. Debe ser un número positivo.\n";
-            return;
+        int totalTiquetesAtendidos = area->getTiquetesDispensados();
+        if (totalTiquetesAtendidos == 0) {
+            cout << "Área: " << area->getDescripcion() << " - No se han atendido tiquetes.\n";
+            continue;
         }
-        Servicio* servicio = new Servicio(descripcion, prioridad, area);
-        servicios->append(servicio);
-
-        cout << "Servicio agregado exitosamente.\n";
-        pause();
-
-    } while (selection < 1 || selection > servicios->getSize() + 1);
+        double tiempoPromedioEspera = area->TiempoEspera() / totalTiquetesAtendidos;
+        cout << "Área: " << area->getDescripcion() << " - Tiempo promedio de espera: " << tiempoPromedioEspera << " minutos.\n";
+    }
 }
 
-void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas, MinHeap<Tiquete*>* tiquetes) {
-    Menu menu("== Menú de servicios ==");
-    menu.addOption("Agregar");
-    menu.addOption("Eliminar");
-    menu.addOption("Reordenar");
-    menu.addOption("Mostrar informacion");
-    menu.addOption("Regresar");
+// Función para mostrar la cantidad de tiquetes dispensados por cada área
+void TiquetesPorArea(List<Area*>* areas) {
+    cout << "\n== Cantidad de tiquetes dispensados por área ==" << endl;
+    for (int i = 0; i < areas->getSize(); i++) {
+        areas->goToPos(i);
+        Area* area = areas->getElement();
+        cout << "Área: " << area->getDescripcion() << " - Tiquetes dispensados: " << area->TiquetesEmitidos() << endl;
+    }
+}
 
-    int option;
-    do {
-        menu.display();
-        option = menu.getSelection();
+// Función para mostrar la cantidad de tiquetes atendidos por ventanilla
+void TiquetesPorVentanilla(List<Ventanilla*>* ventanillas) {
+    cout << "\n== Cantidad de tiquetes atendidos por ventanilla ==" << endl;
+    for (int i = 0; i < ventanillas->getSize(); i++) {
+        ventanillas->goToPos(i);
+        Ventanilla* ventanilla = ventanillas->getElement();
+        cout << "Ventanilla: " << ventanilla->getNumero() << " - Tiquetes atendidos: " << ventanilla->TotalTiquetesAtendidos() << endl;
+    }
+}
 
-        switch (option) {
-        case 1:
-            addServicio(servicios, areas);
-            break;
-        case 2:
-            delServicio(servicios, tiquetes);
-            break;
-        case 3:
-            reordenarServicios(servicios, areas);
-            break;
-        case 4:
-            displayInfoServicios(servicios);
-            break;
-        case 5:
-            return;
-        default:
-            cout << "Opción inválida. Intente de nuevo.\n";
-        }
-    } while (option != 5);
+// Función para mostrar la cantidad de tiquetes solicitados por servicio
+void TiquetesPorServicio(List<Servicio*>* servicios) {
+    cout << "\n== Cantidad de tiquetes solicitados por servicio ==" << endl;
+    for (int i = 0; i < servicios->getSize(); i++) {
+        servicios->goToPos(i);
+        Servicio* servicio = servicios->getElement();
+        cout << "Servicio: " << servicio->getDescripcion() << " - Tiquetes solicitados: " << servicio->TotalTiquetesSolicitados() << endl;
+    }
+}
 
+// Función para mostrar la cantidad de tiquetes emitidos por tipo de usuario
+void TiquetesPorUsuario(List<TipoUsuario*>* tiposUsuario) {
+    cout << "\n== Cantidad de tiquetes emitidos por tipo de usuario ==" << endl;
+    for (int i = 0; i < tiposUsuario->getSize(); i++) {
+        tiposUsuario->goToPos(i);
+        TipoUsuario* tipoUsuario = tiposUsuario->getElement();
+        cout << "Tipo de Usuario: " << tipoUsuario->getDescripcion() << " - Tiquetes emitidos: " << tipoUsuario->TotalTiquetesEmitidos() << endl;
+    }
+}
+
+//Creo que hay que hacer GestorEstadísticas.h con esto.
+
+void generarEstadisticas(List<Area*>* areas, List<Ventanilla*>* ventanillas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposUsuario) {
+    cout << "=== Generación de Estadísticas del Sistema ===\n" << endl;
+
+    TiempoPromedioEspera(areas);
+    TiquetesPorArea(areas);
+    TiquetesPorVentanilla(ventanillas);
+    TiquetesPorServicio(servicios);
+    TiquetesPorUsuario(tiposUsuario);
+
+    cout << "\n=== Fin de las Estadísticas ===\n";
 }
