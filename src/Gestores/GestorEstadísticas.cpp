@@ -2,7 +2,7 @@
  * Archivo: GestorEstadistica.cpp
  * Descripción: Implementación de funciones para consultar estadísticas del sistema.
  *
- * Autor(es): [Tu nombre]
+ * Autor(es): Josue Meza
  */
 
 #include <iostream>
@@ -19,7 +19,7 @@ using std::cout;
 using std::endl;
 using std::string;
 
-void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
+void TiempoPromedioEspera(List<Servicio*>* servicios, List<Area*>* areas) {
     string descripcion;
     int prioridad;
     Area* area = nullptr;
