@@ -17,7 +17,7 @@
 #include "Estructuras/Concretas/HeapPriorityQueue.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
 #include "Modelos/Servicio.h"
-#include "Tiquete.h"
+#include "Modelos/Tiquete.h"
 #include "Modelos/Ventanilla.h"
 
 using std::string;
@@ -34,10 +34,12 @@ private:
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
 	int tiquetesDispensados = 0;
 
+	// Constructor de copia y asignación privados
+	Area(const Area&) = delete;
+	Area& operator=(const Area&) = delete;
+
 public:
-	Area() {
-		
-	}
+	Area() {}
 
 	Area(string descripcion, string codigo, int nVentanillas) {
 		if (nVentanillas <= 0) throw runtime_error("La cantidad de ventanillas debe ser mayor que 0");
@@ -54,12 +56,12 @@ public:
 	}
 
 	~Area() {
-		while (ventanillas->getSize()!=0) {
+		while (ventanillas->getSize() != 0) {
 			delete ventanillas->remove();
 		}
 		delete ventanillas;
 		delete tiquetes;
-	} 
+	}
 
 	//setters y getters codigo, descripcion y ventanillas
 	string getCodigo() {
@@ -105,6 +107,10 @@ public:
 		ventanillas->print();
 	}
 
+	MinHeap<Tiquete*>* getTiquetes() {
+		return tiquetes;
+	}
+
 	void mostrarTiquetes() {
 		tiquetes->print();
 	}
@@ -144,6 +150,12 @@ public:
 				return tiquete;
 			}
 		}
+<<<<<<< HEAD
+=======
+		return;
+
+
+>>>>>>> 4faefd36dababc9b89bf513279dab014a657a3aa
 	}
 
 	friend ostream& operator<<(ostream& os, const Area& area) {
@@ -155,9 +167,7 @@ public:
 				os << ", ";
 			}
 		}
-		os << "\n";
-		os << "Tiquetes: ";
-		
+		os << endl;
 		return os;
 	}
 };

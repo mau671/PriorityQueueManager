@@ -23,11 +23,12 @@ using std::cin;
 using std::string;
 
 // Función para agregar un nuevo tipo de usuario
-void addUserType(List<TipoUsuario*>* userTypes, const string& description, int priority) {
-    if (priority < 0) {
-        cout << "Prioridad inválida. Debe ser un número positivo.\n";
-        return;
-    }
+void addUserType(List<TipoUsuario*>* userTypes) {
+
+    string description = readString("Descripción/nombre del tipo de usuario: ");
+
+    int priority = readInt("Prioridad del tipo de usuario: ");
+
     userTypes->insert(new TipoUsuario(description, priority));
     cout << "Tipo de usuario '" << description << "' con prioridad " << priority << " agregado exitosamente.\n";
     pause();
@@ -51,7 +52,7 @@ void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
 
     int selection;
     do {
-        menu.display();
+        menu.display("Seleccione un tipo de usuario a eliminar: ");
         selection = menu.getSelection();
 
         if (selection == userTypes->getSize() + 1) {
@@ -69,6 +70,7 @@ void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
         delete userTypes->getElement(); // Liberar la memoria del objeto eliminado
         cout << "Tipo de usuario eliminado.\n";
         userTypes->remove();
+        pause();
     } while (selection < 1 || selection > userTypes->getSize() + 1);
 }
 
@@ -86,6 +88,7 @@ void showUserTypeMenu(List<TipoUsuario*>* userTypes) {
         option = menu.getSelection();
 
         switch (option) {
+<<<<<<< HEAD
         case 1: {
             string description;
             int priority;
@@ -100,8 +103,11 @@ void showUserTypeMenu(List<TipoUsuario*>* userTypes) {
             std::getline(cin, description);
             priority = readInt("Prioridad: ");
             addUserType(userTypes, description, priority);
+=======
+        case 1:
+            addUserType(userTypes);
+>>>>>>> 4faefd36dababc9b89bf513279dab014a657a3aa
             break;
-        }
         case 2:
             displayAndRemoveUserType(userTypes);  // Pasar la lista de tipos de usuario
             break;

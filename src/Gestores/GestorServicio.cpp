@@ -33,7 +33,7 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
         pause();
         return;
     }
-    Menu menu("Seleccione el area: ");
+    Menu menu("Áreas disponibles");
     for (int i = 0; i < areas->getSize(); i++) {
         areas->goToPos(i);
         menu.addOption(areas->getElement()->getDescripcion()); //descripcion de las areas
@@ -41,7 +41,7 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
     menu.addOption("Cancelar");
     int selection;
     do {
-        menu.display();
+        menu.display("Seleccione un área: ");//seleccion de area
         selection = menu.getSelection();
 
         if (selection == areas->getSize() + 1) {
@@ -49,6 +49,7 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
             return;
         }
         areas->goToPos(selection - 1);
+<<<<<<< HEAD
         cout << "Descripción/nombre del servicio: ";
         std::getline(cin, descripcion);
         for (int i = 0; i < servicios->getSize(); i++) {//va por la lista de servicios para asegurarse de que no exista aún.
@@ -61,8 +62,17 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
         prioridad = readInt("Prioridad del servicio: ");
         Servicio* servicio = new Servicio(descripcion, prioridad, areas->getElement());//se crea el nuevo servicio
         servicios->append(servicio);//se agrega a la lista de servicios
+=======
+        Area* area = areas->getElement();
 
-        cout << "Servicio agregado exitosamente.\n";
+        descripcion = readString("Descripción/nombre del servicio: ");
+        prioridad = readInt("Prioridad del servicio: ");
+
+        Servicio* servicio = new Servicio(descripcion, prioridad, area);
+        servicios->append(servicio);
+>>>>>>> 4faefd36dababc9b89bf513279dab014a657a3aa
+
+        cout << "Servicio agregado exitosamente." << endl;
         pause();
    
     } while (selection < 1 || selection > servicios->getSize() + 1);
@@ -85,7 +95,7 @@ void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
 
     int selection;
     do {
-        menu.display();
+        menu.display("Seleccione un servicio a eliminar: ");
         selection = menu.getSelection();
 
         if (selection == servicios->getSize() + 1) {
@@ -93,12 +103,18 @@ void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
             return;
         }
 
+        bool confirmacion = readConfirmation("¿Está seguro que desea eliminar este servicio?");
+        if (!confirmacion) {
+			cout << "Operación cancelada.\n";
+			return;
+		}
+
         servicios->goToPos(selection - 1);
         for (int e = tiquetes->getSize() - 1; e >= 0; e--) {//se busca en la cola los tiquetes, los que tengan el area del servicio
             if (tiquetes->get(e)->getServicio() == servicios->getElement()) delete tiquetes->remove(e);//se elimina el tiquete si tiene el servicio
         }
         delete servicios->remove(); // Liberar la memoria del objeto eliminado
-        cout << "Servicio eliminado eliminado.\n";
+        cout << "Servicio eliminado." << endl;
         pause();
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
@@ -106,7 +122,7 @@ void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
 //reordena los servicios en la lista
 void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
     if (servicios->getSize() == 0) {
-        cout << "No hay servicios para reordenarr." << endl;
+        cout << "No hay servicios para reordenar." << endl;
         pause();
         return;
     }
@@ -144,11 +160,11 @@ void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
 //muestra la informacion de los servicios
 void displayInfoServicios(List<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
-        cout << "No hay servicios para reordenarr." << endl;
+        cout << "No hay servicios." << endl;
         pause();
         return;
     }
-    Menu menu("== Consultar informacion servicios ==");
+    Menu menu("== Consultar informacion de servicios ==");
     for (int i = 0; i < servicios->getSize(); i++) {
         servicios->goToPos(i);
         menu.addOption(servicios->getElement()->getDescripcion());
@@ -157,7 +173,7 @@ void displayInfoServicios(List<Servicio*>* servicios) {
 
     int selection;
     do {
-        menu.display();
+        menu.display("Seleccione un servicio: ");
         selection = menu.getSelection();
 
         if (selection == servicios->getSize() + 1) {
@@ -201,8 +217,6 @@ void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas, MinHeap<Ti
             break;
         case 5:
             return;
-        default:
-            cout << "Opción inválida. Intente de nuevo.\n";
         }
     } while (option != 5);
 
