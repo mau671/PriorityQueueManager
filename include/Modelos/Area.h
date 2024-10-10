@@ -46,7 +46,7 @@ public:
 		this->nVentanillas = nVentanillas;
 
 		ventanillas = new ArrayList<Ventanilla*>(nVentanillas);
-		for (int i = 0; i <= nVentanillas; i++) {
+		for (int i = 0; i < nVentanillas; i++) {
 			ventanillas->append(new Ventanilla(""+codigo+ std::to_string(i+1)));
 			}
 
@@ -88,7 +88,7 @@ public:
 
 	//devuelve la informacion relacionada a el area
 	void consultarInfo() {
-		cout << descripcion + "\nCodigo: " + codigo + "\nnVentanillas: " + std::to_string(nVentanillas) << endl;
+		cout << descripcion + "\nCodigo: " + codigo + "\nnVentanillas: " + std::to_string(ventanillas->getSize()) /*std::to_string(nVentanillas) */ << endl;
 		cout << "Ventanillas: ";
 		for (int i = 0; i < nVentanillas; i++) {
 			ventanillas->goToPos(i);
@@ -134,16 +134,16 @@ public:
 	}
 
 	
-	void atenderTiquete(string nVentanilla) {
+	 Tiquete* atenderTiquete(string nVentanilla) {
 		if (tiquetes->isEmpty()) throw runtime_error("No hay tiquetes para atender");
 		for (int i = 0; i < ventanillas->getSize(); i++) {
 			ventanillas->goToPos(i);
 			if (ventanillas->getElement()->getDescripcion() == nVentanilla) {
-				ventanillas->getElement()->setTiquete(tiquetes->removeFirst());
-				return;
+				Tiquete* tiquete = tiquetes->removeFirst();
+				ventanillas->getElement()->setTiquete(tiquete);
+				return tiquete;
 			}
 		}
-		return;
 	}
 
 	friend ostream& operator<<(ostream& os, const Area& area) {
