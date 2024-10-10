@@ -70,6 +70,10 @@ void addTiquete(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<
     // Agregar el tiquete a la lista
     tiquetes->insert(nuevoTiquete);
 
+    // Aumentar los contadores de estadisticas de tiqueteSolicitadoPorServicio y tiqueteSolicitadoPorTipoUsuario
+    servicioSeleccionado->aumentarTiquetesSolicitados();
+    usuarioSeleccionado->aumentarTiquetesSolicitados();
+
     // Mostrar el código y los detalles del tiquete generado
     cout << "Tiquete generado exitosamente.\n";
     cout << "Código: " << nuevoTiquete->getCodigo() << "\n";

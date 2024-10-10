@@ -21,6 +21,7 @@ private:
     string descripcion;
     int prioridad;
     Area* area = nullptr;
+    int tiquetesSolicitados = 0;
 
 public:
 
@@ -49,6 +50,18 @@ public:
 
     void setArea(Area* area) {
 		this->area = area;
+	}
+
+    int getTiquetesSolicitados() {
+		return tiquetesSolicitados;
+	}
+
+    void aumentarTiquetesSolicitados() {
+        tiquetesSolicitados++;
+    }
+
+    void setTiquetesSolicitados(int tiquetesSolicitados) {
+		this->tiquetesSolicitados = tiquetesSolicitados;
 	}
 
     bool operator<(const Servicio& otro) const {

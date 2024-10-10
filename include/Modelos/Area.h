@@ -121,6 +121,10 @@ public:
 		return tiquetesDispensados;
 	}
 
+	void setTiquetesDispensados(int tiquetesDispensados) {
+		this->tiquetesDispensados = tiquetesDispensados;
+	}
+
 	//del
 	Tiquete* atenderTiqueteActual() {
 		if (tiquetes->isEmpty()) throw runtime_error("No hay tiquetes para atender");

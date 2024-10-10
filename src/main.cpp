@@ -77,15 +77,12 @@ void showAdminMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas, List<Servi
         int choice = adminMenu.getSelection();
         switch (choice) {
         case 1:
-            std::cout << "Tipos de usuario seleccionada.\n";
             showUserTypeMenu(userTypes); // Pasar la lista de tipos de usuario
             break;
         case 2:
-            std::cout << "Áreas seleccionada.\n";
             showAreaMenu(areas, servicios, tiquetes);
             break;
         case 3:
-            std::cout << "Servicios disponibles seleccionada.\n";
             showServicioMenu(servicios, areas,tiquetes);
             break;
         case 4:

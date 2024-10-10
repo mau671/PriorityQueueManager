@@ -22,6 +22,9 @@ private:
     string descripcion;
     int prioridad;
 
+    int tiquetesSolicitados = 0;
+
+
 public:
     // Constructor por defecto
     TipoUsuario() : descripcion(""), prioridad(0) {}
@@ -50,6 +53,18 @@ public:
 
     int getPrioridad() const {
         return prioridad;
+    }
+
+    int getTiquetesSolicitados() {
+		return tiquetesSolicitados;
+	}
+
+    void aumentarTiquetesSolicitados() {
+		tiquetesSolicitados++;
+	}
+
+    void getTiquetesSolicitados(int tiquetesSolicitados) {
+        this->tiquetesSolicitados = tiquetesSolicitados;
     }
 
     // Sobrecarga de operadores de comparación
