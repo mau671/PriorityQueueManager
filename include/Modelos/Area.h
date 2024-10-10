@@ -118,10 +118,6 @@ public:
 		return tiquetes;
 	}
 
-	ArrayList<Ventanilla*>* getVentanillas() {
-		return ventanillas;
-	}
-
 	void mostrarTiquetes() {
 		tiquetes->print();
 	}
