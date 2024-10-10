@@ -6,7 +6,7 @@
  *              y consultar estadísticas del sistema. Cada submenú permite navegar por opciones
  *              específicas según la funcionalidad seleccionada.
  *
- * Autor(es): Mauricio Gonzalez
+ * Autor(es): Mauricio Gonzalez, Lun Valverde
  */
 
 // Bibliotecas estándar
@@ -110,9 +110,46 @@ void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios,
     }
 }
 
-void showAtenderMenu() {
+void showAtenderMenu(List<Area*>* areas) {
 	std::cout << "Atender.\n";
-    
+
+    if (areas->getSize() == 0) {
+        cout << "No hay areas disponibles" << endl;
+        return;
+    }
+    Menu menu("Seleccione el area donde desea atender: ");
+    for (int i = 0; i < areas->getSize(); i++) {
+        areas->goToPos(i);
+        menu.addOption(areas->getElement()->getDescripcion()); //descripcion de las areas
+    }
+    int selection;
+    do {
+        menu.display();
+        selection = menu.getSelection();
+        areas->goToPos(selection - 1);
+        ArrayList<Ventanilla*>* ventanillas = areas->getElement()->getVentanillas();
+
+        if (areas->getElement()->getSizeTiquetes() == 0) {
+            cout << "No hay tiquetes pendientes en esta area" << endl;
+            return;
+        }
+        
+        Menu MenuVentanillas("Seleccione la ventanilla: ");
+        for (int i = 0; i < ventanillas->getSize(); i++) {
+            ventanillas->goToPos(i);
+            MenuVentanillas.addOption(ventanillas->getElement()->getDescripcion()); //descripcion de las areas
+        }
+        int iventanilla;
+        do {
+            MenuVentanillas.display();
+            cout << "Cantidad de tiquetes pendientes: " << ventanillas->getSize() << endl;
+            iventanilla = MenuVentanillas.getSelection();//indice de la ventanilla
+            ventanillas->goToPos(iventanilla);
+            areas->getElement()->atenderTiquete(ventanillas->getElement()->getDescripcion());
+
+            cout << "Se ha atendido el tiquete " << ventanillas->getElement()->getDescripcion()<< " exitosamente." << endl;
+        } while (iventanilla<1 || iventanilla> areas->getSize() + 1);
+    } while (selection < 1 || selection > areas->getSize() + 1);
 }
 
 void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposDeUsuarios) {
@@ -217,7 +254,8 @@ int main() {
             showTiquetesMenu(tiquetes, tiposDeUsuarios, servicios);
             break;
         case 3:
-            showAtenderMenu();
+            std::cout << "Atender seleccionada.\n\n";
+            showAtenderMenu(areas);
             pause();
             break;
         case 4:

@@ -92,6 +92,10 @@ public:
 		}
 	}
 
+	ArrayList<Ventanilla*>* getVentanillas() {
+		return ventanillas;
+	}
+
 	void consultarInfo() {
 		cout << descripcion + "\nCodigo: " + codigo + "\nnVentanillas: " + std::to_string(nVentanillas) << endl;
 		cout << "Ventanillas: ";
@@ -142,19 +146,23 @@ public:
 		return tiquetesEliminados;
 	}
 
-	//del
-	Tiquete* atenderTiqueteActual() {
+	int getSizeTiquetes() {
+		return tiquetes->getSize();
+	}
+
+
+	void atenderTiquete(string nVentanilla) {
 		if (tiquetes->isEmpty()) throw runtime_error("No hay tiquetes para atender");
-		for (int i = 0; i <= nVentanillas; i++) {
+		for (int i = 0; i < ventanillas->getSize(); i++) {
 			ventanillas->goToPos(i);
-			if (ventanillas->getElement()->isOcupada() == false) {
+			if (ventanillas->getElement()->getDescripcion() == nVentanilla) {
 				ventanillas->getElement()->setTiquete(tiquetes->removeFirst());
-				cout<< "La ventanilla " << ventanillas->getElement()->getDescripcion() << " esta atendiendo al tiquete " << ventanillas->getElement()->getTiquete() <<endl;
-				return ventanillas->getElement()->getTiquete();
+				return;
 			}
 		}
-		cout << "No se encontro ninguna ventanilla disponible";
-		return nullptr;
+		return;
+
+
 	}
 
 	friend ostream& operator<<(ostream& os, const Area& area) {
