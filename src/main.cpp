@@ -231,9 +231,8 @@ void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List
 }
 
 
-void showSystemStatsMenu() {
-	std::cout << "Estadísticas del sistema.\n";
-	
+void showSystemStatsMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List<Servicio*>* servicios) {
+    generarEstadisticas(tiposDeUsuarios, areas, servicios);
 }
 
 int main() {
@@ -269,7 +268,7 @@ int main() {
             showAdminMenu(tiposDeUsuarios, areas, servicios); 
             break;
         case 5:
-            showSystemStatsMenu();
+            showSystemStatsMenu(tiposDeUsuarios, areas,servicios);
             break;
         case 6:
             // Liberar la memoria de todos los punteros en la lista

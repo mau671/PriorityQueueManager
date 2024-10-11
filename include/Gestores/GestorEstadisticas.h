@@ -1,29 +1,25 @@
 /*
- * Archivo: tiquete.h
- * Descripción: Este archivo contiene la implementación de las funciones para la creación y gestión de tiquetes.
+ * Archivo: GestorEstadistica.cpp
+ * Descripción: Implementación de funciones para consultar estadísticas del sistema.
  *
- * Autor(es): Josué Meza
+ * Autor(es): Josue Meza
  */
 
 #ifndef GESTORESTADISTICAS_H
-#define GESTORTIQUETE_H
+#define GESTORESTADISTICAS_H
 
-#include <iostream>
-#include <iomanip>
-#include <ctime>
-#include <string>
-#include <sstream>
+#include "Estructuras/Concretas/ArrayList.h"
+#include "Modelos/Area.h"
+#include "Modelos/Ventanilla.h"
+#include "Modelos/Servicio.h"
 #include "Modelos/Tiquete.h"
-#include "UI/Menu.h"
-#include "Utilidades/utils.h"
 #include "Modelos/TipoUsuario.h"
 
-using std::string;
 
-//Hora actual en formato HH:MM:SS
-string obtenerHoraActual();
-// Crear un nuevo tiquete
-void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios);
-
+void TiempoPromedioEspera(List<Area*>* areas);
+void TiquetesPorArea(List<Area*>* areas);
+void TiquetesPorVentanilla(List<Ventanilla*>* ventanillas);
+void TiquetesPorUsuario(List<TipoUsuario*>* tiposUsuario);
+void generarEstadisticas(List<TipoUsuario*>* tiposUsuario, List<Area*>* areas, List<Servicio*>* servicios);
 
 #endif

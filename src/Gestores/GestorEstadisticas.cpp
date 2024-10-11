@@ -54,12 +54,17 @@ void TiquetesPorArea(List<Area*>* areas) {
 }
 
 // Función para mostrar la cantidad de tiquetes atendidos por ventanilla
-void TiquetesPorVentanilla(List<Ventanilla*>* ventanillas) {
+void TiquetesPorVentanilla(List<Area*>* areas) {
+    List<Ventanilla*>* ventanillas;
     cout << "\n== Cantidad de tiquetes atendidos por ventanilla ==" << endl;
-    for (int i = 0; i < ventanillas->getSize(); i++) {
-        ventanillas->goToPos(i);
-        Ventanilla* ventanilla = ventanillas->getElement();
-        cout << "Ventanilla: " << ventanilla->getDescripcion() << " - Tiquetes atendidos: " << ventanilla->getTiquetesAtendidos() << endl;
+    for (int i = 0; areas->getSize() > i; i++) {
+        areas->goToPos(i);
+        ventanillas = areas->getElement()->getVentanillas();
+        for (int i = 0; i < ventanillas->getSize(); i++) {
+            ventanillas->goToPos(i);
+            Ventanilla* ventanilla = ventanillas->getElement();
+            cout << "Ventanilla: " << ventanillas->getElement()->getDescripcion() << " - Tiquetes atendidos: " << ventanilla->getTiquetesAtendidos() << endl;
+        }
     }
 }
 
@@ -83,14 +88,12 @@ void TiquetesPorUsuario(List<TipoUsuario*>* tiposUsuario) {
     }
 }
 
-//Creo que hay que hacer GestorEstadísticas.h con esto.
-
-void generarEstadisticas(List<Area*>* areas, List<Ventanilla*>* ventanillas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposUsuario) {
+void generarEstadisticas(List<TipoUsuario*>* tiposUsuario, List<Area*>* areas, List<Servicio*>* servicios) {
     cout << "=== Generación de Estadísticas del Sistema ===\n" << endl;
 
     TiempoPromedioEspera(areas);
     TiquetesPorArea(areas);
-    TiquetesPorVentanilla(ventanillas);
+    TiquetesPorVentanilla(areas);
     TiquetesPorServicio(servicios);
     TiquetesPorUsuario(tiposUsuario);
 
