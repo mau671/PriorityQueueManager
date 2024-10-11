@@ -65,7 +65,7 @@ void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios, int* c
     Tiquete* nuevoTiquete = new Tiquete(horaSolicitud, servicioSeleccionado, usuarioSeleccionado, codigoArea, *consecutivoGlobal);
     servicioSeleccionado->getArea()->addTiquete(nuevoTiquete);//agregar el tiquete a la lista del area
     // Aumentar el consecutivo global
-    consecutivoGlobal++;
+    (*consecutivoGlobal)++;
 
     // Aumentar los contadores de estadisticas de tiqueteSolicitadoPorServicio y tiqueteSolicitadoPorTipoUsuario
     servicioSeleccionado->aumentarTiquetesSolicitados();
