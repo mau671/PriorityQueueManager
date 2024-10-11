@@ -2,7 +2,7 @@
  * Archivo: GestorEstadistica.cpp
  * Descripción: Implementación de funciones para consultar estadísticas del sistema.
  *
- * Autor(es): Josue Meza
+ * Autor(es): Josue Meza, Lun Valverde, Mauricio Gonzalez
  */
 
 #include <iostream>
@@ -35,6 +35,7 @@ void TiempoPromedioEspera(List<Area*>* areas) {
             cout << "Área: " << area->getDescripcion() << " - Tiempo promedio de espera: " << tiempoPromedioEspera << " segundos.\n";
         }
     }
+
 }
 
 
@@ -134,11 +135,25 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
 void generarEstadisticas(List<TipoUsuario*>* tiposUsuario, List<Area*>* areas, List<Servicio*>* servicios) {
     clearConsole();
     cout << "=== Generación de Estadísticas del Sistema ===\n" << endl;
-
+    if (areas->getSize() == 0) {
+        cout << "No hay areas disponibles" << endl;
+        pause();
+        return;
+    }
     TiempoPromedioEspera(areas);
     TiquetesPorArea(areas);
     TiquetesPorVentanilla(areas);
+    if (servicios->getSize() == 0) {
+        cout << "No hay servicios disponibles" << endl;
+        pause();
+        return;
+    }
     TiquetesPorServicio(servicios);
+    if (tiposUsuario->getSize() == 0) {
+        cout << "No hay usuarios disponibles" << endl;
+        pause();
+        return;
+    }
     TiquetesPorUsuario(tiposUsuario);
 
     cout << "\n=== Fin de las Estadísticas ===\n";
