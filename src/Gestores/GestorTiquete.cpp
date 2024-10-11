@@ -42,8 +42,12 @@ void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios, int* c
         usuarios->goToPos(i);
         menuUsuarios.addOption(usuarios->getElement()->getDescripcion());
     }
+    menuUsuarios.addOption("Regresar");
     menuUsuarios.display("Seleccione el tipo de usuario: ");
     int seleccionUsuario = menuUsuarios.getSelection() - 1;  // Restar 1 para obtener el índice
+    if (seleccionUsuario == usuarios->getSize() + 1) {
+        return;
+    }
     usuarios->goToPos(seleccionUsuario);
     TipoUsuario* usuarioSeleccionado = usuarios->getElement();
 
@@ -53,8 +57,12 @@ void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios, int* c
         servicios->goToPos(i);
         menuServicios.addOption(servicios->getElement()->getDescripcion());
     }
+    menuServicios.addOption("Regresar");
     menuServicios.display("Seleccione el servicio: ");
     int seleccionServicio = menuServicios.getSelection() - 1;  // Restar 1 para obtener el índice
+    if (seleccionServicio == servicios->getSize() + 1) {
+        return;
+    }
     servicios->goToPos(seleccionServicio);
     Servicio* servicioSeleccionado = servicios->getElement();
 

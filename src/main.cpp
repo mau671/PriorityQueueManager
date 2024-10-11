@@ -164,8 +164,6 @@ void showAtenderMenu(List<Area*>* areas) {
     } while (selection < 1 || selection > areas->getSize() + 1);
 }
 
-<<<<<<< Updated upstream
-=======
 void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposDeUsuarios, int* consecutivoGlobal) {
 
     int tiquetesEliminados = 0;
@@ -205,7 +203,6 @@ void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, L
     pause();
 }
 
->>>>>>> Stashed changes
 void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List<Servicio*>* servicios, int* cantTiquetesGlobal) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
