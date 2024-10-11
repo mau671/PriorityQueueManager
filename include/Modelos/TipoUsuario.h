@@ -55,7 +55,7 @@ public:
         return prioridad;
     }
 
-    int getTiquetesSolicitados() {
+    int getTiquetesSolicitados() const {
 		return tiquetesSolicitados;
 	}
 

@@ -90,7 +90,6 @@ void showQueueStatusMenu(List<Area*>* areas) {
                 }
                 else {
                     cout << "(No se ha atendido ningún tiquete)\n";
-                    pause();
                 }
             }
         } catch (std::out_of_range& e) {

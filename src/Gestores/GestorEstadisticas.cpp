@@ -88,9 +88,6 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
 
     int tiquetesEliminados = 0;
 
-    int valor = 100;
-    int* consecutivo = &valor;
-
     // Limpiar colas de tiquetes de cada area
     for (int i = 0; i < areas->getSize(); i++) {
         areas->goToPos(i);
@@ -99,15 +96,15 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
         area->setTiquetesDispensados(0);
         area->setTiquetesAtendidos(0);
         area->setTiempoTotalEspera(0);
-        // limpiar estadisticas de cada ventanilla
+        // limpiar estadísticas de cada ventanilla
         for (int j = 0; j < area->getVentanillas()->getSize(); j++) {
-			area->getVentanillas()->goToPos(j);
-			Ventanilla* ventanilla = area->getVentanillas()->getElement();
-			ventanilla->setTiquetesAtendidos(0);
+            area->getVentanillas()->goToPos(j);
+            Ventanilla* ventanilla = area->getVentanillas()->getElement();
+            ventanilla->setTiquetesAtendidos(0);
             if (ventanilla->isOcupada()) {
                 ventanilla->liberar();
             }
-		}
+        }
     }
 
     // Limpiar tiquetes de cada servicio
@@ -115,7 +112,6 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
         servicios->goToPos(i);
         Servicio* servicio = servicios->getElement();
         servicio->setTiquetesSolicitados(0);
-
     }
 
     // Limpiar tiquetes de cada tipo de usuario
@@ -125,6 +121,9 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
         tipoUsuario->setTiquetesSolicitados(0);
     }
 
+    // Reiniciar el consecutivo global a 100
+    *consecutivoGlobal = 100;
+
     // Mostrar un resumen de las colas limpiadas
     if (tiquetesEliminados > 0) {
         cout << "Se han eliminado " << tiquetesEliminados << " tiquetes de las colas." << endl;
@@ -132,9 +131,10 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
     else {
         cout << "No hay tiquetes para eliminar." << endl;
     }
-    cout << "Se han reiniciado las estadísticas de tiquetes solicitados." << endl;
+    cout << "Se han reiniciado las estadísticas de tiquetes solicitados y el consecutivo global ha sido reiniciado a 100." << endl;
     pause();
 }
+
 
 void generarEstadisticas(List<TipoUsuario*>* tiposUsuario, List<Area*>* areas, List<Servicio*>* servicios) {
     clearConsole();
