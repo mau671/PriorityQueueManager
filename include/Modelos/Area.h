@@ -13,9 +13,8 @@
 #include <string>
 #include "Estructuras/Abstractas/List.h"
 #include "Estructuras/Concretas/ArrayList.h"
-#include "Estructuras/Abstractas/PriorityQueue.h"
-#include "Estructuras/Concretas/HeapPriorityQueue.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
+#include "Estructuras/Concretas/MinHeap.h"
 #include "Modelos/Servicio.h"
 #include "Modelos/Tiquete.h"
 #include "Modelos/Ventanilla.h"
@@ -62,7 +61,7 @@ public:
 		while (ventanillas->getSize() != 0) {
 			delete ventanillas->remove();
 		}
-		delete ventanillas;
+		delete [] ventanillas;
 		delete tiquetes;
 	}
 

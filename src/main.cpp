@@ -56,7 +56,7 @@ void showQueueStatusMenu(List<Area*>* areas) {
 
         cout << "Área: " << area->getDescripcion() << endl;
         cout << "-----------------------------------------------" << endl;
-        cout << "Ventanillas disponibles: " << area->getNventanillas() << endl;
+        cout << "Ventanillas (totales/disponibles): " << area->getNventanillas() << endl;
         cout << "-----------------------------------------------\n";
         cout << "Tiquetes en cola:" << endl;
 
@@ -83,7 +83,7 @@ void showQueueStatusMenu(List<Area*>* areas) {
             for (int j = 0; j < area->getNventanillas(); ++j) {
                 area->getVentanillas()->goToPos(j);
                 Ventanilla* ventanilla = area->getVentanillas()->getElement();
-                cout << "    Ventanilla " << (j + 1) << ": ";
+                cout << "    Ventanilla " << ventanilla->getDescripcion() << ": ";
                 if (ventanilla->getTiquetesAtendidos() > 0) {
                     cout << ventanilla->getTiquete()->getCodigo() << endl;
                 }

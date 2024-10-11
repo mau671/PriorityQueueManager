@@ -12,6 +12,7 @@
 #include "UI/Menu.h"
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Abstractas/List.h"
+#include "Estructuras/Concretas/MinHeap.h"
 #include "Modelos/Area.h"
 #include "Utilidades/utils.h"
 #include "Modelos/Servicio.h"
