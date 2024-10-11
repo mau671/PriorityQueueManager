@@ -274,21 +274,21 @@ int main() {
             // Liberar la memoria de todos los punteros en la lista
             for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
                 tiposDeUsuarios->goToPos(i);
-                delete tiposDeUsuarios->getElement(); // Eliminar el objeto apuntado
+                delete tiposDeUsuarios->remove(); // Eliminar el objeto apuntado
             }
-            delete tiposDeUsuarios;  // Limpiar la lista al salir
+            delete [] tiposDeUsuarios;  // Limpiar la lista al salir
 
             //se hace lo mismo con todos
             for (int i = areas->getSize()-1; i >= 0; i--) {
                 areas->goToPos(i);
-                delete areas->getElement();
+                delete areas->remove();
             }
-            delete areas;
+            delete [] areas;
             for (int i = servicios->getSize()-1; i >= 0; i--) {
                 servicios->goToPos(i);
-                delete servicios->getElement();
+                delete servicios->remove();
             }
-            delete servicios;
+            delete [] servicios;
             return 0;
         }
     }
