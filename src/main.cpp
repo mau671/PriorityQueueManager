@@ -90,6 +90,7 @@ void showQueueStatusMenu(List<Area*>* areas) {
                 }
                 else {
                     cout << "(No se ha atendido ningún tiquete)\n";
+                    pause();
                 }
             }
         } catch (std::out_of_range& e) {
@@ -146,6 +147,7 @@ void showAtenderMenu(List<Area*>* areas) {
 
         if (areas->getElement()->getSizeTiquetes() == 0) {
             cout << "No hay tiquetes pendientes en esta area" << endl;
+            pause();
             return;
         }
         cout << "Cantidad de tiquetes pendientes: " << areas->getElement()->getSizeTiquetes();
