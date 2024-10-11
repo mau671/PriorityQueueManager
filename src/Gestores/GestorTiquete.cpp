@@ -24,10 +24,8 @@ using std::stringstream;
 using std::setw;
 using std::setfill;
 
-int consecutivoGlobal = 100;
-
 // Crear un nuevo tiquete
-void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
+void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios, int* consecutivoGlobal) {
     // Tipos de usuario
     if (usuarios->getSize() == 0) {
         cout << "No hay tipos de usuarios disponibles para crear un tiquete." << endl;
@@ -64,7 +62,7 @@ void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
     //const string hora, Servicio* servicio, TipoUsuario* usuario,     string codigoArea, int consecutivo
     string horaSolicitud = obtenerHoraActual();
     string codigoArea = servicioSeleccionado->getArea()->getCodigo();
-    Tiquete* nuevoTiquete = new Tiquete(horaSolicitud, servicioSeleccionado, usuarioSeleccionado, codigoArea, consecutivoGlobal);
+    Tiquete* nuevoTiquete = new Tiquete(horaSolicitud, servicioSeleccionado, usuarioSeleccionado, codigoArea, *consecutivoGlobal);
     servicioSeleccionado->getArea()->addTiquete(nuevoTiquete);//agregar el tiquete a la lista del area
     // Aumentar el consecutivo global
     consecutivoGlobal++;

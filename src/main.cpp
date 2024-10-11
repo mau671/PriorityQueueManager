@@ -103,7 +103,7 @@ void showQueueStatusMenu(List<Area*>* areas) {
 
 // Función para mostrar el submenú de tiquetes
 
-void showTiquetesMenu(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
+void showTiquetesMenu(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios, int* cantTiquetesGlobal) {
     Menu ticketMenu("== Menú de Tiquetes ==");
     ticketMenu.addOption("Seleccionar tipo de cliente y servicio");
     ticketMenu.addOption("Regresar");
@@ -113,7 +113,7 @@ void showTiquetesMenu(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) 
         int choice = ticketMenu.getSelection();
         switch (choice) {
         case 1:
-            addTiquete(usuarios, servicios);
+            addTiquete(usuarios, servicios, cantTiquetesGlobal);
             break;
         case 2:
             return; // Salir de la función y destruir automáticamente ticketMenu
@@ -164,9 +164,11 @@ void showAtenderMenu(List<Area*>* areas) {
     } while (selection < 1 || selection > areas->getSize() + 1);
 }
 
-void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposDeUsuarios) {
+void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposDeUsuarios, int* consecutivoGlobal) {
 
     int tiquetesEliminados = 0;
+
+    consecutivoGlobal = 0;
 
     // Limpiar colas de tiquetes de cada area
     for (int i = 0; i < areas->getSize(); i++) {
@@ -181,6 +183,7 @@ void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, L
         servicios->goToPos(i);
         Servicio* servicio = servicios->getElement();
         servicio->setTiquetesSolicitados(0);
+
     }
 
     // Limpiar tiquetes de cada tipo de usuario
@@ -200,7 +203,7 @@ void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, L
     pause();
 }
 
-void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List<Servicio*>* servicios) {
+void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List<Servicio*>* servicios, int* cantTiquetesGlobal) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
@@ -222,7 +225,7 @@ void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List
             showServicioMenu(servicios, areas);
             break;
         case 4:
-            limpiarColasYEstadisticas(areas, servicios, tiposDeUsuarios);
+            limpiarColasYEstadisticas(areas, servicios, tiposDeUsuarios, cantTiquetesGlobal);
             break;
         case 5:
             return; // Salir de la función y destruir automáticamente adminMenu
@@ -242,6 +245,7 @@ int main() {
     List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>(2);  // Crear OrderedArrayList para tipos de usuario
     List<Area*>* areas = new ArrayList<Area*>();                          // Crear ArrayList para áreas
     List<Servicio*>* servicios = new ArrayList<Servicio*>();
+    int* cantTiquetesGlobal = 0;
 
     Menu mainMenu("== Menú Principal ==");
     mainMenu.addOption("Estado de las colas");
@@ -259,13 +263,13 @@ int main() {
             showQueueStatusMenu(areas);
             break;
         case 2:
-            showTiquetesMenu(tiposDeUsuarios, servicios);
+            showTiquetesMenu(tiposDeUsuarios, servicios, cantTiquetesGlobal);
             break;
         case 3:
             showAtenderMenu(areas);
             break;
         case 4:
-            showAdminMenu(tiposDeUsuarios, areas, servicios); 
+            showAdminMenu(tiposDeUsuarios, areas, servicios, cantTiquetesGlobal);
             break;
         case 5:
             showSystemStatsMenu(tiposDeUsuarios, areas,servicios);
@@ -289,6 +293,7 @@ int main() {
                 delete servicios->remove();
             }
             delete [] servicios;
+            delete cantTiquetesGlobal;
             return 0;
         }
     }
