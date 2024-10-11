@@ -144,7 +144,7 @@ void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
 
         delete areas->remove(); // Eliminar el área de la lista de áreas
         cout << "Área eliminada exitosamente.\n";
-        pause()
+        pause();
 
     } while (selection < 1 || selection > areas->getSize() + 1);
 }
