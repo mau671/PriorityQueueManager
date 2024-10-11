@@ -133,10 +133,14 @@ void showAtenderMenu(List<Area*>* areas) {
         areas->goToPos(i);
         menu.addOption(areas->getElement()->getDescripcion()); //descripcion de las areas
     }
+    menu.addOption("Regresar");
     int selection;
     do {
         menu.display();
         selection = menu.getSelection();
+        if (selection == areas->getSize() + 1) {
+            return;
+        }
         areas->goToPos(selection - 1);
         ArrayList<Ventanilla*>* ventanillas = areas->getElement()->getVentanillas();
 
