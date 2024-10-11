@@ -39,6 +39,9 @@
     <ClCompile Include="src\Gestores\GestorTiquete.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\Gestores\GestorEstadísticas.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Estructuras\Concretas\ArrayList.h">

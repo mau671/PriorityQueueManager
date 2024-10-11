@@ -41,7 +41,7 @@ void TiquetesPorArea(List<Area*>* areas) {
     for (int i = 0; i < areas->getSize(); i++) {
         areas->goToPos(i);
         Area* area = areas->getElement();
-        cout << "Área: " << area->getDescripcion() << " - Tiquetes dispensados: " << area->TiquetesEmitidos() << endl;
+        cout << "Área: " << area->getDescripcion() << " - Tiquetes dispensados: " << area->getTiquetesDispensados() << endl;
     }
 }
 
@@ -51,7 +51,7 @@ void TiquetesPorVentanilla(List<Ventanilla*>* ventanillas) {
     for (int i = 0; i < ventanillas->getSize(); i++) {
         ventanillas->goToPos(i);
         Ventanilla* ventanilla = ventanillas->getElement();
-        cout << "Ventanilla: " << ventanilla->getNumero() << " - Tiquetes atendidos: " << ventanilla->TotalTiquetesAtendidos() << endl;
+        cout << "Ventanilla: " << ventanilla->getDescripcion() << " - Tiquetes atendidos: " << ventanilla->getTiquetesAtendidos() << endl;
     }
 }
 
@@ -61,7 +61,7 @@ void TiquetesPorServicio(List<Servicio*>* servicios) {
     for (int i = 0; i < servicios->getSize(); i++) {
         servicios->goToPos(i);
         Servicio* servicio = servicios->getElement();
-        cout << "Servicio: " << servicio->getDescripcion() << " - Tiquetes solicitados: " << servicio->TotalTiquetesSolicitados() << endl;
+        cout << "Servicio: " << servicio->getDescripcion() << " - Tiquetes solicitados: " << servicio->getTiquetesSolicitados() << endl;
     }
 }
 
@@ -71,7 +71,7 @@ void TiquetesPorUsuario(List<TipoUsuario*>* tiposUsuario) {
     for (int i = 0; i < tiposUsuario->getSize(); i++) {
         tiposUsuario->goToPos(i);
         TipoUsuario* tipoUsuario = tiposUsuario->getElement();
-        cout << "Tipo de Usuario: " << tipoUsuario->getDescripcion() << " - Tiquetes emitidos: " << tipoUsuario->TotalTiquetesEmitidos() << endl;
+        cout << "Tipo de Usuario: " << tipoUsuario->getDescripcion() << " - Tiquetes emitidos: " << tipoUsuario->getTiquetesSolicitados() << endl;
     }
 }
 

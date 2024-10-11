@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Gestores\GestorArea.cpp" />
+    <ClCompile Include="src\Gestores\GestorEstadísticas.cpp" />
     <ClCompile Include="src\Gestores\GestorServicio.cpp" />
     <ClCompile Include="src\Gestores\GestorTiquete.cpp" />
     <ClCompile Include="src\main.cpp" />
