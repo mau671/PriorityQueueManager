@@ -233,7 +233,7 @@ void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List
 
 void showSystemStatsMenu() {
 	std::cout << "Estadísticas del sistema.\n";
-	// Implementar lógica aquí
+	
 }
 
 int main() {
