@@ -101,7 +101,7 @@ void showQueueStatusMenu(List<Area*>* areas) {
 
 // Función para mostrar el submenú de tiquetes
 
-void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
+void showTiquetesMenu(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
     Menu ticketMenu("== Menú de Tiquetes ==");
     ticketMenu.addOption("Seleccionar tipo de cliente y servicio");
     ticketMenu.addOption("Regresar");
@@ -111,7 +111,7 @@ void showTiquetesMenu(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios,
         int choice = ticketMenu.getSelection();
         switch (choice) {
         case 1:
-            addTiquete(tiquetes, usuarios, servicios);
+            addTiquete(usuarios, servicios);
             break;
         case 2:
             return; // Salir de la función y destruir automáticamente ticketMenu
@@ -198,7 +198,7 @@ void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, L
     pause();
 }
 
-void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
+void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List<Servicio*>* servicios) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
     adminMenu.addOption("Áreas");
@@ -214,10 +214,10 @@ void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List
             showUserTypeMenu(tiposDeUsuarios); // Pasar la lista de tipos de usuario
             break;
         case 2:
-            showAreaMenu(areas, servicios, tiquetes);
+            showAreaMenu(areas, servicios);
             break;
         case 3:
-            showServicioMenu(servicios, areas,tiquetes);
+            showServicioMenu(servicios, areas);
             break;
         case 4:
             limpiarColasYEstadisticas(areas, servicios, tiposDeUsuarios);
@@ -241,7 +241,6 @@ int main() {
     List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>(2);  // Crear OrderedArrayList para tipos de usuario
     List<Area*>* areas = new ArrayList<Area*>();                          // Crear ArrayList para áreas
     List<Servicio*>* servicios = new ArrayList<Servicio*>();
-    MinHeap<Tiquete*>* tiquetes = new MinHeap<Tiquete*>(100); // Crear MinHeap para tiquetes
 
     Menu mainMenu("== Menú Principal ==");
     mainMenu.addOption("Estado de las colas");
@@ -249,7 +248,6 @@ int main() {
     mainMenu.addOption("Atender");
     mainMenu.addOption("Administración");
     mainMenu.addOption("Estadísticas del sistema");
-    mainMenu.addOption("Debug");
     mainMenu.addOption("Salir");
 
     while (true) {
@@ -260,21 +258,18 @@ int main() {
             showQueueStatusMenu(areas);
             break;
         case 2:
-            showTiquetesMenu(tiquetes, tiposDeUsuarios, servicios);
+            showTiquetesMenu(tiposDeUsuarios, servicios);
             break;
         case 3:
             showAtenderMenu(areas);
             break;
         case 4:
-            showAdminMenu(tiposDeUsuarios, areas, servicios, tiquetes); 
+            showAdminMenu(tiposDeUsuarios, areas, servicios); 
             break;
         case 5:
             showSystemStatsMenu();
             break;
         case 6:
-
-        case 7:
-            std::cout << "Saliendo del programa...\n";
             // Liberar la memoria de todos los punteros en la lista
             for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
                 tiposDeUsuarios->goToPos(i);
@@ -293,12 +288,7 @@ int main() {
                 delete servicios->getElement();
             }
             delete servicios;
-            for (int i = tiquetes->getSize() - 1; i >= 0; i--) {
-                delete tiquetes->remove(i);
-            }
-            delete tiquetes;
             return 0;
-            
         }
     }
     return 0;

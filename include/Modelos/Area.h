@@ -154,6 +154,7 @@ public:
 				return tiquete;
 			}
 		}
+		throw runtime_error("No se encontró la ventanilla");
 	 }
 
 	friend ostream& operator<<(ostream& os, const Area& area) {

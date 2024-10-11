@@ -30,8 +30,8 @@ void TiempoPromedioEspera(List<Area*>* areas) {
             cout << "Área: " << area->getDescripcion() << " - No se han atendido tiquetes.\n";
             continue;
         }
-        double tiempoPromedioEspera = area->TiempoEspera() / totalTiquetesAtendidos;
-        cout << "Área: " << area->getDescripcion() << " - Tiempo promedio de espera: " << tiempoPromedioEspera << " minutos.\n";
+        //double tiempoPromedioEspera = area->TiempoEspera() / totalTiquetesAtendidos;
+        //cout << "Área: " << area->getDescripcion() << " - Tiempo promedio de espera: " << tiempoPromedioEspera << " minutos.\n";
     }
 }
 

@@ -27,7 +27,7 @@ using std::setfill;
 int consecutivoGlobal = 100;
 
 // Crear un nuevo tiquete
-void addTiquete(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
+void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
     // Tipos de usuario
     if (usuarios->getSize() == 0) {
         cout << "No hay tipos de usuarios disponibles para crear un tiquete." << endl;
@@ -66,9 +66,6 @@ void addTiquete(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<
     servicioSeleccionado->getArea()->addTiquete(nuevoTiquete);//agregar el tiquete a la lista del area
     // Aumentar el consecutivo global
     consecutivoGlobal++;
-
-    // Agregar el tiquete a la lista
-    tiquetes->insert(nuevoTiquete);
 
     // Aumentar los contadores de estadisticas de tiqueteSolicitadoPorServicio y tiqueteSolicitadoPorTipoUsuario
     servicioSeleccionado->aumentarTiquetesSolicitados();

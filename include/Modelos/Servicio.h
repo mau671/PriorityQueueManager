@@ -57,7 +57,7 @@ public:
 		this->area = area;
 	}
 
-    int getTiquetesSolicitados() {
+    int getTiquetesSolicitados() const {
 		return tiquetesSolicitados;
 	}
 

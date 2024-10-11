@@ -66,17 +66,17 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
 }
 
 //elimina un servicio
-void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
+void delServicio(List<Servicio*>* servicios) {
     if (servicios->getSize() == 0) {
         cout << "No hay servicios disponibles." << endl;
         pause();
         return;
     }
+
     Menu menu("== Eliminar servicio ==");
-    
     for (int i = 0; i < servicios->getSize(); i++) {
         servicios->goToPos(i);
-        menu.addOption(servicios->getElement()->getDescripcion());//nombre de los servicios
+        menu.addOption(servicios->getElement()->getDescripcion()); // nombre de los servicios
     }
     menu.addOption("Cancelar");
 
@@ -92,19 +92,37 @@ void delServicio(List<Servicio*>* servicios, MinHeap<Tiquete*>* tiquetes) {
 
         bool confirmacion = readConfirmation("¿Está seguro que desea eliminar este servicio?");
         if (!confirmacion) {
-			cout << "Operación cancelada.\n";
-			return;
-		}
-
-        servicios->goToPos(selection - 1);
-        for (int e = tiquetes->getSize() - 1; e >= 0; e--) {//se busca en la cola los tiquetes, los que tengan el area del servicio
-            if (tiquetes->get(e)->getServicio() == servicios->getElement()) delete tiquetes->remove(e);//se elimina el tiquete si tiene el servicio
+            cout << "Operación cancelada.\n";
+            return;
         }
-        delete servicios->remove(); // Liberar la memoria del objeto eliminado
+
+        // Obtiene el servicio seleccionado
+        servicios->goToPos(selection - 1);
+        Servicio* servicioSeleccionado = servicios->getElement();
+
+        // Obtiene el área asociada al servicio
+        Area* areaAsociada = servicioSeleccionado->getArea();
+
+        if (areaAsociada != nullptr) {
+            // Obtiene el MinHeap de tiquetes del área
+            MinHeap<Tiquete*>* tiquetesArea = areaAsociada->getTiquetes();
+
+            // Elimina los tiquetes asociados al servicio seleccionado
+            for (int i = tiquetesArea->getSize() - 1; i >= 0; i--) {
+                if (tiquetesArea->get(i)->getServicio() == servicioSeleccionado) {
+                    delete tiquetesArea->remove(i); // Elimina el tiquete del MinHeap
+                }
+            }
+        }
+
+        // Elimina el servicio
+        delete servicios->remove(); // Liberar la memoria del objeto servicio eliminado
         cout << "Servicio eliminado." << endl;
         pause();
+
     } while (selection < 1 || selection > servicios->getSize() + 1);
 }
+
 
 //reordena los servicios en la lista
 void reordenarServicios(List<Servicio*>* servicios, List<Area*>* areas) {
@@ -176,7 +194,7 @@ void displayInfoServicios(List<Servicio*>* servicios) {
 }
 
 //muestra el menú para servicios
-void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas, MinHeap<Tiquete*>* tiquetes) {
+void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas) {
     Menu menu("== Menú de servicios ==");
     menu.addOption("Agregar");
     menu.addOption("Eliminar");
@@ -194,7 +212,7 @@ void showServicioMenu(List<Servicio*>* servicios, List<Area*>* areas, MinHeap<Ti
             addServicio(servicios, areas);
             break;
         case 2:
-            delServicio(servicios, tiquetes);
+            delServicio(servicios);
             break;
         case 3:
             reordenarServicios(servicios, areas);

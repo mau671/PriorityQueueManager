@@ -23,7 +23,7 @@ using std::string;
 //Hora actual en formato HH:MM:SS
 string obtenerHoraActual();
 // Crear un nuevo tiquete
-void addTiquete(MinHeap<Tiquete*>* tiquetes, List<TipoUsuario*>* usuarios, List<Servicio*>* servicios);
+void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios);
 
 
 #endif

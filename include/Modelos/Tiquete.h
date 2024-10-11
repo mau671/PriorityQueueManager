@@ -70,7 +70,7 @@ public:
 		else segundosTardados = 0;
 	}
 
-	int tiempoTardado() {
+	int tiempoTardado() const {
 		return segundosTardados;
 	}
 

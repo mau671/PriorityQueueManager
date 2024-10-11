@@ -71,7 +71,7 @@ public:
 		throw runtime_error("La ventanilla no está atendiendo a ningún tiquete.");
 	}
 
-	int getTiquetesAtendidos() {
+	int getTiquetesAtendidos() const {
 		return tiquetesAtendidos;
 	}
 
