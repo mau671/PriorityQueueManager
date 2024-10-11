@@ -57,7 +57,7 @@ void showQueueStatusMenu(List<Area*>* areas) {
 
         cout << "Área: " << area->getDescripcion() << endl;
         cout << "-----------------------------------------------" << endl;
-        cout << "Ventanillas (totales/disponibles): " << area->getNventanillas() << endl;
+        cout << "Ventanillas totales: " << area->getNventanillas() << endl;
         cout << "-----------------------------------------------\n";
         cout << "Tiquetes en cola:" << endl;
 
@@ -164,45 +164,6 @@ void showAtenderMenu(List<Area*>* areas) {
     } while (selection < 1 || selection > areas->getSize() + 1);
 }
 
-void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposDeUsuarios, int* consecutivoGlobal) {
-
-    int tiquetesEliminados = 0;
-
-    consecutivoGlobal = 0;
-
-    // Limpiar colas de tiquetes de cada area
-    for (int i = 0; i < areas->getSize(); i++) {
-        areas->goToPos(i);
-        Area* area = areas->getElement();
-        tiquetesEliminados += area->limpiarTiquetes();
-        area->setTiquetesDispensados(0);
-    }
-
-    // Limpiar tiquetes de cada servicio
-    for (int i = 0; i < servicios->getSize(); i++) {
-        servicios->goToPos(i);
-        Servicio* servicio = servicios->getElement();
-        servicio->setTiquetesSolicitados(0);
-
-    }
-
-    // Limpiar tiquetes de cada tipo de usuario
-    for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
-        tiposDeUsuarios->goToPos(i);
-        TipoUsuario* tipoUsuario = tiposDeUsuarios->getElement();
-        tipoUsuario->setTiquetesSolicitados(0);
-    }
-
-    // Mostrar un resumen de las colas limpiadas
-    if (tiquetesEliminados > 0) {
-        cout << "Se han eliminado " << tiquetesEliminados << " tiquetes de las colas." << endl;
-    } else {
-        cout << "No hay tiquetes para eliminar." << endl;
-    }
-    cout << "Se han reiniciado las estadísticas de tiquetes solicitados." << endl;
-    pause();
-}
-
 void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List<Servicio*>* servicios, int* cantTiquetesGlobal) {
     Menu adminMenu("== Menú de Administración ==");
     adminMenu.addOption("Tipos de usuario");
@@ -225,7 +186,7 @@ void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List
             showServicioMenu(servicios, areas);
             break;
         case 4:
-            limpiarColasYEstadisticas(areas, servicios, tiposDeUsuarios, cantTiquetesGlobal);
+            limpiarSistema(areas, servicios, tiposDeUsuarios, cantTiquetesGlobal);
             break;
         case 5:
             return; // Salir de la función y destruir automáticamente adminMenu
@@ -272,7 +233,7 @@ int main() {
             showAdminMenu(tiposDeUsuarios, areas, servicios, cantTiquetesGlobal);
             break;
         case 5:
-            showSystemStatsMenu(tiposDeUsuarios, areas,servicios);
+            showSystemStatsMenu(tiposDeUsuarios, areas, servicios);
             break;
         case 6:
             // Liberar la memoria de todos los punteros en la lista

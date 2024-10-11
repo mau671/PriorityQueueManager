@@ -20,6 +20,7 @@ void TiempoPromedioEspera(List<Area*>* areas);
 void TiquetesPorArea(List<Area*>* areas);
 void TiquetesPorVentanilla(List<Ventanilla*>* ventanillas);
 void TiquetesPorUsuario(List<TipoUsuario*>* tiposUsuario);
+void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposUsuario, int* consecutivoGlobal);
 void generarEstadisticas(List<TipoUsuario*>* tiposUsuario, List<Area*>* areas, List<Servicio*>* servicios);
 
 #endif

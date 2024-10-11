@@ -88,7 +88,48 @@ void TiquetesPorUsuario(List<TipoUsuario*>* tiposUsuario) {
     }
 }
 
+void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposDeUsuarios, int* consecutivoGlobal) {
+
+    int tiquetesEliminados = 0;
+
+    consecutivoGlobal = 0;
+
+    // Limpiar colas de tiquetes de cada area
+    for (int i = 0; i < areas->getSize(); i++) {
+        areas->goToPos(i);
+        Area* area = areas->getElement();
+        tiquetesEliminados += area->limpiarTiquetes();
+        area->setTiquetesDispensados(0);
+    }
+
+    // Limpiar tiquetes de cada servicio
+    for (int i = 0; i < servicios->getSize(); i++) {
+        servicios->goToPos(i);
+        Servicio* servicio = servicios->getElement();
+        servicio->setTiquetesSolicitados(0);
+
+    }
+
+    // Limpiar tiquetes de cada tipo de usuario
+    for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
+        tiposDeUsuarios->goToPos(i);
+        TipoUsuario* tipoUsuario = tiposDeUsuarios->getElement();
+        tipoUsuario->setTiquetesSolicitados(0);
+    }
+
+    // Mostrar un resumen de las colas limpiadas
+    if (tiquetesEliminados > 0) {
+        cout << "Se han eliminado " << tiquetesEliminados << " tiquetes de las colas." << endl;
+    }
+    else {
+        cout << "No hay tiquetes para eliminar." << endl;
+    }
+    cout << "Se han reiniciado las estadísticas de tiquetes solicitados." << endl;
+    pause();
+}
+
 void generarEstadisticas(List<TipoUsuario*>* tiposUsuario, List<Area*>* areas, List<Servicio*>* servicios) {
+    clearConsole();
     cout << "=== Generación de Estadísticas del Sistema ===\n" << endl;
 
     TiempoPromedioEspera(areas);

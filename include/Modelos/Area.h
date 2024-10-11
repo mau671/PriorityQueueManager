@@ -136,8 +136,11 @@ public:
 	}
 
 	int limpiarTiquetes() {
-		int tiquetesEliminados = tiquetes->getSize();
-		tiquetes->clear();
+		int tiquetesEliminados = 0;
+		for (int i = 0; i < tiquetes->getSize(); i++) {
+			delete tiquetes->remove(i);
+			tiquetesEliminados++;
+		}
 		return tiquetesEliminados;
 	}
 
