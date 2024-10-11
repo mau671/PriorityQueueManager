@@ -78,7 +78,6 @@ void modifyVentanillas(List<Area*>* areas) {
 }
 
 // Función para eliminar un área y sus ventanillas asociadas
-// Función para eliminar un área y sus ventanillas asociadas
 void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
     if (areas->getSize() == 0) {
         cout << "No hay áreas para eliminar." << endl;
@@ -110,7 +109,7 @@ void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
             cout << "Servicios que se eliminarán: " << endl;
             for (int i = 0; i < servicios->getSize(); i++) {
                 servicios->goToPos(i);
-                cout << i + 1 << " . " << servicios->getElement()->getDescripcion() << endl;
+                cout << i + 1 << ". " << servicios->getElement()->getDescripcion() << endl;
             }
             cout << endl;
         }
@@ -143,11 +142,9 @@ void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
             }
         }
 
-        // Eliminar el área seleccionada
-        delete areaSeleccionada; // Liberar la memoria del objeto área eliminado
-        areas->remove(); // Eliminar el área de la lista de áreas
-
+        delete areas->remove(); // Eliminar el área de la lista de áreas
         cout << "Área eliminada exitosamente.\n";
+        pause()
 
     } while (selection < 1 || selection > areas->getSize() + 1);
 }

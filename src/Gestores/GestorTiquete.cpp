@@ -31,10 +31,12 @@ void addTiquete(List<TipoUsuario*>* usuarios, List<Servicio*>* servicios) {
     // Tipos de usuario
     if (usuarios->getSize() == 0) {
         cout << "No hay tipos de usuarios disponibles para crear un tiquete." << endl;
+        pause();
         return;
     }
     if (servicios->getSize() == 0) {
         cout << "No hay servicios disponibles para crear un tiquete." << endl;
+        pause();
         return;
     }
     Menu menuUsuarios("== Tipos de usuario ==");

@@ -48,6 +48,7 @@ void showQueueStatusMenu(List<Area*>* areas) {
 
     if (areas->getSize() == 0) {
 		cout << "No hay áreas registradas.\n";
+        pause();
 		return;
 	}
     for (areas->goToStart(); !areas->atEnd(); areas->next()) {
