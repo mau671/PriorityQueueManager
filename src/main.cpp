@@ -20,6 +20,7 @@
 #include "Gestores/GestorTiquete.h"
 #include "Gestores/GestorTipoUsuario.h"
 #include "Gestores/GestorServicio.h"
+#include "Gestores/GestorEstadisticas.h"
 
 // Modelos
 #include "Modelos/TipoUsuario.h"

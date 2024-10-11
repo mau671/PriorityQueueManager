@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Gestores\GestorArea.cpp" />
-    <ClCompile Include="src\Gestores\GestorEstadísticas.cpp" />
+    <ClCompile Include="src\Gestores\GestorEstadisticas.cpp" />
     <ClCompile Include="src\Gestores\GestorServicio.cpp" />
     <ClCompile Include="src\Gestores\GestorTiquete.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -153,6 +153,7 @@
     <ClInclude Include="include\Modelos\Servicio.h" />
     <ClInclude Include="include\Modelos\Ventanilla.h" />
     <ClInclude Include="include\Modelos\TipoUsuario.h" />
+    <ClInclude Include="include\Gestores\GestorEstadisticas.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
