@@ -128,7 +128,7 @@ public:
 		return tiquetes->getSize();
 	}
 
-	int getTiquetesDispensados() {
+	int getTiquetesDispensados() const {
 		return tiquetesDispensados;
 	}
 

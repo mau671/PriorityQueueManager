@@ -10,6 +10,9 @@
  */
 
 #pragma once
+
+#define DEFAULT_MAX 1024
+
 #include "Estructuras/Concretas/ArrayList.h"
 
 template <typename E>

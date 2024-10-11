@@ -29,6 +29,9 @@
 
 // Estructuras de datos
 #include "Estructuras/Concretas/OrderedArrayList.h"
+#include "Estructuras/Concretas/ArrayList.h"
+#include "Estructuras/Concretas/MinHeap.h"
+#include "Estructuras/Abstractas/List.h"
 
 // Utilidades
 #include "Utilidades/utils.h"
@@ -93,6 +96,7 @@ void showQueueStatusMenu(List<Area*>* areas) {
 
         cout << "-----------------------------------------------\n\n";
     }
+    pause();
 }
 
 // Función para mostrar el submenú de tiquetes
@@ -234,7 +238,7 @@ int main() {
     setlocale(LC_ALL, "spanish");
 
     // Inicializar la lista de tipos de usuario
-    List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>();  // Crear OrderedArrayList para tipos de usuario
+    List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>(2);  // Crear OrderedArrayList para tipos de usuario
     List<Area*>* areas = new ArrayList<Area*>();                          // Crear ArrayList para áreas
     List<Servicio*>* servicios = new ArrayList<Servicio*>();
     MinHeap<Tiquete*>* tiquetes = new MinHeap<Tiquete*>(100); // Crear MinHeap para tiquetes
@@ -254,49 +258,21 @@ int main() {
         switch (choice) {
         case 1:
             showQueueStatusMenu(areas);
-            pause();
             break;
         case 2:
             showTiquetesMenu(tiquetes, tiposDeUsuarios, servicios);
             break;
         case 3:
-            std::cout << "Atender seleccionada.\n\n";
             showAtenderMenu(areas);
-            pause();
             break;
         case 4:
-            showAdminMenu(tiposDeUsuarios, areas, servicios, tiquetes);// Pasar la lista de tipos de usuario
+            showAdminMenu(tiposDeUsuarios, areas, servicios, tiquetes); 
             break;
         case 5:
-            std::cout << "Estadísticas del sistema seleccionada.\n\n";
             showSystemStatsMenu();
             break;
         case 6:
-            // Hacer print de cada tipo de usuario en la lista
 
-            cout << "Tipos de usuario:\n";
-            for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
-                tiposDeUsuarios->goToPos(i);
-                std::cout << *(tiposDeUsuarios->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
-            }
-
-            cout << "Areas:\n";
-            // imprimir areas 
-            for (int i = 0; i < areas->getSize(); i++) {
-				areas->goToPos(i);
-				std::cout << *(areas->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
-			}
-
-            cout << "Servicios:\n";
-
-            // imprimir servicios
-            for (int i = 0; i < servicios->getSize(); i++) {
-                servicios->goToPos(i);
-                std::cout << *(servicios->getElement()) << std::endl; // Imprimir el objeto usando sobrecarga de <<
-            }
-
-            pause();
-            break;
         case 7:
             std::cout << "Saliendo del programa...\n";
             // Liberar la memoria de todos los punteros en la lista

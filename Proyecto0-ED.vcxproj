@@ -143,11 +143,8 @@
     <ClInclude Include="include\Gestores\GestorTiquete.h" />
     <ClInclude Include="include\Modelos\Area.h" />
     <ClInclude Include="include\Estructuras\Concretas\ArrayList.h" />
-    <ClInclude Include="include\Estructuras\Concretas\HeapPriorityQueue.h" />
-    <ClInclude Include="include\Estructuras\Concretas\KVPair.h" />
     <ClInclude Include="include\Estructuras\Concretas\MinHeap.h" />
     <ClInclude Include="include\Estructuras\Concretas\OrderedArrayList.h" />
-    <ClInclude Include="include\Estructuras\Abstractas\PriorityQueue.h" />
     <ClInclude Include="include\Modelos\Tiquete.h" />
     <ClInclude Include="include\Utilidades\utils.h" />
     <ClInclude Include="include\Estructuras\Abstractas\List.h" />

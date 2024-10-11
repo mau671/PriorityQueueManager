@@ -25,9 +25,6 @@ using std::cin;
 
 //funcion que agrega un area
 void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
-    string descripcion;
-    int prioridad;
-
     if (areas->getSize() == 0) {//se asegura de que haya al menos un area de la cual esocger
         cout << "No hay areas disponibles" << endl;
         pause();
@@ -49,7 +46,7 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
             return;
         }
         areas->goToPos(selection - 1);
-        descripcion = readString("Descripción/nombre del servicio: ");
+        string descripcion = readString("Descripción/nombre del servicio: ");
 
         for (int i = 0; i < servicios->getSize(); i++) {//va por la lista de servicios para asegurarse de que no exista aún.
             servicios->goToPos(i);

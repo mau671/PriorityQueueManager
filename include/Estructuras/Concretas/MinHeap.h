@@ -1,6 +1,6 @@
 #pragma once
-#define DEFAULT_MAX 1024
 
+#define DEFAULT_MAX 1024
 
 #include <stdexcept>
 #include <iostream>
