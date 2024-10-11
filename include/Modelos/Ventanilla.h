@@ -75,6 +75,10 @@ public:
 		return tiquetesAtendidos;
 	}
 
+	void setTiquetesAtendidos(int tiquetesAtendidos) {
+		this->tiquetesAtendidos = tiquetesAtendidos;
+	}
+
 	void liberar() {
 		delete tiquete;
 		tiquete = nullptr;

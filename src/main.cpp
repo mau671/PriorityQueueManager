@@ -163,48 +163,10 @@ void showAtenderMenu(List<Area*>* areas) {
             cout << "Se ha atendido el tiquete " << tiquete->getCodigo() << " exitosamente." << endl;
             string hora = obtenerHoraActual();
             tiquete->setHoraAtendido(hora);
+            pause();
             return;
         } while (iventanilla<1 || iventanilla> areas->getSize() + 1);
     } while (selection < 1 || selection > areas->getSize() + 1);
-}
-
-void limpiarColasYEstadisticas(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsuario*>* tiposDeUsuarios, int* consecutivoGlobal) {
-
-    int tiquetesEliminados = 0;
-
-    (*consecutivoGlobal) = 100;
-
-    // Limpiar colas de tiquetes de cada area
-    for (int i = 0; i < areas->getSize(); i++) {
-        areas->goToPos(i);
-        Area* area = areas->getElement();
-        tiquetesEliminados += area->limpiarTiquetes();
-        area->setTiquetesDispensados(0);
-    }
-
-    // Limpiar tiquetes de cada servicio
-    for (int i = 0; i < servicios->getSize(); i++) {
-        servicios->goToPos(i);
-        Servicio* servicio = servicios->getElement();
-        servicio->setTiquetesSolicitados(0);
-
-    }
-
-    // Limpiar tiquetes de cada tipo de usuario
-    for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
-        tiposDeUsuarios->goToPos(i);
-        TipoUsuario* tipoUsuario = tiposDeUsuarios->getElement();
-        tipoUsuario->setTiquetesSolicitados(0);
-    }
-
-    // Mostrar un resumen de las colas limpiadas
-    if (tiquetesEliminados > 0) {
-        cout << "Se han eliminado " << tiquetesEliminados << " tiquetes de las colas." << endl;
-    } else {
-        cout << "No hay tiquetes para eliminar." << endl;
-    }
-    cout << "Se han reiniciado las estadísticas de tiquetes solicitados." << endl;
-    pause();
 }
 
 void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List<Servicio*>* servicios, int* cantTiquetesGlobal) {
@@ -220,7 +182,7 @@ void showAdminMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas, List
         int choice = adminMenu.getSelection();
         switch (choice) {
         case 1:
-            showUserTypeMenu(tiposDeUsuarios); // Pasar la lista de tipos de usuario
+            showUserTypeMenu(tiposDeUsuarios, areas); // Pasar la lista de tipos de usuario
             break;
         case 2:
             showAreaMenu(areas, servicios);
@@ -246,7 +208,7 @@ int main() {
     setlocale(LC_ALL, "spanish");
 
     // Inicializar la lista de tipos de usuario
-    List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>(2);  // Crear OrderedArrayList para tipos de usuario
+    List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>();  // Crear OrderedArrayList para tipos de usuario
     List<Area*>* areas = new ArrayList<Area*>();                          // Crear ArrayList para áreas
     List<Servicio*>* servicios = new ArrayList<Servicio*>();
     int cantTiquetesGlobal = 100;
@@ -287,12 +249,12 @@ int main() {
             delete [] tiposDeUsuarios;  // Limpiar la lista al salir
 
             //se hace lo mismo con todos
-            for (int i = areas->getSize()-1; i >= 0; i--) {
+            for (int i = 0; i < areas->getSize(); i++) {
                 areas->goToPos(i);
                 delete areas->remove();
             }
             delete [] areas;
-            for (int i = servicios->getSize()-1; i >= 0; i--) {
+            for (int i = 0; i < servicios->getSize(); i++) {
                 servicios->goToPos(i);
                 delete servicios->remove();
             }

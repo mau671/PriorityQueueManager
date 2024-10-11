@@ -35,6 +35,7 @@ private:
 	MinHeap<Tiquete*>* tiquetes = nullptr;
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
 	int tiquetesDispensados = 0;
+	int tiquetesAtendidos = 0;
 	int tiempoTotalEspera = 0;
 
 	// Constructor de copia y asignación privados
@@ -159,6 +160,7 @@ public:
 
 				// Sumar el tiempo de espera del tiquete al tiempo total de espera del área
 				tiempoTotalEspera += tiquete->tiempoTardado();
+				tiquetesAtendidos++;
 				return tiquete;
 			}
 		}
@@ -168,6 +170,18 @@ public:
 	double obtenerTiempoPromedioEspera() const {
 		if (tiquetesDispensados == 0) return 0;
 		return static_cast<double>(tiempoTotalEspera) / tiquetesDispensados;
+	}
+
+	int getTiquetesAtendidos() const {
+		return tiquetesAtendidos;
+	}
+
+	void setTiquetesAtendidos(int tiquetesAtendidos) {
+		this->tiquetesAtendidos = tiquetesAtendidos;
+	}
+
+	void setTiempoTotalEspera(int tiempoTotalEspera) {
+		this->tiempoTotalEspera = tiempoTotalEspera;
 	}
 
 	friend ostream& operator<<(ostream& os, const Area& area) {

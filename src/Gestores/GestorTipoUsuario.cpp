@@ -16,6 +16,7 @@
 #include "Estructuras/Concretas/OrderedArrayList.h"
 #include "Modelos/TipoUsuario.h"
 #include "Utilidades/utils.h"
+#include "Modelos/Area.h"
 
 using std::cout;
 using std::endl;
@@ -35,7 +36,7 @@ void addUserType(List<TipoUsuario*>* tiposDeUsuarios) {
 
 
 // Funci�n para mostrar todos los tipos de usuario y eliminar el seleccionado
-void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
+void displayAndRemoveUserType(List<TipoUsuario*>* userTypes, List<Area*>* areas) {
     if (userTypes->getSize() == 0) {
         cout << "No hay tipos de usuario para eliminar." << endl;
         pause();
@@ -65,17 +66,25 @@ void displayAndRemoveUserType(List<TipoUsuario*>* userTypes) {
             return;
         }
 
+        // Eliminar todos los tiquetes de todas las areas
+        int tiquetesEliminados = 0;
+        for (int i = 0; i < areas->getSize(); i++) {
+			areas->goToPos(i);
+			Area* area = areas->getElement();
+            tiquetesEliminados += area->limpiarTiquetes();
+		}
+
         userTypes->goToPos(selection - 1);
-        delete userTypes->getElement(); // Liberar la memoria del objeto eliminado
+        delete userTypes->remove(); // Liberar la memoria del objeto eliminado
         cout << "Tipo de usuario eliminado.\n";
-        userTypes->remove();
+        cout << "Se han eliminado " << tiquetesEliminados << " tiquetes de las colas.\n";
 
     } while (selection < 1 || selection > userTypes->getSize() + 1);
 }
 
 
 // Funci�n para mostrar el men� de tipos de usuario
-void showUserTypeMenu(List<TipoUsuario*>* tiposDeUsuarios) {
+void showUserTypeMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas) {
     Menu menu("== Menú de tipos de usuario ==");
     menu.addOption("Agregar");
     menu.addOption("Eliminar");
@@ -91,7 +100,7 @@ void showUserTypeMenu(List<TipoUsuario*>* tiposDeUsuarios) {
             addUserType(tiposDeUsuarios);
             break;
         case 2:
-            displayAndRemoveUserType(tiposDeUsuarios);  // Pasar la lista de tipos de usuario
+            displayAndRemoveUserType(tiposDeUsuarios, areas);  // Pasar la lista de tipos de usuario
             break;
         case 3:
             return;

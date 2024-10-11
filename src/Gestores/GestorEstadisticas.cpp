@@ -26,9 +26,8 @@ void TiempoPromedioEspera(List<Area*>* areas) {
     for (int i = 0; i < areas->getSize(); i++) {
         areas->goToPos(i);
         Area* area = areas->getElement();
-        int totalTiquetesAtendidos = area->getTiquetesDispensados();
 
-        if (totalTiquetesAtendidos == 0) {
+        if (area->getTiquetesAtendidos() == 0  || area->obtenerTiempoPromedioEspera() == 0) {
             cout << "Área: " << area->getDescripcion() << " - No se han atendido tiquetes.\n";
         }
         else {
@@ -96,6 +95,14 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
         Area* area = areas->getElement();
         tiquetesEliminados += area->limpiarTiquetes();
         area->setTiquetesDispensados(0);
+        area->setTiquetesAtendidos(0);
+        area->setTiempoTotalEspera(0);
+        // limpiar estadisticas de cada ventanilla
+        for (int j = 0; j < area->getVentanillas()->getSize(); j++) {
+			area->getVentanillas()->goToPos(j);
+			Ventanilla* ventanilla = area->getVentanillas()->getElement();
+			ventanilla->setTiquetesAtendidos(0);
+		}
     }
 
     // Limpiar tiquetes de cada servicio

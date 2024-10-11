@@ -17,8 +17,8 @@
 using std::string;
 
 // Funciones relacionadas con la gestión de tipos de usuario
-void addUserType(List<TipoUsuario*>* userTypes, const string& description, int priority);
-void displayAndRemoveUserType(List<TipoUsuario*>* userTypes);
-void showUserTypeMenu(List<TipoUsuario*>* userTypes);
+void addUserType(List<TipoUsuario*>* tiposDeUsuarios);
+void displayAndRemoveUserType(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas);
+void showUserTypeMenu(List<TipoUsuario*>* userTypes, List<Area*>* areas);
 
 #endif // GESTORTIPOUSUARIO_H
