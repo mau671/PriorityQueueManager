@@ -2,7 +2,7 @@
  * Archivo: GestorEstadistica.cpp
  * Descripción: Implementación de funciones para consultar estadísticas del sistema.
  *
- * Autor(es): Josue Meza, Lun Valverde
+ * Autor(es): Josue Meza, Lun Valverde, Mauricio Gonzalez
  */
 
 #include <iostream>
