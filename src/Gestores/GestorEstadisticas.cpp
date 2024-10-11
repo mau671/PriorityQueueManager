@@ -88,7 +88,8 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
 
     int tiquetesEliminados = 0;
 
-    consecutivoGlobal = 0;
+    int valor = 100;
+    int* consecutivo = &valor;
 
     // Limpiar colas de tiquetes de cada area
     for (int i = 0; i < areas->getSize(); i++) {
@@ -103,6 +104,9 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
 			area->getVentanillas()->goToPos(j);
 			Ventanilla* ventanilla = area->getVentanillas()->getElement();
 			ventanilla->setTiquetesAtendidos(0);
+            if (ventanilla->isOcupada()) {
+                ventanilla->liberar();
+            }
 		}
     }
 

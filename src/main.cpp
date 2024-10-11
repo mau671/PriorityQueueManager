@@ -127,6 +127,7 @@ void showAtenderMenu(List<Area*>* areas) {
 
     if (areas->getSize() == 0) {
         cout << "No hay areas disponibles" << endl;
+        pause();
         return;
     }
     Menu menu("Seleccione el area donde desea atender: ");
