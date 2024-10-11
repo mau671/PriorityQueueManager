@@ -14,6 +14,8 @@
 #include "UI/Menu.h"
 #include "Utilidades/utils.h"
 #include "Modelos/TipoUsuario.h"
+#include "Modelos/Servicio.h"
+#include "Modelos/Area.h"
 
 using std::string;
 using std::cout;

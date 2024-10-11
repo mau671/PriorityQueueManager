@@ -35,6 +35,7 @@ private:
 	MinHeap<Tiquete*>* tiquetes = nullptr;
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
 	int tiquetesDispensados = 0;
+	int tiempoTotalEspera = 0;
 
 	// Constructor de copia y asignación privados
 	Area(const Area&) = delete;
@@ -145,19 +146,29 @@ public:
 	}
 
 	
-	 Tiquete* atenderTiquete(string nVentanilla) {
+	Tiquete* atenderTiquete(string nVentanilla) {
 		string hora = obtenerHoraActual();
 		if (tiquetes->isEmpty()) throw runtime_error("No hay tiquetes para atender");
+
 		for (int i = 0; i < ventanillas->getSize(); i++) {
 			ventanillas->goToPos(i);
 			if (ventanillas->getElement()->getDescripcion() == nVentanilla) {
 				Tiquete* tiquete = tiquetes->removeFirst();
 				ventanillas->getElement()->setTiquete(tiquete, hora);
+				tiquete->setHoraAtendido(hora);
+
+				// Sumar el tiempo de espera del tiquete al tiempo total de espera del área
+				tiempoTotalEspera += tiquete->tiempoTardado();
 				return tiquete;
 			}
 		}
 		throw runtime_error("No se encontró la ventanilla");
-	 }
+	}
+
+	double obtenerTiempoPromedioEspera() const {
+		if (tiquetesDispensados == 0) return 0;
+		return static_cast<double>(tiempoTotalEspera) / tiquetesDispensados;
+	}
 
 	friend ostream& operator<<(ostream& os, const Area& area) {
 		os << "Area: " << area.descripcion << "\nCodigo: " << area.codigo << "\nNumero de ventanillas: " << area.nVentanillas << "\nVentanillas: ";

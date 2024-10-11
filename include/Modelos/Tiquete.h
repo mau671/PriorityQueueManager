@@ -14,7 +14,7 @@
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
 #include "Modelos/TipoUsuario.h"
-#include "Modelos/Area.h"
+#include "Modelos/Servicio.h"
 
 using std::string;
 using std::to_string;
@@ -54,20 +54,24 @@ public:
 
 	void setHoraAtendido(string horaA) {
 		horaAtendido = horaA;
-		int hA = stoi(to_string(horaA[0]) + to_string(horaA[1]));
-		int mA = stoi(to_string(horaA[3]) + to_string(horaA[4]));
-		int sA = stoi(to_string(horaA[6]) + to_string(horaA[7]));
 
-		int h = stoi(to_string(hora[0]) + to_string(hora[1]));
-		int m = stoi(to_string(hora[3]) + to_string(hora[4]));
-		int s = stoi(to_string(hora[6]) + to_string(hora[7]));
+		int hA = stoi(horaA.substr(0, 2));
+		int mA = stoi(horaA.substr(3, 2));
+		int sA = stoi(horaA.substr(6, 2));
 
-		int totalA = hA * 3600 + mA * 60 + sA;//hora atendido
-		int totalP = h * 3600 + m * 60 + s;//hora solicitado
+		int h = stoi(hora.substr(0, 2));
+		int m = stoi(hora.substr(3, 2));
+		int s = stoi(hora.substr(6, 2));
 
-		if (totalA > totalP)
+		int totalA = hA * 3600 + mA * 60 + sA;  // Hora en la que fue atendido
+		int totalP = h * 3600 + m * 60 + s;     // Hora en la que fue solicitado
+
+		if (totalA > totalP) {
 			segundosTardados = totalA - totalP;
-		else segundosTardados = 0;
+		}
+		else {
+			segundosTardados = 0;
+		}
 	}
 
 	int tiempoTardado() const {

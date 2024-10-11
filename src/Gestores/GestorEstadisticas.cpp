@@ -22,26 +22,22 @@ using std::string;
 // Función para calcular tiempo promedio de espera por cada área
 void TiempoPromedioEspera(List<Area*>* areas) {
     cout << "== Tiempo promedio de espera por área ==" << endl;
-    int TiempoEspera;
+
     for (int i = 0; i < areas->getSize(); i++) {
-        TiempoEspera = 0;
         areas->goToPos(i);
         Area* area = areas->getElement();
         int totalTiquetesAtendidos = area->getTiquetesDispensados();
+
         if (totalTiquetesAtendidos == 0) {
             cout << "Área: " << area->getDescripcion() << " - No se han atendido tiquetes.\n";
-            continue;
         }
         else {
-            for (int i = 0; i < area->getTiquetes()->getSize(); i++) {
-                area->getVentanillas()->goToPos(i);
-                TiempoEspera+= area->getVentanillas()->getElement()->getTiquete()->tiempoTardado();
-            }
-            double tiempoPromedioEspera = TiempoEspera / totalTiquetesAtendidos;
-            cout << "Área: " << area->getDescripcion() << " - Tiempo promedio de espera: " << tiempoPromedioEspera << " minutos.\n";
+            double tiempoPromedioEspera = area->obtenerTiempoPromedioEspera();
+            cout << "Área: " << area->getDescripcion() << " - Tiempo promedio de espera: " << tiempoPromedioEspera << " segundos.\n";
         }
     }
 }
+
 
 // Función para mostrar la cantidad de tiquetes dispensados por cada área
 void TiquetesPorArea(List<Area*>* areas) {
