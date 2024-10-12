@@ -96,15 +96,6 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
         area->setTiquetesDispensados(0);
         area->setTiquetesAtendidos(0);
         area->setTiempoTotalEspera(0);
-        // limpiar estadísticas de cada ventanilla
-        for (int j = 0; j < area->getVentanillas()->getSize(); j++) {
-            area->getVentanillas()->goToPos(j);
-            Ventanilla* ventanilla = area->getVentanillas()->getElement();
-            ventanilla->setTiquetesAtendidos(0);
-            if (ventanilla->isOcupada()) {
-                ventanilla->liberar();
-            }
-        }
     }
 
     // Limpiar tiquetes de cada servicio

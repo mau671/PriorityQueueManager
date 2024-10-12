@@ -148,6 +148,15 @@ public:
 			delete tiquetes->remove(i);
 			tiquetesEliminados++;
 		}
+
+		for (int i = 0; i < ventanillas->getSize(); i++) {
+			ventanillas->goToPos(i);
+			if (ventanillas->getElement()->isOcupada()) {
+				ventanillas->getElement()->liberar();
+				tiquetesEliminados++;
+			}
+		}
+
 		return tiquetesEliminados;
 	}
 
