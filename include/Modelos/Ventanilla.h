@@ -33,7 +33,7 @@ private:
 public:
 	Ventanilla(string descripcion) {
 		this->descripcion = descripcion;
-		ocupada = true;
+		ocupada = false;
 		tiquete = nullptr;
 	}
 
