@@ -2,7 +2,7 @@
  * Archivo: Area.h
  * Descripción: Clase que representa las areas donde se atienden los servicios.
  *
- * Autor(es): Lun Valverde c:
+ * Autor(es): Lun Valverde, Mauricio Gonzalez
  */
 
 #pragma once
