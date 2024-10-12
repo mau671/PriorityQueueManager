@@ -80,8 +80,10 @@ public:
 	}
 
 	void liberar() {
-		delete tiquete;
-		tiquete = nullptr;
+		if (tiquete != nullptr) {
+			delete tiquete;
+			tiquete = nullptr;
+		}
 		ocupada = false;
 	}
 

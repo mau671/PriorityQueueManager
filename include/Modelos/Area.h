@@ -156,7 +156,6 @@ public:
 				tiquetesEliminados++;
 			}
 		}
-
 		return tiquetesEliminados;
 	}
 
