@@ -60,15 +60,11 @@ public:
 	}
 
 	~Area() {
-		// Limpiar ventanillas
-		while (ventanillas->getSize() != 0) {
-			Ventanilla* ventanilla = ventanillas->remove();
-			ventanilla->liberar();  // Libera el tiquete en la ventanilla
-			delete ventanilla;  // Elimina la ventanilla
+		for (int i = 0; i < ventanillas->getSize(); i++) {
+			ventanillas->goToPos(i);
+			delete ventanillas->getElement();
 		}
 		delete ventanillas;
-
-		// Limpiar tiquetes
 		delete tiquetes;
 	}
 

@@ -117,7 +117,7 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
 
     // Mostrar un resumen de las colas limpiadas
     if (tiquetesEliminados > 0) {
-        cout << "Se han eliminado " << tiquetesEliminados << " tiquetes de las colas." << endl;
+        cout << "Se han eliminado " << tiquetesEliminados << " tiquetes." << endl;
     }
     else {
         cout << "No hay tiquetes para eliminar." << endl;

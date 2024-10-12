@@ -251,10 +251,11 @@ int main() {
             delete [] tiposDeUsuarios;  // Limpiar la lista al salir
 
             //se hace lo mismo con todos
-            for (int i = 0; i < areas->getSize(); i++) {
-                areas->goToPos(i);
-                delete areas->remove();
-            }
+            for (areas->goToStart(); !areas->atEnd(); areas->next()) {
+                cout << "Eliminando area " << endl;
+                delete areas->getElement();
+			}
+
             delete [] areas;
             for (int i = 0; i < servicios->getSize(); i++) {
                 servicios->goToPos(i);
