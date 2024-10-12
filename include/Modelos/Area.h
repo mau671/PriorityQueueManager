@@ -60,10 +60,15 @@ public:
 	}
 
 	~Area() {
+		// Limpiar ventanillas
 		while (ventanillas->getSize() != 0) {
-			delete ventanillas->remove();
+			Ventanilla* ventanilla = ventanillas->remove();
+			ventanilla->liberar();  // Libera el tiquete en la ventanilla
+			delete ventanilla;  // Elimina la ventanilla
 		}
-		delete [] ventanillas;
+		delete ventanillas;
+
+		// Limpiar tiquetes
 		delete tiquetes;
 	}
 
