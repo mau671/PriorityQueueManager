@@ -31,6 +31,7 @@ void addArea(List<Area*>* areas) {
         areas->goToPos(i);
         if (areas->getElement()->getDescripcion() == descripcion) { //se asegura de que el area no exista todavía
             cout << "Area ya existente." << endl;
+            pause();
             return;
         }
     }

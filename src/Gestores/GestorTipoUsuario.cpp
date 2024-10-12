@@ -26,8 +26,17 @@ using std::string;
 // Funci�n para agregar un nuevo tipo de usuario
 void addUserType(List<TipoUsuario*>* tiposDeUsuarios) {
     string description = readString("Descripción del tipo de usuario: ");
-    int prioridad = readInt("Prioridad del tipo de usuario: ");
 
+    // Validar que no exista un tipo de usuario con la misma descripcion
+    for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
+        tiposDeUsuarios->goToPos(i);
+        if (tiposDeUsuarios->getElement()->getDescripcion() == description) {
+            cout << "Tipo de usuario ya existente." << endl;
+            pause();
+            return;
+        }
+    }
+    int prioridad = readInt("Prioridad del tipo de usuario: ");
 
     tiposDeUsuarios->insert(new TipoUsuario(description, prioridad));
     cout << "Tipo de usuario '" << description << "' con prioridad " << prioridad << " agregado exitosamente.\n";

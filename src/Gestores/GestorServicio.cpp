@@ -53,6 +53,7 @@ void addServicio(List<Servicio*>* servicios, List<Area*>* areas) {
             servicios->goToPos(i);
             if (servicios->getElement()->getDescripcion() == descripcion) {
                 cout << "Servicio ya existente." << endl;
+                pause();
                 return;
             }
         }

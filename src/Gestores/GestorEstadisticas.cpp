@@ -38,7 +38,6 @@ void TiempoPromedioEspera(List<Area*>* areas) {
 
 }
 
-
 // Función para mostrar la cantidad de tiquetes dispensados por cada área
 void TiquetesPorArea(List<Area*>* areas) {
     cout << "\n== Cantidad de tiquetes dispensados por área ==" << endl;
