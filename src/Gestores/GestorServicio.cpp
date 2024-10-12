@@ -106,15 +106,9 @@ void delServicio(List<Servicio*>* servicios) {
         Area* areaAsociada = servicioSeleccionado->getArea();
 
         if (areaAsociada != nullptr) {
-            // Obtiene el MinHeap de tiquetes del área
-            MinHeap<Tiquete*>* tiquetesArea = areaAsociada->getTiquetes();
-
-            // Elimina los tiquetes asociados al servicio seleccionado
-            for (int i = tiquetesArea->getSize() - 1; i >= 0; i--) {
-                if (tiquetesArea->get(i)->getServicio() == servicioSeleccionado) {
-                    delete tiquetesArea->remove(i); // Elimina el tiquete del MinHeap
-                }
-            }
+            
+            int tiquetesEliminados = areaAsociada->limpiarTiquetes();
+            cout << "Tiquetes eliminados: " << tiquetesEliminados << endl;
         }
 
         // Elimina el servicio

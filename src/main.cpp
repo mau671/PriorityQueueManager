@@ -85,11 +85,11 @@ void showQueueStatusMenu(List<Area*>* areas) {
                 area->getVentanillas()->goToPos(j);
                 Ventanilla* ventanilla = area->getVentanillas()->getElement();
                 cout << "    Ventanilla " << ventanilla->getDescripcion() << ": ";
-                if (ventanilla->getTiquetesAtendidos() > 0) {
+                if (ventanilla->isOcupada() == true) {
                     cout << ventanilla->getTiquete()->getCodigo() << endl;
                 }
                 else {
-                    cout << "(No se ha atendido ningún tiquete)\n";
+                    cout << "(No se está atendiendo ningún tiquete)\n";
                 }
             }
         } catch (std::out_of_range& e) {
@@ -252,7 +252,6 @@ int main() {
 
             //se hace lo mismo con todos
             for (areas->goToStart(); !areas->atEnd(); areas->next()) {
-                cout << "Eliminando area " << endl;
                 delete areas->getElement();
 			}
 

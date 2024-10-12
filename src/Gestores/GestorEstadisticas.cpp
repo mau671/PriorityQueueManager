@@ -95,6 +95,15 @@ void limpiarSistema(List<Area*>* areas, List<Servicio*>* servicios, List<TipoUsu
         area->setTiquetesDispensados(0);
         area->setTiquetesAtendidos(0);
         area->setTiempoTotalEspera(0);
+
+        // Limpiar tiquetes de cada ventanilla
+        ArrayList<Ventanilla*>* ventanillas = area->getVentanillas();
+        for (int i = 0; i < ventanillas->getSize(); i++) {
+			ventanillas->goToPos(i);
+			Ventanilla* ventanilla = ventanillas->getElement();
+			ventanilla->setTiquetesAtendidos(0);
+		}
+
     }
 
     // Limpiar tiquetes de cada servicio
