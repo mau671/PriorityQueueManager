@@ -1,3 +1,10 @@
+/*
+ * Archivo: MinHeap.h
+ * Descripción: Este archivo contiene la implementación de la clase MinHeap, que representa un heap mínimo.
+ *
+ * Autor(es): Profesor Mauricio Aviles Cisneros
+ */
+
 #pragma once
 
 #define DEFAULT_MAX 1024

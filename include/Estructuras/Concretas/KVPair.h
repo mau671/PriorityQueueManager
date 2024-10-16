@@ -1,3 +1,10 @@
+/*
+ * Archivo: KVPair.h
+ * Descripción: Este archivo contiene la implementación de la clase KVPair, que representa un par clave-valor
+ *
+ * Autor(es): Profesor Mauricio Aviles Cisneros
+ */
+
 #pragma once
 #include <iostream>
 using std::ostream;

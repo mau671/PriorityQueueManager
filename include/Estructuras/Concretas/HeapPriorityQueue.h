@@ -1,3 +1,9 @@
+/*
+ * Archivo: HeapPriorityQueue.h
+ * Descripción: Este archivo contiene la implementación de una cola de prioridad basada en un heap.
+ *
+ * Autor(es): Profesor Mauricio Aviles Cisneros
+ */
 #pragma once
 #include <stdexcept>
 #include "PriorityQueue.h"

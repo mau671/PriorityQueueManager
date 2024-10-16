@@ -1,3 +1,10 @@
+/*
+ * Archivo: PriorityQueue.h
+ * Descripción: Interfaz de una cola de prioridad genérica. Incluye métodos para insertar, obtener, y eliminar elementos
+ *
+ * Autor(es): Profesor Mauricio Aviles Cisneros
+ */
+
 #pragma once
 
 template <typename E>
