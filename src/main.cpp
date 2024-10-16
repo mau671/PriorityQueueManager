@@ -62,17 +62,13 @@ void showQueueStatusMenu(List<Area*>* areas) {
         cout << "Tiquetes en cola:" << endl;
 
         // Mostrar los tiquetes en cola
-        MinHeap<Tiquete*>* tiquetes = area->getTiquetes();
+        HeapPriorityQueue<Tiquete*>* tiquetes = area->getTiquetes();
 
         if (tiquetes->isEmpty()) {
 			cout << "    (No hay tiquetes en cola) " << endl;
 		}
 		else {
-            cout << "    [";
-			for (int j = 0; j < tiquetes->getSize(); ++j) {
-				cout << " " << tiquetes->get(j)->getCodigo();
-			}
-            cout << " ]\n";
+            tiquetes->print();
 		}
 
         cout << "-----------------------------------------------\n";
@@ -210,9 +206,9 @@ int main() {
     setlocale(LC_ALL, "spanish");
 
     // Inicializar la lista de tipos de usuario
-    List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>();  // Crear OrderedArrayList para tipos de usuario
-    List<Area*>* areas = new ArrayList<Area*>();                          // Crear ArrayList para áreas
-    List<Servicio*>* servicios = new ArrayList<Servicio*>();
+    List<TipoUsuario*>* tiposDeUsuarios = new OrderedArrayList<TipoUsuario*>(5);  // Crear OrderedArrayList para tipos de usuario
+    List<Area*>* areas = new ArrayList<Area*>(5);                          // Crear ArrayList para áreas
+    List<Servicio*>* servicios = new ArrayList<Servicio*>(5);
     int cantTiquetesGlobal = 100;
 
     Menu mainMenu("== Menú Principal ==");

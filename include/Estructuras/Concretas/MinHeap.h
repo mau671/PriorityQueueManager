@@ -116,22 +116,15 @@ public:
 	// imprimir el arreglo como si fuera un arbol
 
 	void print() {
-		int temp = 0;
-
+		cout << "[ ";
 		for (int i = 0; i < size; i++) {
-			if (i == temp) {
-				cout << (i != 0 ? "]" : "") << "\n[ ";
-				temp = temp * 2 + 1;
+			cout << elements[i];
+			if (i != size - 1) {
+				cout << ", ";
 			}
-
-			cout << elements[i] << " ";
 		}
-
-		// Si esta vacio imprimir solo [ ], de lo contrario ]\n
-		if (size != 0)
-			cout << "]\n";
-		else
-			cout << "[ ]\n";
+		cout << " ]";
+		cout << endl;
 	}
 
 	E get(int index) {

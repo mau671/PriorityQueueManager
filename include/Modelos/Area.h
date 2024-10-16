@@ -15,6 +15,7 @@
 #include "Estructuras/Concretas/ArrayList.h"
 #include "Estructuras/Concretas/OrderedArrayList.h"
 #include "Estructuras/Concretas/MinHeap.h"
+#include "Estructuras/Concretas/HeapPriorityQueue.h"
 #include "Modelos/Servicio.h"
 #include "Modelos/Tiquete.h"
 #include "Modelos/Ventanilla.h"
@@ -32,7 +33,7 @@ private:
 	string codigo; //inicio del nombre de las ventanillas
 	string descripcion;
 	int nVentanillas = 0;
-	MinHeap<Tiquete*>* tiquetes = nullptr;
+	HeapPriorityQueue<Tiquete*>* tiquetes = nullptr;
 	ArrayList<Ventanilla*>* ventanillas = nullptr;
 	int tiquetesDispensados = 0;
 	int tiquetesAtendidos = 0;
@@ -56,7 +57,7 @@ public:
 			ventanillas->append(new Ventanilla(""+codigo+ std::to_string(i+1)));
 			}
 
-		tiquetes = new MinHeap<Tiquete*>();
+		tiquetes = new HeapPriorityQueue<Tiquete*>();
 	}
 
 	~Area() {
@@ -120,7 +121,7 @@ public:
 		ventanillas->print();
 	}
 
-	MinHeap<Tiquete*>* getTiquetes() {
+	HeapPriorityQueue<Tiquete*>* getTiquetes() {
 		return tiquetes;
 	}
 
@@ -130,7 +131,7 @@ public:
 
 	//add
 	void addTiquete(Tiquete* tiquete) {
-		tiquetes->insert(tiquete);
+		tiquetes->insert(tiquete, tiquete->getPrioridad());
 		tiquetesDispensados++;
 	}
 	
@@ -149,7 +150,7 @@ public:
 	int limpiarTiquetes() {
 		int tiquetesEliminados = 0;
 		for (int i = tiquetes->getSize()-1; i >= 0; i--) {
-			delete tiquetes->remove(i);
+			delete tiquetes->removeMin();
 			tiquetesEliminados++;
 		}
 
@@ -171,7 +172,7 @@ public:
 		for (int i = 0; i < ventanillas->getSize(); i++) {
 			ventanillas->goToPos(i);
 			if (ventanillas->getElement()->getDescripcion() == nVentanilla) {
-				Tiquete* tiquete = tiquetes->removeFirst();
+				Tiquete* tiquete = tiquetes->removeMin();
 				ventanillas->getElement()->setTiquete(tiquete, hora);
 				tiquete->setHoraAtendido(hora);
 

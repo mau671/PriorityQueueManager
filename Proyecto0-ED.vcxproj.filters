@@ -39,18 +39,12 @@
     <ClCompile Include="src\Gestores\GestorTiquete.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\Gestores\GestorEstadísticas.cpp">
+    <ClCompile Include="src\Gestores\GestorEstadisticas.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Estructuras\Concretas\ArrayList.h">
-      <Filter>Archivos de encabezado\Objetos base</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Estructuras\Concretas\HeapPriorityQueue.h">
-      <Filter>Archivos de encabezado\Objetos base</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Estructuras\Concretas\KVPair.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
     <ClInclude Include="include\Estructuras\Abstractas\List.h">
@@ -60,9 +54,6 @@
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
     <ClInclude Include="include\Estructuras\Concretas\OrderedArrayList.h">
-      <Filter>Archivos de encabezado\Objetos base</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Estructuras\Abstractas\PriorityQueue.h">
       <Filter>Archivos de encabezado\Objetos base</Filter>
     </ClInclude>
     <ClInclude Include="include\Gestores\GestorTipoUsuario.h">
@@ -96,6 +87,18 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="include\Gestores\GestorTiquete.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gestores\GestorEstadisticas.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Estructuras\Concretas\HeapPriorityQueue.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Estructuras\Concretas\KVPair.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Estructuras\Concretas\PriorityQueue.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

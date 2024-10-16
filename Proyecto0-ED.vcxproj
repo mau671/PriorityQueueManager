@@ -138,6 +138,9 @@
     <ClCompile Include="src\Utilidades\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Estructuras\Concretas\HeapPriorityQueue.h" />
+    <ClInclude Include="include\Estructuras\Concretas\KVPair.h" />
+    <ClInclude Include="include\Estructuras\Concretas\PriorityQueue.h" />
     <ClInclude Include="include\Gestores\GestorArea.h" />
     <ClInclude Include="include\Gestores\GestorServicio.h" />
     <ClInclude Include="include\Gestores\GestorTiquete.h" />

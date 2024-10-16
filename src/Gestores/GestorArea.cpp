@@ -137,12 +137,12 @@ void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
         }
 
         // Obtén los tiquetes asociados al área usando el método getTiquetes()
-        MinHeap<Tiquete*>* tiquetesArea = areaSeleccionada->getTiquetes();
+        HeapPriorityQueue<Tiquete*>* tiquetesArea = areaSeleccionada->getTiquetes();
 
         // Elimina los tiquetes asociados al área
         if (tiquetesArea != nullptr) {
             while (!tiquetesArea->isEmpty()) {
-                delete tiquetesArea->remove(0); // Eliminar tiquetes uno por uno
+                delete tiquetesArea->removeMin();
             }
         }
 

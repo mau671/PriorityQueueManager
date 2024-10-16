@@ -97,6 +97,7 @@ void showUserTypeMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas) {
     Menu menu("== Menú de tipos de usuario ==");
     menu.addOption("Agregar");
     menu.addOption("Eliminar");
+    menu.addOption("Listar");
     menu.addOption("Regresar");
 
     int option;
@@ -112,7 +113,20 @@ void showUserTypeMenu(List<TipoUsuario*>* tiposDeUsuarios, List<Area*>* areas) {
             displayAndRemoveUserType(tiposDeUsuarios, areas);  // Pasar la lista de tipos de usuario
             break;
         case 3:
+            if (tiposDeUsuarios->getSize() == 0) {
+				cout << "No hay tipos de usuario disponibles." << endl;
+				pause();
+				break;
+			}
+            cout << "== Tipos de usuario ==" << endl;
+			for (int i = 0; i < tiposDeUsuarios->getSize(); i++) {
+				tiposDeUsuarios->goToPos(i);
+				cout << i + 1 << ". " << tiposDeUsuarios->getElement()->getDescripcion() << " - Prioridad: " << tiposDeUsuarios->getElement()->getPrioridad() << endl;
+			}
+			pause();
+			break;
+        case 4:
             return;
         }
-    } while (option != 3);
+    } while (option != 4);
 }
