@@ -84,6 +84,11 @@ public:
         return !(*this == otro);
     }
 
+    // operador >= que compara la prioridad de dos tipos de usuario
+    bool operator>=(const TipoUsuario& otro) const {
+		return this->prioridad >= otro.prioridad;
+	}
+
     // Sobrecarga del operador de inserción para imprimir (cout)
     friend ostream& operator<<(ostream& os, const TipoUsuario& tipoUsuario) {
         os << "Descripcion: " << tipoUsuario.descripcion << ", Prioridad: " << tipoUsuario.prioridad;

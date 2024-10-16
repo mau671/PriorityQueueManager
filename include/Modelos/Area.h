@@ -83,9 +83,17 @@ public:
 
 	void setNventanillas(int nVentanillas) {
 		this->nVentanillas = nVentanillas;
-		ventanillas->clear();
-		for (int i = 0; i <= nVentanillas; i++) {
-			ventanillas->append(new Ventanilla("" + codigo + std::to_string(i + 1)));
+
+		// Limpiar las ventanillas actuales
+		for (int i = 0; i < ventanillas->getSize(); i++) {
+			ventanillas->goToPos(i);
+			delete ventanillas->getElement();
+		}
+		delete ventanillas;
+		// Crear las nuevas ventanillas
+		ventanillas = new ArrayList<Ventanilla*>(nVentanillas);
+		for (int i = 1; i <= nVentanillas; i++) {
+			ventanillas->append(new Ventanilla("" + codigo + std::to_string(i)));
 		}
 	}
 

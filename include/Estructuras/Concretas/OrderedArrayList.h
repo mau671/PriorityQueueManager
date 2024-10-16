@@ -31,7 +31,7 @@ public:
     // Inserta un elemento en la posición correcta para mantener el orden
     void insert(E element) {
         data->goToStart();
-        while (!data->atEnd() && element >= data->getElement())
+        while (!data->atEnd() && *element >= *(data->getElement()))
             data->next();
         data->insert(element);
     }

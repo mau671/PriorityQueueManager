@@ -248,19 +248,19 @@ int main() {
                 tiposDeUsuarios->goToPos(i);
                 delete tiposDeUsuarios->remove(); // Eliminar el objeto apuntado
             }
-            delete [] tiposDeUsuarios;  // Limpiar la lista al salir
+            delete tiposDeUsuarios;  // Limpiar la lista al salir
 
             //se hace lo mismo con todos
             for (areas->goToStart(); !areas->atEnd(); areas->next()) {
                 delete areas->getElement();
 			}
 
-            delete [] areas;
+            delete areas;
             for (int i = 0; i < servicios->getSize(); i++) {
                 servicios->goToPos(i);
                 delete servicios->remove();
             }
-            delete [] servicios;
+            delete servicios;
             return 0;
         }
     }

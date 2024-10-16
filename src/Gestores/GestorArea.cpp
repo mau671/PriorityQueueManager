@@ -110,8 +110,10 @@ void deleteArea(List<Area*>* areas, List<Servicio*>* servicios) {
         else {
             cout << "Servicios que se eliminarán: " << endl;
             for (int i = 0; i < servicios->getSize(); i++) {
-                servicios->goToPos(i);
-                cout << i + 1 << ". " << servicios->getElement()->getDescripcion() << endl;
+				servicios->goToPos(i);
+                if (servicios->getElement()->getArea() == areas->getElement()) {
+                    cout << servicios->getElement()->getDescripcion() << endl;
+                }
             }
             cout << endl;
         }
