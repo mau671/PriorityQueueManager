@@ -31,4 +31,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Proyecto0-ED-executable
-        path: Proyecto0-ED/x64/Release/Proyecto0-ED.exe
+        path: D:\a\Proyecto0-ED\Proyecto0-ED\x64\Release\Proyecto0-ED.exe
