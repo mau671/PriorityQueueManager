@@ -18,17 +18,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Paso 2: Configurar Visual Studio 2022
-    - name: Set up Visual Studio
-      uses: ilammy/msvc-dev-cmd@v1
-      with:
-        arch: x64
-        toolset: host=x64
+    # Paso 2: Agregar msbuild al PATH
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
 
-    # Paso 3: Compilar la solución del proyecto
-    - name: Build the solution
-      run: |
-        msbuild Proyecto0-ED.sln /p:Configuration=Release
+    # Paso 3: Compilar el proyecto con msbuild
+    - name: Build app for release
+      run: msbuild Proyecto0-ED.sln -t:rebuild -verbosity:diag -property:Configuration=Release
 
     # Paso 4: Subir el ejecutable como un artifact
     - name: Upload executable
