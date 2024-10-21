@@ -1,0 +1,34 @@
+name: Build C++ Console App
+
+# Ejecuta el workflow en cada push o pull request a la rama master
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    # Paso 1: Chequear el código del repositorio
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Paso 2: Agregar msbuild al PATH
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    # Paso 3: Compilar el proyecto con msbuild
+    - name: Build app for release
+      run: msbuild Proyecto0-ED.sln -t:rebuild -verbosity:diag -property:Configuration=Release
+
+    # Paso 4: Subir el ejecutable como un artifact
+    - name: Upload executable
+      uses: actions/upload-artifact@v3
+      with:
+        name: Proyecto0-ED-executable
+        path: Proyecto0-ED/x64/Release/Proyecto0-ED.exe
