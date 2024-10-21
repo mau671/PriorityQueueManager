@@ -24,7 +24,7 @@ jobs:
 
     # Paso 3: Compilar el proyecto con msbuild
     - name: Build app for release
-      run: msbuild Proyecto0-ED.sln -t:rebuild -verbosity:diag -property:Configuration=Release -property:AdditionalIncludeDirectories=D:\a\Proyecto0-ED\include
+      run: msbuild Proyecto0-ED.sln -t:rebuild -verbosity:diag -property:Configuration=Release
 
     # Paso 4: Subir el ejecutable como un artifact
     - name: Upload executable
