@@ -32,11 +32,11 @@ jobs:
 
     # Paso 5: Mover el ejecutable al directorio temporal
     - name: Move executable to artifact directory
-      run: move D:\a\PriorityQueueManager\Proyecto0-ED\x64\Release\Proyecto0-ED.exe D:\a\artifact\PriorityQueueManager.exe
+      run: move D:\a\PriorityQueueManager\PriorityQueueManager\x64\Release\Proyecto0-ED.exe D:\a\artifact\PriorityQueueManager.exe
 
     # Paso 6: Subir el ejecutable como un artifact con upload-artifact@v4
     - name: Upload executable
       uses: actions/upload-artifact@v4
       with:
-        name: Proyecto0-ED-executable
-        path: D:\a\artifact\Proyecto0-ED.exe
+        name: PriorityQueueManager
+        path: D:\a\artifact\PriorityQueueManager.exe
